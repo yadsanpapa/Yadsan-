@@ -1,8 +1,8 @@
 if not game:IsLoaded() then
     local msg_instance = Instance.new("Message")
     local hint_instance = Instance.new("Hint")
-    msg_instance.Text = "MonK Hub is waiting for the current experience to load fully."
-    hint_instance.Text = "MonK Hub is currently waiting for the game to load."
+    msg_instance.Text = "Yadsan Hub is waiting for the current experience to load fully."
+    hint_instance.Text = "Yadsan Hub is currently waiting for the game to load."
     msg_instance.Parent = workspace
     hint_instance.Parent = workspace
     game.Loaded:Wait()
