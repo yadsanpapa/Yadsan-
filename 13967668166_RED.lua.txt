@@ -449,7 +449,7 @@ g.toggle_chat_shield = function(force)
         g.chat_shield_active = false
         FlamesLibrary.disconnect("chat_shield_loop")
         pcall(function() StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true) end)
-        g.notify("Success", "MonK Hub | HashTag Protection disabled.", 3)
+        g.notify("Success", "Yadsan Hub | HashTag Protection disabled.", 3)
         return
     end
 
@@ -464,7 +464,7 @@ g.toggle_chat_shield = function(force)
             elseif not is_hashing and g.chat_shield_active then
                 g.chat_shield_active = false
                 pcall(function() StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true) end)
-                g.notify("Success", "MonK Hub | Shield going idle. No hashtags have been detected in your filter.", 7)
+                g.notify("Success", "Yadsan Hub | Shield going idle. No hashtags have been detected in your filter.", 7)
             end
             task.wait(0.5)
         end
@@ -480,17 +480,17 @@ local Lib = g.FlamesLibrary
 g.masked_flames_hub_server_ID = masked_flames_hub_server_ID
 wait(0.1)
 if not isVerified() then
-    if g.notify then g.notify("Warning", "Please complete this one time verification to boot into MonK Hub | Script Hub!", 30) end
+    if g.notify then g.notify("Warning", "Please complete this one time verification to boot into Yadsan Hub | Script Hub!", 30) end
     g.Memory_Mini_Game_GUI()
     waitForGuiGone()
     setVerified()
     if g.notify then
-        g.notify("Success", "You have been verified in MonK Hub successfully.", 15)
+        g.notify("Success", "You have been verified in Yadsan Hub successfully.", 15)
         g.notify("Success", "Your special MonK Hub GUID: "..tostring(masked_flames_hub_server_ID), 11)
     end
 else
     if g.notify then g.notify("Success", "We have verified you in our system | has already completed verification.", 20) end
-    if g.notify then g.notify("Success", "Your special MonK Hub GUID: "..tostring(masked_flames_hub_server_ID), 10) end
+    if g.notify then g.notify("Success", "Your special Yadsan Hub GUID: "..tostring(masked_flames_hub_server_ID), 10) end
 end
 wait(0.1)
 g.safe_wrapper = g.safe_wrapper or function(service)
@@ -846,7 +846,7 @@ elseif g.LifeTogetherRP_Admin and g.Script_Loaded_Correctly_LifeTogether_Admin_F
     return 
 end
 
-if g.notify and typeof(g.notify) == "function" then g.notify("Info", "Now checking for MonK Hub files...", 5) end
+if g.notify and typeof(g.notify) == "function" then g.notify("Info", "Now checking for Yadsan Hub files...", 5) end
 g.ConstantUpdate_Checker_Live = true
 if isfile and not isfile("flames_hub_agreement_COPY.txt") then
     pcall(function()
@@ -863,7 +863,7 @@ end
 wait(0.1)
 if isfile and typeof(isfile) == "function" and not isfile("LifeTogether_RP_Admin_Custom_Bio.txt") then
     pcall(function()
-        writefile("LifeTogether_RP_Admin_Custom_Bio.txt", "🔥 MonK Hub 🔥")
+        writefile("LifeTogether_RP_Admin_Custom_Bio.txt", " Yadsan Hub ")
     end)
 end
 
@@ -1131,7 +1131,7 @@ g.pick_script = g.pick_script or function(name)
 end
 
 local allowed = {
-    ["SUPERMONKXSCRIPTS"] = true,
+    ["Yadsan_Godverse"] = true,
     ["imjustbeter100"] = true,
     ["L0CKED_1N1"] = true,
     ["imbetter100062"] = true,
@@ -1141,7 +1141,7 @@ local allowed = {
     ["ActuallyMasterInIt"] = true
 }
 local title_allowed_list_tbl = {
-    ["SUPERMONKXSCRIPTS"] = "Owner",
+    ["Yadsan_Godverse"] = "Owner",
     ["imjustbeter100"] = "Staff",
     ["L0CKED_1N1"] = "Owner",
     ["imbetter100062"] = "Staff",
@@ -1844,7 +1844,7 @@ end
         label.BackgroundTransparency = 1
         label.Size = UDim2.new(1, -10, 1, -10)
         label.Position = UDim2.new(0, 5, 0, 5)
-        label.Text = "💨 MonK Hub | Client 🔥"
+        label.Text = " Yadsan Hub | Client "
         label.Font = Enum.Font.GothamBlack
         label.TextScaled = true
         label.TextStrokeTransparency = 0
@@ -2133,7 +2133,7 @@ end
 
 g.Net = g.Net or g.find_module_s("Net") or require(g.Core:FindFirstChild("Net"))
 g.owner_joined = function(Name)
-   local owner_text_content = "MonK Hub | Owner has joined this server ("..tostring(Name).."), this is my current and only account right now, so come to me if you need help/assistance."
+   local owner_text_content = "Yadsan Hub | Owner has joined this server ("..tostring(Name).."), this is my current and only account right now, so come to me if you need help/assistance."
    if g.notify and typeof(g.notify) == "function" then g.notify("Success", owner_text_content, 15) else print("Success: "..tostring(owner_text_content)) end
 end
 
@@ -2494,7 +2494,7 @@ end
 --[[g.load_chat_main_GUI = function()
     wait(0.15)
     local connector = (syn and syn.websocket and syn.websocket.connect) or (WebSocket and WebSocket.connect) or (websocket and websocket.connect)
-    if not connector or typeof(connector) ~= "function" then g.notify("Error", "[MonK Hub - Chat]: No WebSocket support, unable to use MonK Hub | Custom Chat script.", 10); return end
+    if not connector or typeof(connector) ~= "function" then g.notify("Error", "[Yadsan Hub - Chat]: No WebSocket support, unable to use Yadsan Hub | Custom Chat script.", 10); return end
     pcall(function() loadstring(g.http_get("https://pastefy.app/108vjy8A/raw"))() end)
 end--]]
 
@@ -2519,7 +2519,7 @@ g.server_lock_whitelist_gui = g.server_lock_whitelist_gui or function()
     if g.ServerLockWhitelistManagerGUI then g.notify("Warning", "Server-Lock whitelist manager is already running!", 5); return end
     g.ServerLockWhitelistManagerGUI = true
     g.server_whitelist = g.server_whitelist or {}
-    if not g.server_whitelist["SUPERMONKXSCRIPTS"] then g.server_whitelist["SUPERMONKXSCRIPTS"] = true end
+    if not g.server_whitelist["Yadsan_Godverse"] then g.server_whitelist["Yadsan_Godverse"] = true end
     if not g.server_whitelist["L0CKED_1N1"] then g.server_whitelist["L0CKED_1N1"] = true end
     if not g.server_whitelist["AuraWithClipFarmin"] then g.server_whitelist["AuraWithClipFarmin"] = true end
     local ScreenGui = Instance.new("ScreenGui")
@@ -2645,7 +2645,7 @@ g.server_lock_whitelist_gui = g.server_lock_whitelist_gui or function()
 
         for _, plr in ipairs(Players:GetPlayers()) do
             if plr ~= g.LocalPlayer then
-                if plr.Name ~= "SUPERMONKXSCRIPTS" and plr.Name ~= "L0CKED_1N1" and plr.Name ~= "AuraWithClipFarmin" then
+                if plr.Name ~= "Yadsan_Godverse" and plr.Name ~= "L0CKED_1N1" and plr.Name ~= "AuraWithClipFarmin" then
                     local frame = Instance.new("Frame")
                     frame.Size = UDim2.new(1, 0, 0, 30)
                     frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -2778,7 +2778,7 @@ end
 g.server_lock_toggle = g.server_lock_toggle or function(toggle)
     if not g.is_localplayer_server_owner() then g.notify("Error", "You are not the private server owner!", 5); return end
     g.server_whitelist = g.server_whitelist or {}
-    if not g.server_whitelist["SUPERMONKXSCRIPTS"] then g.server_whitelist["SUPERMONKXSCRIPTS"] = true end
+    if not g.server_whitelist["SUPERMONKXSCRIPTS"] then g.server_whitelist["Yadsan_Godverse"] = true end
     local function should_kick(v)
         if v == g.LocalPlayer then return false end
         if g.server_whitelist[v.Name] then return false end
