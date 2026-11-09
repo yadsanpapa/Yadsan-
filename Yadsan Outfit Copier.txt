@@ -1,0 +1,598 @@
+-- Deobfuscated by Yadsan 🗿 
+-- YADSAN PAPA W4S H3R3
+
+-- Detected: Prometheus
+-- Took: 0.00000262ms
+-- Rate: 0.02 / 100 (Bullshit) ]]
+
+-- Full Source Below
+
+-- Services
+local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+local MarketplaceService = game:GetService("MarketplaceService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local LocalPlayer = Players.LocalPlayer
+
+-- Announcement
+task.spawn(function()
+    local text = "------------------//////GODVERSE OUTFIT COPIER LOADED 🌐(Made by Yadsan_Godverse 🔱-- CELESTIAL X ASUKA ON 🔝🔱////////--------------------"
+    local textChatService = game:GetService("TextChatService")
+    if textChatService.ChatVersion == Enum.ChatVersion.TextChatService then
+        local channel = textChatService:FindFirstChild("TextChannels") and textChatService.TextChannels:FindFirstChild("RBXGeneral")
+        if channel then
+            channel:SendAsync(text)
+        end
+    else
+        local defaultEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
+        if defaultEvents and defaultEvents:FindFirstChild("SayMessageRequest") then
+            defaultEvents.SayMessageRequest:FireServer(text, "All")
+        end
+    end
+end)
+
+-- Remove existing GUI instances
+for _, gui in ipairs(CoreGui:GetChildren()) do
+    if gui.Name == "MONKOutfitCopierGui" then
+        gui:Destroy()
+    end
+end
+
+-- GUI Construction
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "MonKOutfitCopierGui"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = CoreGui
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 420, 0, 520)
+MainFrame.Position = UDim2.new(0.5, -210, 0.5, -260)
+MainFrame.BackgroundColor3 = Color3.fromRGB(22, 26, 35)
+MainFrame.BorderSizePixel = 0
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.ClipsDescendants = true
+MainFrame.Parent = ScreenGui
+
+local MainCorner = Instance.new("UICorner")
+MainCorner.CornerRadius = UDim.new(0, 10)
+MainCorner.Parent = MainFrame
+
+-- Top Bar
+local TopBar = Instance.new("Frame")
+TopBar.Size = UDim2.new(1, 0, 0, 45)
+TopBar.BackgroundColor3 = Color3.fromRGB(30, 35, 45)
+TopBar.BorderSizePixel = 0
+TopBar.Parent = MainFrame
+
+local TopCorner = Instance.new("UICorner")
+TopCorner.CornerRadius = UDim.new(0, 10)
+TopCorner.Parent = TopBar
+
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, -90, 1, 0)
+Title.Position = UDim2.new(0, 15, 0, 0)
+Title.BackgroundTransparency = 1
+Title.Text = "GODVERSE OUTFIT COPIER  🤩(ONLY FOR LIFE TOGETHER)☄️"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 11
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.Parent = TopBar
+
+local MinimizeBtn = Instance.new("TextButton")
+MinimizeBtn.Size = UDim2.new(0, 30, 0, 30)
+MinimizeBtn.Position = UDim2.new(1, -75, 0, 7)
+MinimizeBtn.BackgroundColor3 = Color3.fromRGB(100, 110, 130)
+MinimizeBtn.Text = "-"
+MinimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeBtn.Font = Enum.Font.GothamBold
+MinimizeBtn.TextSize = 18
+MinimizeBtn.Parent = TopBar
+
+local MinCorner = Instance.new("UICorner")
+MinCorner.CornerRadius = UDim.new(0, 6)
+MinCorner.Parent = MinimizeBtn
+
+local CloseBtn = Instance.new("TextButton")
+CloseBtn.Size = UDim2.new(0, 30, 0, 30)
+CloseBtn.Position = UDim2.new(1, -40, 0, 7)
+CloseBtn.BackgroundColor3 = Color3.fromRGB(220, 60, 60)
+CloseBtn.Text = "X"
+CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseBtn.Font = Enum.Font.GothamBold
+CloseBtn.TextSize = 14
+CloseBtn.Parent = TopBar
+
+local CloseCorner = Instance.new("UICorner")
+CloseCorner.CornerRadius = UDim.new(0, 6)
+CloseCorner.Parent = CloseBtn
+
+-- Controls
+local InputBox = Instance.new("TextBox")
+InputBox.Size = UDim2.new(0.72, 0, 0, 45)
+InputBox.Position = UDim2.new(0.05, 0, 0, 60)
+InputBox.BackgroundColor3 = Color3.fromRGB(35, 42, 55)
+InputBox.PlaceholderText = "Select or Enter Player Name..."
+InputBox.Text = ""
+InputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+InputBox.Font = Enum.Font.Gotham
+InputBox.TextSize = 13
+InputBox.TextXAlignment = Enum.TextXAlignment.Left
+InputBox.Parent = MainFrame
+
+local InputPadding = Instance.new("UIPadding")
+InputPadding.PaddingLeft = UDim.new(0, 10)
+InputPadding.Parent = InputBox
+
+local InputCorner = Instance.new("UICorner")
+InputCorner.CornerRadius = UDim.new(0, 8)
+InputCorner.Parent = InputBox
+
+local DropdownToggle = Instance.new("TextButton")
+DropdownToggle.Size = UDim2.new(0.15, 0, 0, 45)
+DropdownToggle.Position = UDim2.new(0.8, 0, 0, 60)
+DropdownToggle.BackgroundColor3 = Color3.fromRGB(0, 136, 255)
+DropdownToggle.Text = "▼"
+DropdownToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+DropdownToggle.Font = Enum.Font.GothamBold
+DropdownToggle.TextSize = 16
+DropdownToggle.Parent = MainFrame
+
+local DropCorner = Instance.new("UICorner")
+DropCorner.CornerRadius = UDim.new(0, 8)
+DropCorner.Parent = DropdownToggle
+
+local RevealBtn = Instance.new("TextButton")
+RevealBtn.Size = UDim2.new(0.42, 0, 0, 42)
+RevealBtn.Position = UDim2.new(0.05, 0, 0, 115)
+RevealBtn.BackgroundColor3 = Color3.fromRGB(0, 136, 255)
+RevealBtn.Text = "REVEAL IDs"
+RevealBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+RevealBtn.Font = Enum.Font.GothamBold
+RevealBtn.TextSize = 14
+RevealBtn.Parent = MainFrame
+
+local RevealCorner = Instance.new("UICorner")
+RevealCorner.CornerRadius = UDim.new(0, 8)
+RevealCorner.Parent = RevealBtn
+
+local StealBtn = Instance.new("TextButton")
+StealBtn.Size = UDim2.new(0.42, 0, 0, 42)
+StealBtn.Position = UDim2.new(0.53, 0, 0, 115)
+StealBtn.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
+StealBtn.Text = "STEAL OUTFIT"
+StealBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+StealBtn.Font = Enum.Font.GothamBold
+StealBtn.TextSize = 14
+StealBtn.Parent = MainFrame
+
+local StealCorner = Instance.new("UICorner")
+StealCorner.CornerRadius = UDim.new(0, 8)
+StealCorner.Parent = StealBtn
+
+local ScrollFrame = Instance.new("ScrollingFrame")
+ScrollFrame.Size = UDim2.new(0.9, 0, 0, 335)
+ScrollFrame.Position = UDim2.new(0.05, 0, 0, 175)
+ScrollFrame.BackgroundTransparency = 1
+ScrollFrame.ScrollBarThickness = 4
+ScrollFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+ScrollFrame.Parent = MainFrame
+
+local ListLayout = Instance.new("UIListLayout")
+ListLayout.Padding = UDim.new(0, 8)
+ListLayout.Parent = ScrollFrame
+
+local DropdownList = Instance.new("ScrollingFrame")
+DropdownList.Size = UDim2.new(0.9, 0, 0, 160)
+DropdownList.Position = UDim2.new(0.05, 0, 0, 110)
+DropdownList.BackgroundColor3 = Color3.fromRGB(25, 30, 40)
+DropdownList.BorderSizePixel = 1
+DropdownList.BorderColor3 = Color3.fromRGB(0, 136, 255)
+DropdownList.ScrollBarThickness = 5
+DropdownList.ZIndex = 10
+DropdownList.Visible = false
+DropdownList.Parent = MainFrame
+
+local DropLayout = Instance.new("UIListLayout")
+DropLayout.Padding = UDim.new(0, 2)
+DropLayout.Parent = DropdownList
+
+-- UI Interactions
+CloseBtn.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+local isMinimized = false
+MinimizeBtn.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    if isMinimized then
+        MainFrame.Size = UDim2.new(0, 420, 0, 45)
+        MinimizeBtn.Text = "+"
+        DropdownList.Visible = false
+        DropdownToggle.Text = "▼"
+    else
+        MainFrame.Size = UDim2.new(0, 420, 0, 520)
+        MinimizeBtn.Text = "-"
+    end
+end)
+
+DropdownToggle.MouseButton1Click:Connect(function()
+    if isMinimized then return end
+    DropdownList.Visible = not DropdownList.Visible
+    if DropdownList.Visible then
+        DropdownToggle.Text = "▲"
+        for _, child in pairs(DropdownList:GetChildren()) do
+            if child:IsA("TextButton") then
+                child:Destroy()
+            end
+        end
+        local playerList = Players:GetPlayers()
+        for _, plr in ipairs(playerList) do
+            local btn = Instance.new("TextButton")
+            btn.Size = UDim2.new(1, -10, 0, 30)
+            btn.BackgroundColor3 = Color3.fromRGB(35, 42, 55)
+            btn.Text = "  " .. plr.Name .. " (@" .. plr.DisplayName .. ")"
+            btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+            btn.Font = Enum.Font.Gotham
+            btn.TextSize = 13
+            btn.TextXAlignment = Enum.TextXAlignment.Left
+            btn.ZIndex = 11
+            btn.Parent = DropdownList
+
+            btn.MouseButton1Click:Connect(function()
+                InputBox.Text = plr.Name
+                DropdownList.Visible = false
+                DropdownToggle.Text = "▼"
+            end)
+        end
+        DropdownList.CanvasSize = UDim2.new(0, 0, 0, #playerList * 32)
+    else
+        DropdownToggle.Text = "▼"
+    end
+end)
+
+-- Helper Functions
+local function createItemCard(category, assetId)
+    local itemFrame = Instance.new("Frame")
+    itemFrame.Size = UDim2.new(1, -10, 0, 45)
+    itemFrame.BackgroundColor3 = Color3.fromRGB(35, 42, 55)
+    itemFrame.Parent = ScrollFrame
+
+    local frameCorner = Instance.new("UICorner")
+    frameCorner.CornerRadius = UDim.new(0, 8)
+    frameCorner.Parent = itemFrame
+
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(0.65, 0, 1, 0)
+    label.Position = UDim2.new(0, 12, 0, 0)
+    label.BackgroundTransparency = 1
+    label.RichText = true
+    local prefixText = "<font color='#00d2ff'><b>" .. category .. "</b></font>"
+    label.Text = prefixText .. " <font color='#888888'><i>Fetching name...</i></font>"
+    label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.Font = Enum.Font.GothamMedium
+    label.TextSize = 13
+    label.TextTruncate = Enum.TextTruncate.AtEnd
+    label.Parent = itemFrame
+
+    task.spawn(function()
+        local success, info = pcall(function()
+            return MarketplaceService:GetProductInfo(assetId)
+        end)
+        if success and info then
+            label.Text = prefixText .. " <font color='#ffffff'>" .. info.Name .. "</font>"
+        else
+            label.Text = prefixText .. " <font color='#ff5555'>Unknown Item</font>"
+        end
+    end)
+
+    local copyBtn = Instance.new("TextButton")
+    copyBtn.Size = UDim2.new(0, 85, 0, 30)
+    copyBtn.Position = UDim2.new(1, -95, 0, 7)
+    copyBtn.BackgroundColor3 = Color3.fromRGB(0, 110, 220)
+    copyBtn.Text = "COPY"
+    copyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    copyBtn.Font = Enum.Font.GothamBold
+    copyBtn.TextSize = 13
+    copyBtn.Parent = itemFrame
+
+    local btnCorner = Instance.new("UICorner")
+    btnCorner.CornerRadius = UDim.new(0, 6)
+    btnCorner.Parent = copyBtn
+
+    copyBtn.MouseButton1Click:Connect(function()
+        if setclipboard then
+            setclipboard(tostring(assetId))
+            copyBtn.Text = "COPIED ✓"
+            copyBtn.BackgroundColor3 = Color3.fromRGB(40, 200, 80)
+            itemFrame.BackgroundColor3 = Color3.fromRGB(30, 75, 45)
+            task.wait(1.5)
+            copyBtn.Text = "COPY"
+            copyBtn.BackgroundColor3 = Color3.fromRGB(0, 110, 220)
+            itemFrame.BackgroundColor3 = Color3.fromRGB(35, 42, 55)
+        end
+    end)
+end
+
+local function getNetModule()
+    local success, net = pcall(function()
+        return require(ReplicatedStorage.Modules.Core.Net)
+    end)
+    return success and net or nil
+end
+
+local function getCharacterByName(nameQuery)
+    local cleanName = string.match(nameQuery, "^%s*(.-)%s*$"):lower()
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if string.sub(plr.Name:lower(), 1, #cleanName) == cleanName or string.sub(plr.DisplayName:lower(), 1, #cleanName) == cleanName then
+            return plr.Character
+        end
+    end
+    return nil
+end
+
+local function isCelestialSyndicate(character, searchName)
+    local tag = "Super"
+    if searchName and string.find(searchName:lower(), tag) then
+        return true
+    end
+    if not character then return false end
+
+    local plr = Players:GetPlayerFromCharacter(character)
+    if plr and (string.find(plr.Name:lower(), tag) or string.find(plr.DisplayName:lower(), tag)) then
+        return true
+    end
+
+    for _, attr in pairs(character:GetAttributes()) do
+        if type(attr) == "string" and string.find(attr:lower(), tag) then
+            return true
+        end
+    end
+
+    for _, desc in ipairs(character:GetDescendants()) do
+        if desc:IsA("StringValue") and string.find(desc.Value:lower(), tag) then
+            return true
+        elseif desc:IsA("TextLabel") or desc:IsA("TextButton") or desc:IsA("TextBox") then
+            local text = desc.Text:lower()
+            if string.find(text, tag) or string.find(text:gsub("<[^>]+>", ""), tag) then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+-- Button Logic
+RevealBtn.MouseButton1Click:Connect(function()
+    DropdownList.Visible = false
+    DropdownToggle.Text = "▼"
+
+    for _, child in pairs(ScrollFrame:GetChildren()) do
+        if child:IsA("Frame") then
+            child:Destroy()
+        end
+    end
+
+    local nameQuery = InputBox.Text:lower()
+    if nameQuery == "" then return end
+
+    local targetChar = getCharacterByName(nameQuery)
+    if isCelestialSyndicate(targetChar, nameQuery) then
+        RevealBtn.Text = "CELESTIAL X ASUKA 🔱"
+        RevealBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        task.wait(2.5)
+        RevealBtn.Text = "REVEAL IDs"
+        RevealBtn.BackgroundColor3 = Color3.fromRGB(0, 136, 255)
+        return
+    end
+
+    RevealBtn.Text = "SCANNING..."
+    task.spawn(function()
+        if targetChar then
+            local humanoid = targetChar:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                local desc = humanoid:GetAppliedDescription()
+                if desc then
+                    for _, acc in ipairs(desc:GetAccessories(true)) do
+                        createItemCard("[" .. acc.AccessoryType.Name .. "]", acc.AssetId)
+                    end
+                    if desc.Shirt ~= 0 then createItemCard("[Shirt]", desc.Shirt) end
+                    if desc.Pants ~= 0 then createItemCard("[Pants]", desc.Pants) end
+                    if desc.GraphicTShirt ~= 0 then createItemCard("[T-Shirt]", desc.GraphicTShirt) end
+                    if desc.Face ~= 0 then createItemCard("[Face]", desc.Face) end
+
+                    local anims = {
+                        {"Idle", desc.IdleAnimation},
+                        {"Walk", desc.WalkAnimation},
+                        {"Run", desc.RunAnimation},
+                        {"Jump", desc.JumpAnimation},
+                        {"Climb", desc.ClimbAnimation},
+                        {"Swim", desc.SwimAnimation}
+                    }
+                    for _, anim in ipairs(anims) do
+                        if anim[2] and anim[2] ~= 0 then
+                            createItemCard("[Anim: " .. anim[1] .. "]", anim[2])
+                        end
+                    end
+
+                    local bodyParts = {
+                        {"Head", desc.Head},
+                        {"Torso", desc.Torso},
+                        {"LeftArm", desc.LeftArm},
+                        {"RightArm", desc.RightArm},
+                        {"LeftLeg", desc.LeftLeg},
+                        {"RightLeg", desc.RightLeg}
+                    }
+                    for _, body in ipairs(bodyParts) do
+                        if body[2] and body[2] ~= 0 then
+                            createItemCard("[Body: " .. body[1] .. "]", body[2])
+                        end
+                    end
+                    RevealBtn.Text = "REVEAL IDs"
+                end
+            end
+        else
+            RevealBtn.Text = "NOT FOUND"
+            task.wait(1.5)
+            RevealBtn.Text = "REVEAL IDs"
+        end
+    end)
+end)
+
+local isStealing = false
+StealBtn.MouseButton1Click:Connect(function()
+    DropdownList.Visible = false
+    DropdownToggle.Text = "▼"
+
+    if isStealing then return end
+    local nameQuery = InputBox.Text:lower()
+    if nameQuery == "" then return end
+
+    task.spawn(function()
+        isStealing = true
+        StealBtn.Text = "CHECKING TARGET..."
+        StealBtn.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+
+        local targetChar = getCharacterByName(nameQuery)
+        if isCelestialSyndicate(targetChar, nameQuery) then
+            StealBtn.Text = "CELESTIAL X ASUKA 🔱"
+            StealBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+            task.wait(2.5)
+            StealBtn.Text = "STEAL OUTFIT"
+            StealBtn.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
+            isStealing = false
+            return
+        end
+
+        if not targetChar then
+            StealBtn.Text = "NOT FOUND!"
+            StealBtn.BackgroundColor3 = Color3.fromRGB(220, 60, 60)
+            task.wait(2)
+            StealBtn.Text = "STEAL OUTFIT"
+            StealBtn.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
+            isStealing = false
+            return
+        end
+
+        local Net = getNetModule()
+        if not Net then
+            StealBtn.Text = "MODULE ERROR"
+            task.wait(2)
+            StealBtn.Text = "STEAL OUTFIT"
+            StealBtn.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
+            isStealing = false
+            return
+        end
+
+        StealBtn.Text = "CLEANING AVATAR..."
+        StealBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+
+        pcall(function()
+            Net.send("wear_outfit_from_desc", {
+                ["accessories"] = {},
+                ["properties"] = {
+                    ["Shirt"] = 0,
+                    ["Pants"] = 0,
+                    ["GraphicTShirt"] = 0,
+                    ["Face"] = 0,
+                    ["Head"] = 0,
+                    ["Torso"] = 0,
+                    ["LeftArm"] = 0,
+                    ["RightArm"] = 0,
+                    ["LeftLeg"] = 0,
+                    ["RightLeg"] = 0,
+                    ["WalkAnimation"] = 0,
+                    ["RunAnimation"] = 0,
+                    ["JumpAnimation"] = 0,
+                    ["FallAnimation"] = 0,
+                    ["ClimbAnimation"] = 0,
+                    ["IdleAnimation"] = 0,
+                    ["SwimAnimation"] = 0,
+                    ["HeightScale"] = 1,
+                    ["HeadScale"] = 1,
+                    ["WidthScale"] = 1,
+                    ["DepthScale"] = 1,
+                    ["ProportionScale"] = 0,
+                    ["BodyTypeScale"] = 0
+                }
+            })
+            task.wait(0.2)
+            Net.send("skin_tone", 0.6, 0.6, 0.6)
+        end)
+        task.wait(0.6)
+
+        local humanoid = targetChar:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            local desc = humanoid:GetAppliedDescription()
+            if desc then
+                local itemsToApply = {}
+
+                local function addItem(id, itemType)
+                    table.insert(itemsToApply, {id = id, type = itemType})
+                end
+
+                for _, acc in ipairs(desc:GetAccessories(true)) do
+                    local accType = acc.AccessoryType.Name
+                    if not string.match(accType, "Accessory") then
+                        accType = accType .. "Accessory"
+                    end
+                    addItem(acc.AssetId, accType)
+                end
+
+                if desc.Pants ~= 0 then addItem(desc.Pants, "Pants") end
+                if desc.Shirt ~= 0 then addItem(desc.Shirt, "Shirt") end
+                if desc.GraphicTShirt ~= 0 then addItem(desc.GraphicTShirt, "TShirt") end
+                if desc.Face ~= 0 then addItem(desc.Face, "Face") end
+
+                local animsAndBody = {
+                    {"IdleAnimation", desc.IdleAnimation},
+                    {"WalkAnimation", desc.WalkAnimation},
+                    {"RunAnimation", desc.RunAnimation},
+                    {"JumpAnimation", desc.JumpAnimation},
+                    {"FallAnimation", desc.FallAnimation},
+                    {"ClimbAnimation", desc.ClimbAnimation},
+                    {"SwimAnimation", desc.SwimAnimation},
+                    {"Head", desc.Head},
+                    {"Torso", desc.Torso},
+                    {"LeftArm", desc.LeftArm},
+                    {"RightArm", desc.RightArm},
+                    {"LeftLeg", desc.LeftLeg},
+                    {"RightLeg", desc.RightLeg}
+                }
+
+                for _, item in ipairs(animsAndBody) do
+                    if item[2] and item[2] ~= 0 then
+                        addItem(item[2], item[1])
+                    end
+                end
+
+                for idx, item in ipairs(itemsToApply) do
+                    StealBtn.Text = "STEALING (" .. idx .. "/" .. #itemsToApply .. ")"
+                    StealBtn.BackgroundColor3 = Color3.fromRGB(0, 136, 255)
+                    pcall(function()
+                        Net.get("code", tonumber(item.id), tostring(item.type))
+                    end)
+                    task.wait(0.35)
+                end
+
+                pcall(function()
+                    local headColor = desc.HeadColor
+                    Net.send("skin_tone", headColor.R, headColor.G, headColor.B)
+                end)
+
+                StealBtn.Text = "STOLEN! 😎"
+                StealBtn.BackgroundColor3 = Color3.fromRGB(40, 180, 80)
+                task.wait(2)
+                StealBtn.Text = "STEAL OUTFIT"
+                StealBtn.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
+                isStealing = false
+                return
+            end
+        end
+
+        isStealing = false
+    end)
+end)
