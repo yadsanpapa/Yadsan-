@@ -1,4 +1,4 @@
--- [[ Welcome to Flames Hub's global environment initialization system. ]] --
+-- [[ Welcome to Yadsan Hub's global environment initialization system. ]] --
 -- [[ It is literally like one of the safest things I think I have ever created, everything is concrete and has been properly and thoroughly reviewed. ]] --
 -- [[ This works for all executors, including low level executors such as: Solara, Xeno, JJSploit, etc. ]] --
 if not game:IsLoaded() then game.Loaded:Wait() end
@@ -671,13 +671,13 @@ local function resolve_property(map, search)
     return matches
 end
 
-getgenv().FlamesLibrary = getgenv().FlamesLibrary or {}
-getgenv().FlamesLibrary._connections = getgenv().FlamesLibrary._connections or {}
-getgenv().FlamesLibrary.modules = getgenv().FlamesLibrary.modules or {}
-getgenv().FlamesLibrary.module_utils = getgenv().FlamesLibrary.module_utils or {}
-getgenv().FlamesLibrary.table_lib = getgenv().FlamesLibrary.table_lib or {} -- new 'table' methods and usage, making us only more efficient.
-getgenv().FlamesLibrary.connect = function(name, connection)
-    local FL = getgenv().FlamesLibrary
+getgenv().YadsanLibrary = getgenv().FlamesLibrary or {}
+getgenv().YadsanLibrary._connections = getgenv().FlamesLibrary._connections or {}
+getgenv().YadsanLibrary.modules = getgenv().FlamesLibrary.modules or {}
+getgenv().YadsanLibrary.module_utils = getgenv().FlamesLibrary.module_utils or {}
+getgenv().YadsanLibrary.table_lib = getgenv().FlamesLibrary.table_lib or {} -- new 'table' methods and usage, making us only more efficient.
+getgenv().YadsanLibrary.connect = function(name, connection)
+    local FL = getgenv().YadsanLibrary
     if type(name) ~= "string" then return end
     if typeof(connection) ~= "RBXScriptConnection" then return end
     if type(FL._connections) ~= "table" then FL._connections = {} end
@@ -686,8 +686,8 @@ getgenv().FlamesLibrary.connect = function(name, connection)
     return connection
 end
 
-getgenv().FlamesLibrary.disconnect = function(name)
-    local FL = getgenv().FlamesLibrary
+getgenv().YadsanLibrary.disconnect = function(name)
+    local FL = getgenv().YadsanLibrary
     if type(name) ~= "string" then return end
     if type(FL._connections) ~= "table" then return end
     local list = FL._connections[name]
@@ -703,8 +703,8 @@ getgenv().FlamesLibrary.disconnect = function(name)
     end
 end
 
-getgenv().FlamesLibrary.spawn = function(name, mode, ...)
-    local FL = getgenv().FlamesLibrary
+getgenv().YadsanLibrary.spawn = function(name, mode, ...)
+    local FL = getgenv().YadsanLibrary
     if type(name) ~= "string" or type(mode) ~= "string" then return end
     if type(FL._connections) ~= "table" then FL._connections = {} end
     if FL._connections[name] and type(FL.disconnect) == "function" then FL.disconnect(name) end
@@ -736,8 +736,8 @@ getgenv().FlamesLibrary.spawn = function(name, mode, ...)
     return thread
 end
 
-getgenv().FlamesLibrary.is_thread_alive = function(input)
-    local lib = getgenv().FlamesLibrary
+getgenv().YadsanLibrary.is_thread_alive = function(input)
+    local lib = getgenv().YadsanLibrary
     if type(input) == "thread" then
         local ok, status = pcall(coroutine.status, input)
         if not ok then return false end
@@ -759,8 +759,8 @@ getgenv().FlamesLibrary.is_thread_alive = function(input)
     return false
 end
 
-getgenv().FlamesLibrary.is_alive = function(name)
-    local lib = getgenv().FlamesLibrary
+getgenv().YadsanLibrary.is_alive = function(name)
+    local lib = getgenv().YadsanLibrary
     local list = lib._connections[name]
     if not list then return false end
     for _, item in ipairs(list) do
@@ -778,7 +778,7 @@ getgenv().FlamesLibrary.is_alive = function(name)
     return false
 end
 
-getgenv().FlamesLibrary.safe_func = function(...)
+getgenv().YadsanLibrary.safe_func = function(...)
     for i = 1, select("#", ...) do
         local f = select(i, ...)
         local ok, t = pcall(typeof, f)
@@ -788,14 +788,14 @@ getgenv().FlamesLibrary.safe_func = function(...)
 end
 
 -- [[ safer wait functionality. ]] --
-getgenv().FlamesLibrary.wait = function(t)
+getgenv().YadsanLibrary.wait = function(t)
     if not t or t <= 0 then RunService.Heartbeat:Wait(); return end
     local ok = pcall(task.wait, t)
     if not ok then RunService.Heartbeat:Wait() end
 end
 
-getgenv().FlamesLibrary.cleanup_all = function() for name in pairs(getgenv().FlamesLibrary._connections) do getgenv().FlamesLibrary.disconnect(name) end end
-getgenv().FlamesLibrary.modules.chat_filter_override = {
+getgenv().YadsanLibrary.cleanup_all = function() for name in pairs(getgenv().YadsanLibrary._connections) do getgenv().YadsanLibrary.disconnect(name) end end
+getgenv().YadsanLibrary.modules.chat_filter_override = {
     enabled = false,
     -- [[ All encoded to bypass any filters (even in games). ]] --
     _encoded_patterns = {
@@ -866,7 +866,7 @@ getgenv().FlamesLibrary.modules.chat_filter_override = {
     end,
 
     _async_verify = function(self, text, on_result)
-        g.FlamesLibrary.spawn("chat_filter_async_verify", "spawn", function()
+        g.YadsanLibrary.spawn("chat_filter_async_verify", "spawn", function()
             local filtered = nil
             local ok = pcall(function() filtered = Chat:FilterStringForBroadcast(text, Players.LocalPlayer) end)
             local flagged = false
@@ -909,7 +909,7 @@ getgenv().FlamesLibrary.modules.chat_filter_override = {
         if not self.enabled then return end
         self.enabled = false
         pcall(function() TextChatService.OnIncomingMessage = nil end)
-        g.FlamesLibrary.disconnect("chat_filter_async_verify")
+        g.YadsanLibrary.disconnect("chat_filter_async_verify")
     end,
 
     toggle = function(self, state)
@@ -918,17 +918,17 @@ getgenv().FlamesLibrary.modules.chat_filter_override = {
     end
 }
 
-getgenv().FlamesLibrary.modules.disable_all = function()
-    for name, mod in pairs(getgenv().FlamesLibrary.modules) do
+getgenv().YadsanLibrary.modules.disable_all = function()
+    for name, mod in pairs(getgenv().YadsanLibrary.modules) do
         if type(mod) == "table" and mod.stop then
             mod:stop()
         end
     end
 end
 
-getgenv().FlamesLibrary.modules.list_enabled = function()
+getgenv().YadsanLibrary.modules.list_enabled = function()
     local active = {}
-    for name, mod in pairs(getgenv().FlamesLibrary.modules) do
+    for name, mod in pairs(getgenv().YadsanLibrary.modules) do
         if type(mod) == "table" and mod.enabled then
             table.insert(active, name)
         end
@@ -936,9 +936,9 @@ getgenv().FlamesLibrary.modules.list_enabled = function()
     return active
 end
 
-getgenv().FlamesLibrary.modules.list_disabled = function()
+getgenv().YadsanLibrary.modules.list_disabled = function()
     local inactive = {}
-    for name, mod in pairs(getgenv().FlamesLibrary.modules) do
+    for name, mod in pairs(getgenv().YadsanLibrary.modules) do
         if type(mod) == "table" and not mod.enabled then
             table.insert(inactive, name)
         end
@@ -946,8 +946,8 @@ getgenv().FlamesLibrary.modules.list_disabled = function()
     return inactive
 end
 
-getgenv().FlamesLibrary.property_maps = getgenv().FlamesLibrary.property_maps or {}
-getgenv().FlamesLibrary.property_maps.humanoid = {
+getgenv().YadsanLibrary.property_maps = getgenv().YadsanLibrary.property_maps or {}
+getgenv().YadsanLibrary.property_maps.humanoid = {
     "AutoJumpEnabled",
     "AutoRotate",
     "AutomaticScalingEnabled",
@@ -984,7 +984,7 @@ getgenv().FlamesLibrary.property_maps.humanoid = {
     "WalkToPoint",
 }
 
-getgenv().FlamesLibrary.property_maps.starter_player = {
+getgenv().YadsanLibrary.property_maps.starter_player = {
     "AllowCustomAnimations",
     "AutoJumpEnabled",
     "AvatarJointUpgrade",
@@ -1031,9 +1031,9 @@ getgenv().FlamesLibrary.property_maps.starter_player = {
     "UserEmotesEnabled",
 }
 
-getgenv().FlamesLibrary.set_humanoid_property = function(humanoid, property, value)
+getgenv().YadsanLibrary.set_humanoid_property = function(humanoid, property, value)
     if not humanoid or typeof(humanoid) ~= "Instance" or not humanoid:IsA("Humanoid") then return false, "invalid humanoid" end
-    local matches = resolve_property(getgenv().FlamesLibrary.property_maps.humanoid, property)
+    local matches = resolve_property(getgenv().YadsanLibrary.property_maps.humanoid, property)
     if #matches == 0 then return false, "no matching humanoid property for: " .. tostring(property) end
     if #matches > 1 then return false, "ambiguous property search: " .. tostring(property) .. " matched " .. table.concat(matches, ", ") end
     local resolved = matches[1]
@@ -1042,9 +1042,9 @@ getgenv().FlamesLibrary.set_humanoid_property = function(humanoid, property, val
     return true, resolved
 end
 
-getgenv().FlamesLibrary.set_starter_player_property = function(property, value)
+getgenv().YadsanLibrary.set_starter_player_property = function(property, value)
     local starter_player = cloneref and cloneref(game:GetService("StarterPlayer")) or game:GetService("StarterPlayer")
-    local matches = resolve_property(getgenv().FlamesLibrary.property_maps.starter_player, property)
+    local matches = resolve_property(getgenv().YadsanLibrary.property_maps.starter_player, property)
     if #matches == 0 then return false, "no matching starter_player property for: " .. tostring(property) end
     if #matches > 1 then return false, "ambiguous property search: " .. tostring(property) .. " matched " .. table.concat(matches, ", ") end
     local resolved = matches[1]
@@ -1054,16 +1054,16 @@ getgenv().FlamesLibrary.set_starter_player_property = function(property, value)
 end
 
 -- [[ New 'table' methods. ]] --
-getgenv().FlamesLibrary.table_lib._is_table = function(value) return type(value) == "table" end
-getgenv().FlamesLibrary.table_lib._is_index = function(value) return type(value) == "number" and value == math.floor(value) end
-getgenv().FlamesLibrary.table_lib._is_frozen = function(tbl)
+getgenv().YadsanLibrary.table_lib._is_table = function(value) return type(value) == "table" end
+getgenv().YadsanLibrary.table_lib._is_index = function(value) return type(value) == "number" and value == math.floor(value) end
+getgenv().YadsanLibrary.table_lib._is_frozen = function(tbl)
     if not table.isfrozen then return false end
     local ok, frozen = pcall(table.isfrozen, tbl)
     return ok and frozen
 end
 
-getgenv().FlamesLibrary.table_lib._deep_clone = function(source, seen)
-    local lib = getgenv().FlamesLibrary.table_lib
+getgenv(). YadsanLibrary.table_lib._deep_clone = function(source, seen)
+    local lib = getgenv().YadsanLibrary.table_lib
     if seen[source] then return seen[source] end
     local copy = {}
     seen[source] = copy
@@ -1076,8 +1076,8 @@ getgenv().FlamesLibrary.table_lib._deep_clone = function(source, seen)
     return copy
 end
 
-getgenv().FlamesLibrary.table_lib._shallow_clone = function(source)
-    local lib = getgenv().FlamesLibrary.table_lib
+getgenv(). YadsanLibrary.table_lib._shallow_clone = function(source)
+    local lib = getgenv().YadsanLibrary.table_lib
     if table.clone then
         local ok, copy = pcall(table.clone, source)
         if ok then return copy end
@@ -1089,8 +1089,8 @@ getgenv().FlamesLibrary.table_lib._shallow_clone = function(source)
     return copy
 end
 
-getgenv().FlamesLibrary.table_lib._deep_freeze = function(tbl, seen)
-    local lib = getgenv().FlamesLibrary.table_lib
+getgenv().YadsanLibrary.table_lib._deep_freeze = function(tbl, seen)
+    local lib = getgenv().YadsanLibrary.table_lib
     if seen[tbl] then return end
     seen[tbl] = true
     for key, value in next, tbl do
@@ -1100,8 +1100,8 @@ getgenv().FlamesLibrary.table_lib._deep_freeze = function(tbl, seen)
     if not lib._is_frozen(tbl) then table.freeze(tbl) end
 end
 
-getgenv().FlamesLibrary.table_lib.insert = function(tbl, ...)
-    local lib = getgenv().FlamesLibrary.table_lib
+getgenv().YadsanLibrary.table_lib.insert = function(tbl, ...)
+    local lib = getgenv().YadsanLibrary.table_lib
     if not lib._is_table(tbl) then return false, "invalid table" end
     if lib._is_frozen(tbl) then return false, "table is frozen" end
     local count = select("#", ...)
@@ -1125,8 +1125,8 @@ getgenv().FlamesLibrary.table_lib.insert = function(tbl, ...)
     return false, "expected (value) or (position, value)"
 end
 
-getgenv().FlamesLibrary.table_lib.remove = function(tbl, position)
-    local lib = getgenv().FlamesLibrary.table_lib
+getgenv().YadsanLibrary.table_lib.remove = function(tbl, position)
+    local lib = getgenv().YadsanLibrary.table_lib
     if not lib._is_table(tbl) then return false, "invalid table" end
     if lib._is_frozen(tbl) then return false, "table is frozen" end
     local length = #tbl
@@ -1142,8 +1142,8 @@ getgenv().FlamesLibrary.table_lib.remove = function(tbl, position)
     return true, removed
 end
 
-getgenv().FlamesLibrary.table_lib.clone = function(tbl, deep)
-    local lib = getgenv().FlamesLibrary.table_lib
+getgenv().YadsanLibrary.table_lib.clone = function(tbl, deep)
+    local lib = getgenv().YadsanLibrary.table_lib
     if not lib._is_table(tbl) then return false, "invalid table" end
     local ok, result = pcall(function()
         if deep == true then return lib._deep_clone(tbl, {}) end
@@ -1153,8 +1153,8 @@ getgenv().FlamesLibrary.table_lib.clone = function(tbl, deep)
     return true, result
 end
 
-getgenv().FlamesLibrary.table_lib.freeze = function(tbl, deep)
-    local lib = getgenv().FlamesLibrary.table_lib
+getgenv().YadsanLibrary.table_lib.freeze = function(tbl, deep)
+    local lib = getgenv().YadsanLibrary.table_lib
     if not lib._is_table(tbl) then return false, "invalid table" end
     if not table.freeze then return false, "table.freeze is not supported here" end
     if deep ~= true and lib._is_frozen(tbl) then return true, tbl end
@@ -1169,7 +1169,7 @@ getgenv().FlamesLibrary.table_lib.freeze = function(tbl, deep)
     return true, tbl
 end
 wait(0.1)
-local FL = getgenv().FlamesLibrary
+local FL = getgenv().YadsanLibrary
 g.create_ui = g.create_ui or function(config, global_name, atlas_chain)
     config = config or {}
     local default_chain = {
@@ -1180,10 +1180,10 @@ g.create_ui = g.create_ui or function(config, global_name, atlas_chain)
     }
     local chain = atlas_chain or default_chain
     local defaults = {
-        Name         = "Flames Hub",
-        ConfigFolder = "FlamesHub_Configuration",
+        Name         = "Yadsan Hub",
+        ConfigFolder = "YadsanHub_Configuration",
         Color        = Color3.fromRGB(21, 103, 251),
-        Credit       = "Flames Hub",
+        Credit       = "Yadsan Hub",
         Bind         = "RightShift",
     }
 
@@ -1332,7 +1332,7 @@ local function retrieve_executor()
     return { Name = tostring(f or "Unknown Executor") }
 end
 
-local function hb() getgenv().FlamesLibrary.wait() end
+local function hb() getgenv().YadsanLibrary.wait() end
 local function identify_executor_clean() return tostring(retrieve_executor().Name) end
 local executor_string = identify_executor_clean()
 local function executor_contains(substr) if type(executor_string) ~= "string" then return false end; return string.find(executor_string:lower(), substr:lower(), 1, true) ~= nil end
@@ -1394,10 +1394,10 @@ g.Game = game_ref
 g.JobID = game_ref.JobId
 g.PlaceID = game_ref.PlaceId
 pcall(function() g.set_fps(360) end)
-g.AllClipboards = g.AllClipboards or getgenv().FlamesLibrary.safe_func(setclipboard, toclipboard, set_clipboard, Clipboard and Clipboard.set)
-g.httprequest_Init = g.httprequest_Init or getgenv().FlamesLibrary.safe_func(syn and syn.request, http and http.request, http_request, fluxus and fluxus.request, request)
+g.AllClipboards = g.AllClipboards or getgenv().YadsanLibrary.safe_func(setclipboard, toclipboard, set_clipboard, Clipboard and Clipboard.set)
+g.httprequest_Init = g.httprequest_Init or getgenv().YadsanLibrary.safe_func(syn and syn.request, http and http.request, http_request, fluxus and fluxus.request, request)
 g.get_http = g.httprequest_Init
-g.queueteleport = g.queueteleport or getgenv().FlamesLibrary.safe_func(syn and syn.queue_on_teleport, queue_on_teleport, fluxus and fluxus.queue_on_teleport)
+g.queueteleport = g.queueteleport or getgenv().YadsanLibrary.safe_func(syn and syn.queue_on_teleport, queue_on_teleport, fluxus and fluxus.queue_on_teleport)
 
 do
     local active_frame     = nil
@@ -1430,7 +1430,7 @@ do
         return ok and res
     end
 
-    getgenv().FlamesLibrary.connect(GLOBAL_KEY .. "_heartbeat", RunService.Heartbeat:Connect(function()
+    getgenv().YadsanLibrary.connect(GLOBAL_KEY .. "_heartbeat", RunService.Heartbeat:Connect(function()
         if not active_frame or not last_input_pos then return end
         if not frame_valid(active_frame) then
             stop_drag()
@@ -1452,12 +1452,12 @@ do
         active_tween:Play()
     end))
 
-    getgenv().FlamesLibrary.connect(GLOBAL_KEY .. "_changed", UserInputService.InputChanged:Connect(function(input)
+    getgenv().YadsanLibrary.connect(GLOBAL_KEY .. "_changed", UserInputService.InputChanged:Connect(function(input)
         if not active_frame then return end
         if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then last_input_pos = input.Position end
     end))
 
-    getgenv().FlamesLibrary.connect(GLOBAL_KEY .. "_ended", UserInputService.InputEnded:Connect(function(input)
+    getgenv().YadsanLibrary.connect(GLOBAL_KEY .. "_ended", UserInputService.InputEnded:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then stop_drag() end
     end))
 
@@ -1465,7 +1465,7 @@ do
         if not frame then return end
         while not frame_valid(frame) do task.wait() end
         local frame_key = "dragify_" .. tostring(frame) .. "_" .. tostring(frame:GetDebugId())
-        getgenv().FlamesLibrary.connect(frame_key .. "_began", frame.InputBegan:Connect(function(input)
+        getgenv().YadsanLibrary.connect(frame_key .. "_began", frame.InputBegan:Connect(function(input)
             if not frame_valid(frame) then return end
             if UserInputService:GetFocusedTextBox() then return end
             if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
@@ -1477,11 +1477,11 @@ do
             end
         end))
 
-        getgenv().FlamesLibrary.connect(frame_key .. "_ancestry", frame.AncestryChanged:Connect(function(_, parent)
+        getgenv().YadsanLibrary.connect(frame_key .. "_ancestry", frame.AncestryChanged:Connect(function(_, parent)
             if not parent then
                 if active_frame == frame then stop_drag() end
-                getgenv().FlamesLibrary.disconnect(frame_key .. "_began")
-                getgenv().FlamesLibrary.disconnect(frame_key .. "_ancestry")
+                getgenv().YadsanLibrary.disconnect(frame_key .. "_began")
+                getgenv().YadsanLibrary.disconnect(frame_key .. "_ancestry")
             end
         end))
     end
@@ -1673,15 +1673,15 @@ local function format_title(str)
 end
 
 getgenv().notify = function(title, msg, dur)
-    if not getgenv().Notifications_Disabled_In_Flames_Hub then
+    if not getgenv().Notifications_Disabled_In_Yadsan_Hub then
         local fixed_title = format_title(typeof(title) == "string" and title or "Info")
         NotifyLib:External_Notification(fixed_title, tostring(msg), tonumber(dur) or 5)
     end
 end
 
 g.Characters = g.Characters or {}
-if not getgenv().Initialized_Flames_All_Characters_Global_System then
-    getgenv().Initialized_Flames_All_Characters_Global_System = true
+if not getgenv().Initialized_Yadsan_All_Characters_Global_System then
+    getgenv().Initialized_Yadsan_All_Characters_Global_System = true
     getgenv().wait_character = function(player)
         if player.Character and player.Character:IsDescendantOf(workspace) and player.Character:IsDescendantOf(game) then return player.Character end
         local char
@@ -1840,7 +1840,7 @@ local function retry_find(func, retries, delay)
     for _ = 1, retries do
         local ok, result = pcall(func)
         if ok and result then return result end
-        getgenv().FlamesLibrary.wait(delay)
+        getgenv().YadsanLibrary.wait(delay)
     end
     return nil
 end
@@ -2103,7 +2103,7 @@ local function noclip_step()
 end
 
 g.ToggleNoclip = function(state)
-	local lib = getgenv().FlamesLibrary
+	local lib = getgenv().YadsanLibrary
 	local key = "noclip_stepped"
 
 	if state == true then
@@ -8567,7 +8567,7 @@ g.open_minigame_menu = function()
     title_lbl.Size = UDim2.new(1, -125, 1, 0)
     title_lbl.Position = UDim2.new(0, 14, 0, 0)
     title_lbl.BackgroundTransparency = 1
-    title_lbl.Text = "Flames Hub | Mini-Games"
+    title_lbl.Text = "Yadsan Hub | Mini-Games"
     title_lbl.TextScaled = false
     title_lbl.Font = Enum.Font.GothamBold
     title_lbl.TextSize = 14
