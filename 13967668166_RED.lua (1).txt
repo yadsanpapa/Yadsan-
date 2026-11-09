@@ -11207,7 +11207,7 @@ Callback = function()
 end,})
 
 g.create_ui_element("Toggle", Home_Section, {
-Name = "Survey Spam (FE)",
+Name = "Survey Spam (YS)",
 Default = g.Spam_And_Spoof_Survey_Submissions or false,
 Flag = "Survey_Spammer_Toggle_UI",
 Callback = function(state)
@@ -11251,7 +11251,7 @@ Callback = function()
 end,})
 
 g.create_ui_element("Toggle", Home_Section, {
-Name = "Anti Hashtags (FE) BETA!",
+Name = "Anti Hashtags (YS) BETA!",
 Default = (FlamesLibrary.modules and FlamesLibrary.modules.chat_filter_override.enabled) or false,
 Flag = "Anti_Hashtags_Toggle_UI",
 Callback = function(state)
@@ -11259,7 +11259,7 @@ Callback = function(state)
 end}, "Anti_Hashtags_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Job Spammer (FE)",
+Name = "Job Spammer (YS)",
 Default = g.Every_Job or false,
 Flag = "Job_Spammer_Toggled_UI",
 Callback = function(state)
@@ -11267,7 +11267,7 @@ Callback = function(state)
 end}, "Job_Spammer_Toggled_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Anti Clothing Ban (FE)",
+Name = "Anti Clothing Ban (YS)",
 Default = false,
 Flag = "Anti_Clothes_Ban_Roblox_Bypass_Toggle_UI",
 Callback = function(state)
@@ -11275,7 +11275,7 @@ Callback = function(state)
 end}, "Anti_Clothes_Ban_Roblox_Bypass_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Glitch Outfit (FE)",
+Name = "Glitch Outfit (YS)",
 Default = g.Glitching_Outfit or false,
 Flag = "Glitch_Outfit_Toggle_UI",
 Callback = function(state)
@@ -11313,7 +11313,7 @@ Callback = function(val)
 end}, "Side_To_Side_Smoothness_UI_Slider")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Side To Side Glitch (FE)",
+Name = "Side To Side Glitch (YS)",
 Default = g.SideGlitch_Enabled or false,
 Flag = "Side_To_Side_Glitch_Not_Smooth_Toggle_UI",
 Callback = function(state)
@@ -11325,7 +11325,7 @@ Callback = function(state)
 end}, "Side_To_Side_Glitch_Not_Smooth_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Smooth Side To Side Glitch (FE)",
+Name = "Smooth Side To Side Glitch (YS)",
 Default = g.SideGlitch_Enabled or false,
 Flag = "Side_To_Side_Glitch_Smooth_Toggle_UI",
 Callback = function(state)
@@ -11337,7 +11337,7 @@ Callback = function(state)
 end}, "Side_To_Side_Glitch_Smooth_Toggle_UI")
 
 g.create_ui_element("Button", Vehicle_Section, {
-Name = "Despawn Vehicle (FE)",
+Name = "Despawn Vehicle (YS)",
 Callback = function()
     local Current_Car = g.get_vehicle()
     if not Current_Car or not Current_Car:IsA("Model") then g.notify("Error", "You do not have a vehicle spawned!", 3); return end
@@ -11348,7 +11348,7 @@ Callback = function()
 end,})
 
 g.create_ui_element("Toggle", Vehicle_Section, {
-Name = "Rainbow Vehicle (FE)",
+Name = "Rainbow Vehicle (YS)",
 Default = g.Rainbow_Vehicle or false,
 Flag = "Rainbow_Vehicle_Toggle_UI",
 Callback = function(state)
@@ -11356,7 +11356,7 @@ Callback = function(state)
 end}, "Rainbow_Vehicle_Toggle_UI")
 
 g.create_ui_element("Toggle", Vehicle_Section, {
-Name = "Two Tone Vehicle (FE)",
+Name = "Two Tone Vehicle (YS)",
 Default = g.two_tone_vehicle_colors_changing or false,
 Flag = "Two_Tone_Car_Toggle_UI",
 Callback = function(state)
@@ -11364,7 +11364,7 @@ Callback = function(state)
 end}, "Two_Tone_Car_Toggle_UI")
 
 g.create_ui_element("Toggle", Phone_Section, {
-Name = "Rainbow Phone (FE)",
+Name = "Rainbow Phone (YS)",
 Default = g.RGB_Rainbow_Phone or false,
 Flag = "Rainbow_Phone_Toggle_UI",
 Callback = function(state)
@@ -11372,7 +11372,7 @@ Callback = function(state)
 end}, "Rainbow_Phone_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Free Premium (FE)",
+Name = "Free Premium (YS)",
 Default = g.Has_Free_LifePremium or false,
 Flag = "Free_Premium_Toggle_UI",
 Callback = function(state)
@@ -11457,7 +11457,7 @@ Callback = function()
 end})
 
 g.main_vehicle_fly_UI_toggle = g.create_ui_element("Toggle", Vehicle_Section, {
-Name = "Vehicle Fly (FE)",
+Name = "Vehicle Fly (YS)",
 Default = g.vehicle_fly or false,
 Flag = "Vehicle_Fly_Toggle_UI",
 Callback = function(state)
@@ -11475,7 +11475,7 @@ Callback = function(val)
 end}, "Vehicle_Fly_Speed")
 
 g.create_ui_element("Toggle", Vehicle_Section, {
-Name = "Anti Car Fling (FE)",
+Name = "Anti Car Fling (YS)",
 Default = g.VehicleDestroyer_Enabled or false,
 Flag = "Anti_Car_Fling_Toggle_UI",
 Callback = function(state)
@@ -11483,7 +11483,7 @@ Callback = function(state)
 end}, "Anti_Car_Fling_Toggle_UI")
 
 g.create_ui_element("Toggle", Vehicle_Section, {
-Name = "Auto Lock Car (FE)",
+Name = "Auto Lock Car (YS)",
 Default = g.AutoLockOn or false,
 Flag = "Auto_Lock_Car_Toggle_UI",
 Callback = function(state)
@@ -11491,7 +11491,7 @@ Callback = function(state)
 end}, "Auto_Lock_Car_Toggle_UI")
 
 g.create_ui_element("Button", Vehicle_Section, {
-Name = "Lock Car (FE)",
+Name = "Lock Car (YS)",
 Callback = function()
     local Current_Car = g.get_vehicle()
     if not Current_Car then g.notify("Error", "You do not have a vehicle spawned!", 5); return end
@@ -11501,7 +11501,7 @@ Callback = function()
 end,})
 
 g.create_ui_element("Button", Vehicle_Section, {
-Name = "Unlock Car (FE)",
+Name = "Unlock Car (YS)",
 Callback = function()
     local Current_Car = g.get_vehicle()
     if not Current_Car then g.notify("Error", "You do not have a vehicle spawned!", 5); return end
@@ -11511,7 +11511,7 @@ Callback = function()
 end,})
 
 g.create_ui_element("Toggle", Vehicle_Section, {
-Name = "Trailer (FE)",
+Name = "Trailer (YS)",
 Default = g.trailer_enabled or false,
 Flag = "Trailer_Toggle_UI",
 Callback = function(state)
@@ -11526,7 +11526,7 @@ Callback = function(state)
 end}, "Trailer_Toggle_UI")
 
 g.create_ui_element("Toggle", Vehicle_Section, {
-Name = "View Car (FE)",
+Name = "View Car (YS)",
 Default = g.viewing_car or false,
 Flag = "View_Car_Toggle_UI",
 Callback = function(state)
@@ -11580,7 +11580,7 @@ Callback = function(state)
 end}, "View_Car_Toggle_UI")
 
 g.create_ui_element("Button", Vehicle_Section, {
-Name = "Bring Vehicle To Me (FE)",
+Name = "Bring Vehicle To Me (YS)",
 Callback = function()
     local Util = g.Util or require(g.ReplicatedStorage:FindFirstChild("Util", true))
     if not Util then g.notify("Error", "ModuleScript: 'Util' does not seem to exist.", 5); return end
@@ -11615,7 +11615,7 @@ Callback = function()
 end,})
 
 g.create_ui_element("Button", Vehicle_Section, {
-Name = "Go To Vehicle (FE)",
+Name = "Go To Vehicle (YS)",
 Callback = function()
     local Vehicle = g.get_vehicle()
     if not Vehicle then g.notify("Error", "You do not have a vehicle spawned, spawn one and try again!", 5); return end
@@ -11625,7 +11625,7 @@ Callback = function()
 end,})
 
 g.create_ui_element("Input", Vehicle_Section, {
-Name = "Teleport Car To Player (FE)",
+Name = "Teleport Car To Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "TP_Car_To_Player_Input_UI",
 Callback = function(split)
@@ -11672,7 +11672,7 @@ Callback = function(split)
 end}, "TP_Car_To_Player_Input_UI")
 
 g.create_ui_element("Input", Vehicle_Section, {
-Name = "Steal Car (FE)",
+Name = "Steal Car (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Steal_Car_Input_UI",
 Callback = function(split)
@@ -11696,7 +11696,7 @@ Callback = function(state)
 end}, "Vehicle_ESP_Toggle_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Orbit Player (FE)",
+Name = "Orbit Player (YS)",
 PlaceholderText = "User or Display...",
 Flag = "Orbit_Player_Input_UI",
 Callback = function(split)
@@ -11732,7 +11732,7 @@ Callback = function(val)
 end}, "Orbit_Distance_Slider_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Annoy Player (FE)",
+Name = "Annoy Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Annoy_Player_Input_UI",
 Callback = function(split)
@@ -11834,13 +11834,13 @@ Callback = function()
 end,})
 
 g.create_ui_element("Button", Extras_Section, {
-Name = "Tools Menu (Pistol + Laser) (FE)",
+Name = "Tools Menu (Pistol + Laser) (YS)",
 Callback = function()
     g.tools_menu_for_life_together_flames_hub()
 end,})
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Bring Player (FE)",
+Name = "Bring Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Bring_Player_Input_UI",
 Callback = function(split)
@@ -11877,7 +11877,7 @@ Callback = function(split)
 end}, "Bring_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Kill Player (FE)",
+Name = "Kill Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Kill_Player_Input_UI",
 Callback = function(split)
@@ -11914,7 +11914,7 @@ Callback = function(split)
 end}, "Kill_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Void Player (FE)",
+Name = "Void Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Void_Player_Input_UI",
 Callback = function(split)
@@ -11951,7 +11951,7 @@ Callback = function(split)
 end}, "Void_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Skydive Player (FE)",
+Name = "Skydive Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Skydive_Player_Input_UI",
 Callback = function(split)
@@ -11988,8 +11988,8 @@ Callback = function(split)
 end}, "Skydive_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Copy Avatar (FE)",
-Description = "Copies the target players entire avatar (FE).",
+Name = "Copy Avatar (YS)",
+Description = "Copies the target players entire avatar (YS).",
 PlaceholderText = "Username or displayname...",
 Flag = "Copy_Avatar_Input_UI",
 Callback = function(split)
@@ -12001,7 +12001,7 @@ Callback = function(split)
 end}, "Copy_Avatar_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Copy Player Emote (FE)",
+Name = "Copy Player Emote (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Copy_Emote_Input_UI",
 Callback = function(split)
@@ -12028,7 +12028,7 @@ Callback = function(split)
 end}, "Check_Premium_Input_UI")
 
 g.create_ui_element("Input", LocalPlayer_Section, {
-Name = "WalkSpeed (FE)",
+Name = "WalkSpeed (YS)",
 PlaceholderText = "Enter walkspeed...",
 Flag = "Speed_Input_UI",
 Callback = function(split)
@@ -12040,7 +12040,7 @@ Callback = function(split)
 end}, "Speed_Input_UI")
 
 g.create_ui_element("Input", LocalPlayer_Section, {
-Name = "Jump Height (FE)",
+Name = "Jump Height (YS)",
 PlaceholderText = "Enter jump height...",
 Flag = "Jump_Height_Input_UI",
 Callback = function(split)
@@ -12052,7 +12052,7 @@ Callback = function(split)
 end}, "Jump_Height_Input_UI")
 
 g.create_ui_element("Input", LocalPlayer_Section, {
-Name = "Gravity (FE)",
+Name = "Gravity (YS)",
 PlaceholderText = "Enter gravity value...",
 Flag = "Gravity_Input_UI",
 Callback = function(split)
@@ -12063,7 +12063,7 @@ Callback = function(split)
 end}, "Gravity_Input_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Noclip (FE)",
+Name = "Noclip (YS)",
 Default = g.Noclip_Enabled or false,
 Flag = "Noclip_Toggle_UI",
 Callback = function(state)
@@ -12077,7 +12077,7 @@ Callback = function(state)
 end}, "Noclip_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Invisible (FE)",
+Name = "Invisible (YS)",
 Default = g.is_invisible_script_toggled or false,
 Flag = "Invisible_Toggle_UI",
 Callback = function(state)
@@ -12091,7 +12091,7 @@ Callback = function(state)
 end}, "Invisible_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Float (FE)",
+Name = "Float (YS)",
 Default = g.Float_Running_In_Flames_Hub or false,
 Flag = "Float_Toggle_UI",
 Callback = function(state)
@@ -12103,7 +12103,7 @@ Callback = function(state)
 end}, "Float_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Spin (FE)",
+Name = "Spin (YS)",
 Default = g.already_spinning_localplr or false,
 Flag = "Spin_Toggle_UI",
 Callback = function(state)
@@ -12127,19 +12127,19 @@ Callback = function(val)
 end}, "Spin_Speed_Slider_UI")
 
 g.create_ui_element("Button", LocalPlayer_Section, {
-Name = "Cover Map With Your Avatar (FE)",
+Name = "Cover Map With Your Avatar (YS)",
 Callback = function()
     g.size_func_setter(85, 85)
 end,})
 
 g.create_ui_element("Button", LocalPlayer_Section, {
-Name = "Reset Size (FE)",
+Name = "Reset Size (YS)",
 Callback = function()
     g.size_func_setter(1, 1)
 end,})
 
 g.create_ui_element("Input", LocalPlayer_Section, {
-Name = "Size Character (FE)",
+Name = "Size Character (YS)",
 PlaceholderText = "Enter size...",
 Flag = "Size_Input_UI",
 Callback = function(split)
@@ -12149,7 +12149,7 @@ Callback = function(split)
 end}, "Size_Input_UI")
 
 g.create_ui_element("Button", LocalPlayer_Section, {
-Name = "Normal Size (FE)",
+Name = "Normal Size (YS)",
 Callback = function()
     pcall(function()
         g.reset_to_original_height()
@@ -12157,7 +12157,7 @@ Callback = function()
 end}, "Normal_Size_Button_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Flash Name (FE)",
+Name = "Flash Name (YS)",
 Default = g.Flashing_Name_Title or false,
 Flag = "Flash_Name_Toggle_UI",
 Callback = function(state)
@@ -12173,7 +12173,7 @@ Callback = function(state)
 end}, "Flash_Name_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Flash Invisible (FE)",
+Name = "Flash Invisible (YS)",
 Default = g.Invisible_Flash or false,
 Flag = "Flash_Invis_Toggle_UI",
 Callback = function(state)
@@ -12234,13 +12234,13 @@ Callback = function(state)
 end}, "Anti_Void_Toggle_UI")
 
 g.create_ui_element("Button", Houses_Section, {
-Name = "Delete House (FE)",
+Name = "Delete House (YS)",
 Callback = function()
     g.Delete_House()
 end,})
 
 g.create_ui_element("Toggle", Houses_Section, {
-Name = "Anti House Ban (FE)",
+Name = "Anti House Ban (YS)",
 Default = g.never_banned_houses or false,
 Flag = "Anti_House_Ban_Toggle_UI",
 Callback = function(state)
@@ -12367,7 +12367,7 @@ Callback = function(state)
 end}, "Anti_Sit_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Walk Fling (FE)",
+Name = "Walk Fling (YS)",
 Default = g.walkflinging or false,
 Flag = "Walk_Fling_Toggle_UI",
 Callback = function(state)
@@ -12381,7 +12381,7 @@ Callback = function(state)
 end}, "Walk_Fling_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Name Spam (FE, Slow!)",
+Name = "Name Spam (YS, Slow!)",
 Default = g.Name_Spammer_Currently_Enabled or false,
 Flag = "Name_Spam_Toggle_UI",
 Callback = function(state)
@@ -12389,7 +12389,7 @@ Callback = function(state)
 end}, "Name_Spam_Toggle_UI")
 
 g.create_ui_element("Toggle", Phone_Section, {
-Name = "Block Calls (FE)",
+Name = "Block Calls (YS)",
 Default = g.Auto_Calls_Blocker_V3_Is_Enabled_Boolean_Flag or false,
 Flag = "Block_Calls_Toggle_UI",
 Callback = function(state)
@@ -12452,7 +12452,7 @@ Callback = function(val)
 end}, "Fly_Speed_Slider_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Fly (FE)",
+Name = "Fly (YS)",
 Default = g.FlyEnabled or false,
 Flag = "Fly_Toggle_UI",
 Callback = function(state)
@@ -12468,7 +12468,7 @@ Callback = function(state)
 end}, "Fly_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Fly 2 - Magic Carpet (FE)",
+Name = "Fly 2 - Magic Carpet (YS)",
 Default = g.Enabled_Flying or false,
 Flag = "Fly2_Toggle_UI",
 Callback = function(state)
@@ -12484,7 +12484,7 @@ Callback = function(state)
 end}, "Fly2_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Fly 3 - Adonis (FE)",
+Name = "Fly 3 - Adonis (YS)",
 Default = g.AdonisAdminFlyEnabled or false,
 Flag = "Fly3_Toggle_UI",
 Callback = function(state)
@@ -12501,7 +12501,7 @@ Callback = function(state)
 end}, "Fly3_Toggle_UI")
 
 g.create_ui_element("Input", Vehicle_Section, {
-Name = "Car Max Speed (FE)",
+Name = "Car Max Speed (YS)",
 PlaceholderText = "Enter number...",
 Flag = "Car_Speed_Input_UI",
 Callback = function(split)
@@ -12522,7 +12522,7 @@ Callback = function(split)
 end}, "Car_Speed_Input_UI")
 
 g.create_ui_element("Input", Vehicle_Section, {
-Name = "Car Max Accel (FE)",
+Name = "Car Max Accel (YS)",
 PlaceholderText = "Enter number...",
 Flag = "Car_Accel_Input_UI",
 Callback = function(split)
@@ -12541,7 +12541,7 @@ Callback = function(split)
 end}, "Car_Accel_Input_UI")
 
 g.create_ui_element("Input", Vehicle_Section, {
-Name = "Car Accel 0-60 (FE)",
+Name = "Car Accel 0-60 (YS)",
 PlaceholderText = "Enter number...",
 Flag = "Car_Accel_060_Input_UI",
 Callback = function(split)
@@ -12560,7 +12560,7 @@ Callback = function(split)
 end}, "Car_Accel_060_Input_UI")
 
 g.create_ui_element("Input", Vehicle_Section, {
-Name = "Car Turn Angle (FE)",
+Name = "Car Turn Angle (YS)",
 PlaceholderText = "Enter number...",
 Flag = "Car_Turn_Angle_Input_UI",
 Callback = function(split)
@@ -12636,7 +12636,7 @@ Callback = function(split)
 end}, "Stop_Rainbow_Car_Friend_Input_UI")
 
 g.create_ui_element("Button", Houses_Section, {
-Name = "Lock Home (FE)",
+Name = "Lock Home (YS)",
 Callback = function()
     local is_locked = g.is_home_locked(g.LocalPlayer)
     if is_locked == true then
@@ -12651,7 +12651,7 @@ Callback = function()
 end}, "Lock_Home_Button_UI")
 
 g.create_ui_element("Button", Houses_Section, {
-Name = "Unlock Home (FE)",
+Name = "Unlock Home (YS)",
 Callback = function()
     local is_locked = g.is_home_locked(g.LocalPlayer)
     if is_locked == false then
@@ -12666,7 +12666,7 @@ Callback = function()
 end}, "Unlock_Home_Button_UI")
 
 g.create_ui_element("Toggle", Houses_Section, {
-Name = "Auto Lock Home (FE)",
+Name = "Auto Lock Home (YS)",
 Default = g.LockHomeLoop or false,
 Flag = "Auto_Lock_Home_Toggle_UI",
 Callback = function(state)
@@ -12674,7 +12674,7 @@ Callback = function(state)
 end}, "Auto_Lock_Home_Toggle_UI")
 
 g.create_ui_element("Input", Houses_Section, {
-Name = "Lock Player Home (FE)",
+Name = "Lock Player Home (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Lock_Player_Home_Input_UI",
 Callback = function(split)
@@ -12694,7 +12694,7 @@ Callback = function(split)
 end}, "Lock_Player_Home_Input_UI")
 
 g.create_ui_element("Input", Houses_Section, {
-Name = "Unlock Player Home (FE)",
+Name = "Unlock Player Home (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Unlock_Player_Home_Input_UI",
 Callback = function(split)
@@ -12776,7 +12776,7 @@ Callback = function(state)
 end}, "Always_Show_Titles_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "RGB Skin (FE)",
+Name = "RGB Skin (YS)",
 Default = g.rainbow_skintone_currently_enabled or false,
 Flag = "RGB_Skin_Toggle_UI",
 Callback = function(state)
@@ -12784,7 +12784,7 @@ Callback = function(state)
 end}, "RGB_Skin_Toggle_UI")
 
 g.create_ui_element("Toggle", Extras_Section, {
-Name = "RGB Tool (FE)",
+Name = "RGB Tool (YS)",
 Default = g.Rainbow_Tools_FE or false,
 Flag = "RGB_Tool_Toggle_UI",
 Callback = function(state)
@@ -12816,7 +12816,7 @@ end}, "Anti_Fire_Toggle_UI")
 
 if priv_server_is_in == true then
     g.create_ui_element("Toggle", PrivServer_Section, {
-    Name = "Stop Time (FE)",
+    Name = "Stop Time (YS)",
     Default = g.is_time_currently_stopped_priv_server or false,
     Flag = "Stop_Time_Toggle_UI",
     Callback = function(state)
@@ -12824,7 +12824,7 @@ if priv_server_is_in == true then
     end}, "Stop_Time_Toggle_UI")
 
     g.create_ui_element("Toggle", PrivServer_Section, {
-    Name = "Flash Time (FE)",
+    Name = "Flash Time (YS)",
     Default = g.flashing_time_fe_toggle or false,
     Flag = "Flash_Time_Toggle_UI",
     Callback = function(state)
@@ -12832,7 +12832,7 @@ if priv_server_is_in == true then
     end}, "Flash_Time_Toggle_UI")
 
     g.create_ui_element("Toggle", PrivServer_Section, {
-    Name = "Flash Weather (FE)",
+    Name = "Flash Weather (YS)",
     Default = g.changing_weather_on_repeat or false,
     Flag = "Flash_Weather_Toggle_UI",
     Callback = function(state)
@@ -12840,7 +12840,7 @@ if priv_server_is_in == true then
     end}, "Flash_Weather_Toggle_UI")
 
     g.create_ui_element("Toggle", PrivServer_Section, {
-    Name = "Server Lock (FE)",
+    Name = "Server Lock (YS)",
     Default = g.server_lock_enabled or false,
     Flag = "Server_Lock_Toggle_UI",
     Callback = function(state)
@@ -12854,7 +12854,7 @@ if priv_server_is_in == true then
     end}, "Server_Lock_Manager_Button_UI")
 
     g.create_ui_element("Input", PrivServer_Section, {
-    Name = "Kick Player (FE)",
+    Name = "Kick Player (YS)",
     PlaceholderText = "Username or displayname...",
     Flag = "Kick_Player_Input_UI",
     Callback = function(split)
@@ -12867,7 +12867,7 @@ if priv_server_is_in == true then
     end}, "Kick_Player_Input_UI")
 
     g.create_ui_element("Input", PrivServer_Section, {
-    Name = "Ban Player (FE)",
+    Name = "Ban Player (YS)",
     PlaceholderText = "Username or displayname...",
     Flag = "Ban_Player_Input_UI",
     Callback = function(split)
@@ -12887,7 +12887,7 @@ if priv_server_is_in == true then
     end}, "Ban_Player_Input_UI")
 
     g.create_ui_element("Input", PrivServer_Section, {
-    Name = "Unban Player (FE)",
+    Name = "Unban Player (YS)",
     PlaceholderText = "Username or displayname...",
     Flag = "Unban_Player_Input_UI",
     Callback = function(split)
@@ -12916,7 +12916,7 @@ Callback = function(state)
 end}, "RGB_Street_Lights_Toggle_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Admin Player (FE)",
+Name = "Admin Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Admin_Player_Input_UI",
 Callback = function(split)
@@ -12930,7 +12930,7 @@ Callback = function(split)
 end}, "Admin_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "UnAdmin Player (FE)",
+Name = "UnAdmin Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Unadmin_Player_Input_UI",
 Callback = function(split)
@@ -12953,7 +12953,7 @@ Callback = function(split)
 end}, "Unadmin_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Blacklist Player (FE)",
+Name = "Blacklist Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Blacklist_Player_Input_UI",
 Callback = function(split)
@@ -13169,7 +13169,7 @@ Callback = function(split)
 end}, "Spawn_Fire_Input_UI")
 
 g.create_ui_element("Toggle", Extras_Section, {
-Name = "Sign Spam (FE)",
+Name = "Sign Spam (YS)",
 Default = g.ToolChanger_FE or false,
 Flag = "Sign_Spam_Toggle_UI",
 Callback = function(state)
@@ -13183,7 +13183,7 @@ Callback = function(state)
 end}, "Sign_Spam_Toggle_UI")
 
 g.create_ui_element("Button", Extras_Section, {
-Name = "Collect All NBA Props (FE)",
+Name = "Collect All NBA Props (YS)",
 Callback = function()
     local attr = g.LocalPlayer:GetAttribute("NBA_HUNT_PROGRESS")
     if not attr then return end
@@ -13192,7 +13192,7 @@ Callback = function()
 end,})
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Anti Outfit Copier (FE)",
+Name = "Anti Outfit Copier (YS)",
 Default = g.anti_outfit_stealer or false,
 Flag = "Anti_Outfit_Copier_Toggle_UI",
 Callback = function(state)
@@ -13278,7 +13278,7 @@ Callback = function()
 end}, "No_Emote_Button_UI")
 
 g.create_ui_element("Input", LocalPlayer_Section, {
-Name = "RP Name (FE)",
+Name = "RP Name (YS)",
 PlaceholderText = "Enter new RP name...",
 Flag = "RP_Name_Input_UI",
 Callback = function(text)
@@ -13291,7 +13291,7 @@ Callback = function(text)
 end}, "RP_Name_Input_UI")
 
 g.create_ui_element("Input", LocalPlayer_Section, {
-Name = "RP Bio (FE)",
+Name = "RP Bio (YS)",
 PlaceholderText = "Enter new RP bio...",
 Flag = "RP_Bio_Input_UI",
 Callback = function(text)
@@ -13310,7 +13310,7 @@ Callback = function()
 end}, "Stats_GUI_Button_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Two Tone Skin (FE)",
+Name = "Two Tone Skin (YS)",
 Default = g.Two_Tone_Skin_Tone_Loop_Toggled or false,
 Flag = "Two_Tone_Skin_Toggle_UI",
 Callback = function(state)
@@ -13318,7 +13318,7 @@ Callback = function(state)
 end}, "Two_Tone_Skin_Toggle_UI")
 
 g.create_ui_element("ColorPicker", Vehicle_Section, {
-Name = "Car Color (FE)",
+Name = "Car Color (YS)",
 Default = Color3.fromRGB(255, 0, 0),
 Flag = "Car_Color_Picker_UI",
 Callback = function(color)
