@@ -77,7 +77,7 @@ if not In_Studio then
     end
 end
 wait(0.25)
-if not g.LifeTogether_Actual_Flames_Hub_Running_Functioning_Currently_On_Client then if g.notify and typeof(g.notify) == "function" then g.notify("Success", "Got LocalPlayer: "..tostring(g.LocalPlayer), 5) end end
+if not g.LifeTogether_Actual_Yadsan_Hub_Running_Functioning_Currently_On_Client then if g.notify and typeof(g.notify) == "function" then g.notify("Success", "Got LocalPlayer: "..tostring(g.LocalPlayer), 5) end end
 -- [[     SERVICES / DEFINITIONS     ]] --
 local has_gethui = (typeof(gethui) == "function") or (typeof(g.gethui) == "function")
 local has_gethidden = (typeof(get_hidden_gui) == "function") or (typeof(g.get_hidden_gui) == "function")
@@ -125,7 +125,7 @@ if not has_gethui and not has_gethidden and not g.roblox_hidden_gui_location the
     g.get_hidden_gui = resolve_gui
 end
 
-local verify_file = "is_verified_in_Flames_Hub.txt"
+local verify_file = "is_verified_in_Yadsan_Hub.txt"
 local Insert = table.insert
 -- [[ for the Command Handler, because it can check if there is a number in a string (like a command you send). ]] -- 
 g.Is_Integer_In_Str = g.Is_Integer_In_Str or function(str)
@@ -358,20 +358,20 @@ g.disabled_global_value_correctly = g.disabled_global_value_correctly or functio
     return not result
 end
 
-g.LifeTogether_Actual_Flames_Hub_Running_Functioning_Currently_On_Client = true
+g.LifeTogether_Actual_Yadsan_Hub_Running_Functioning_Currently_On_Client = true
 local userid = localPlayer.UserId
-local lib = g.FlamesLibrary
-g.lib = g.FlamesLibrary -- necessary for some reason.
+local lib = g.YadsanLibrary
+g.lib = g.YadsanLibrary -- necessary for some reason.
 local lib_attempts = 0
 local lib_max_attempts = 15
 while (not lib or type(lib) ~= "table") and lib_attempts < lib_max_attempts do
     task.wait(0.5)
     lib_attempts = lib_attempts + 1
-    lib = g.FlamesLibrary
+    lib = g.YadsanLibrary
 end
 
 if not lib or type(lib) ~= "table" then
-    if g.notify and typeof(g.notify) == "function" then g.notify("Error", "FlamesLibrary failed to load, the system cannot continue without it.", 15) else warn("FlamesLibrary failed to load, the system cannot continue without it.") end
+    if g.notify and typeof(g.notify) == "function" then g.notify("Error", "YadsanLibrary failed to load, the system cannot continue without it.", 15) else warn("YadsanLibrary failed to load, the system cannot continue without it.") end
     return
 end
 
@@ -389,12 +389,12 @@ local function mask_unique_id(id)
     return table.concat(out, "-")
 end
 
-function create_flames_hub_unique_id(target_user_id)
-    local file_name = "flames_hub_unique_ID.txt"
+function create_Yadsan_hub_unique_id(target_user_id)
+    local file_name = "yadsan_hub_unique_ID.txt"
     if userid ~= target_user_id then return nil end
     if In_Studio then
-        g.flames_hub_unique_id = g.flames_hub_unique_id or HttpService:GenerateGUID(false)
-        return g.flames_hub_unique_id
+        g.yadsan_hub_unique_id = g.yadsan_hub_unique_id or HttpService:GenerateGUID(false)
+        return g.yadsan_hub_unique_id
     end
 
     if isfile and readfile and typeof(isfile) == "function" and typeof(readfile) == "function" and isfile(file_name) then
@@ -407,8 +407,8 @@ function create_flames_hub_unique_id(target_user_id)
     return new_id
 end
 
-function get_flames_hub_unique_id()
-    local file_name = "flames_hub_unique_ID.txt"
+function get_yadsan_hub_unique_id()
+    local file_name = "yadsan_hub_unique_ID.txt"
     if isfile and isfile(file_name) then
         local id = readfile and readfile(file_name)
         if id and id ~= "" then return id end
@@ -416,12 +416,12 @@ function get_flames_hub_unique_id()
     return nil
 end
 
-function get_masked_flames_hub_unique_id()
-    local raw = get_flames_hub_unique_id()
+function get_masked_yadsan_hub_unique_id()
+    local raw = get_yadsan_hub_unique_id()
     return mask_unique_id(raw)
 end
 
-local FlamesLibrary = g.lib or g.FlamesLibrary
+local YadsanLibrary = g.lib or g.YadsanLibrary
 --local ws_connect = (syn and syn.websocket and syn.websocket.connect) or (WebSocket and WebSocket.connect) or (websocket and websocket.connect)
 --local http_req = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
 g.will_tag = function(text)
@@ -447,13 +447,13 @@ g.toggle_chat_shield = function(force)
 
     if not g.chat_shield_enabled then
         g.chat_shield_active = false
-        FlamesLibrary.disconnect("chat_shield_loop")
+        YadsanLibrary.disconnect("chat_shield_loop")
         pcall(function() StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true) end)
         g.notify("Success", "Yadsan Hub | HashTag Protection disabled.", 3)
         return
     end
 
-    FlamesLibrary.spawn("chat_shield_loop", "defer", function()
+    YadsanLibrary.spawn("chat_shield_loop", "defer", function()
         while g.chat_shield_enabled do
             local ok, filtered = pcall(function() return Chat:FilterStringForBroadcast("hello", speaker) end)
             local is_hashing = not ok or type(filtered) ~= "string" or filtered:match("^#+$")
@@ -472,12 +472,12 @@ g.toggle_chat_shield = function(force)
 end
 
 --if not g.chat_shield_enabled then g.toggle_chat_shield(true) end
-create_flames_hub_unique_id(Players.LocalPlayer.UserId)
+create_yadsan_hub_unique_id(Players.LocalPlayer.UserId)
 wait(0.3)
---local flames_unique_server_ID = get_flames_hub_unique_id()
-local masked_flames_hub_server_ID = get_masked_flames_hub_unique_id()
-local Lib = g.FlamesLibrary
-g.masked_flames_hub_server_ID = masked_flames_hub_server_ID
+--local yadsan_unique_server_ID = get_yadsan_hub_unique_id()
+local masked_yadsan_hub_server_ID = get_masked_yadsan_hub_unique_id()
+local Lib = g.YadsanLibrary
+g.masked_yadsan_hub_server_ID = masked_yadsan_hub_server_ID
 wait(0.1)
 if not isVerified() then
     if g.notify then g.notify("Warning", "Please complete this one time verification to boot into Yadsan Hub | Script Hub!", 30) end
@@ -486,7 +486,7 @@ if not isVerified() then
     setVerified()
     if g.notify then
         g.notify("Success", "You have been verified in Yadsan Hub successfully.", 15)
-        g.notify("Success", "Your special MonK Hub GUID: "..tostring(masked_flames_hub_server_ID), 11)
+        g.notify("Success", "Your special MonK Hub GUID: "..tostring(masked_yadsan_hub_server_ID), 11)
     end
 else
     if g.notify then g.notify("Success", "We have verified you in our system | has already completed verification.", 20) end
@@ -506,7 +506,7 @@ end
 g.originalIO = g.originalIO or {}
 g.spectateConns = g.spectateConns or {}
 local fw = lib.wait
---local name = "administrator_watcher_conn_Flames_Hub"
+--local name = "administrator_watcher_conn_Yadsan_Hub"
 g.originalIO.ensureCam = function(spectate_target)
     if not spectate_target then return end
     local cam = workspace.CurrentCamera
@@ -525,14 +525,14 @@ g.originalIO.hookCameraGuard = function(spectate_target)
     end
     wait(0.25)
     if g.isProperty(cam, "CameraSubject") ~= nil then
-        g.spectateConns.cam = g.FlamesLibrary.connect("spectate_cam", cam:GetPropertyChangedSignal("CameraSubject"):Connect(function()
+        g.spectateConns.cam = g.YadsanLibrary.connect("spectate_cam", cam:GetPropertyChangedSignal("CameraSubject"):Connect(function()
             if not spectate_target then return end
             g.originalIO.ensureCam()
         end))
     end
 
     if not g.spectateConns.camW and g.isProperty(workspace, "CurrentCamera") ~= nil then
-        g.spectateConns.camW = g.FlamesLibrary.connect("spectate_camW", workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+        g.spectateConns.camW = g.YadsanLibrary.connect("spectate_camW", workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
             if not spectate_target then return end
             g.originalIO.hookCameraGuard()
             g.originalIO.ensureCam()
@@ -836,21 +836,21 @@ if g.LifeTogether_RP_ScriptHub_Loaded then
     end
 end
 
-if g.LifeTogetherRP_Admin and g.Script_Loaded_Correctly_LifeTogether_Admin_Flames_Hub == false then
+if g.LifeTogetherRP_Admin and g.Script_Loaded_Correctly_LifeTogether_Admin_Yadsan_Hub == false then
     if g.notify then
         return g.notify("Warning", "Life Together RP admin has already been loaded.", 6)
     else
         return 
     end
-elseif g.LifeTogetherRP_Admin and g.Script_Loaded_Correctly_LifeTogether_Admin_Flames_Hub then
+elseif g.LifeTogetherRP_Admin and g.Script_Loaded_Correctly_LifeTogether_Admin_Yadsan_Hub then
     return 
 end
 
 if g.notify and typeof(g.notify) == "function" then g.notify("Info", "Now checking for Yadsan Hub files...", 5) end
 g.ConstantUpdate_Checker_Live = true
-if isfile and not isfile("flames_hub_agreement_COPY.txt") then
+if isfile and not isfile("yadsan_hub_agreement_COPY.txt") then
     pcall(function()
-        writefile("flames_hub_agreement_COPY.txt", "has not decided")
+        writefile("yadsan_hub_agreement_COPY.txt", "has not decided")
     end)
 end
 
@@ -899,7 +899,7 @@ if not g.dragify then
             return ok and res
         end
 
-        g.FlamesLibrary.connect(GLOBAL_KEY .. "_heartbeat", rs.Heartbeat:Connect(function()
+        g.YadsanLibrary.connect(GLOBAL_KEY .. "_heartbeat", rs.Heartbeat:Connect(function()
             if not active_frame or not last_input_pos then return end
             if not frame_valid(active_frame) then
                 stop_drag()
@@ -921,7 +921,7 @@ if not g.dragify then
             active_tween:Play()
         end))
 
-        g.FlamesLibrary.connect(GLOBAL_KEY .. "_changed", uis.InputChanged:Connect(function(input)
+        g.YadsanLibrary.connect(GLOBAL_KEY .. "_changed", uis.InputChanged:Connect(function(input)
             if not active_frame then return end
             if input.UserInputType == Enum.UserInputType.MouseMovement
             or input.UserInputType == Enum.UserInputType.Touch then
@@ -929,7 +929,7 @@ if not g.dragify then
             end
         end))
 
-        g.FlamesLibrary.connect(GLOBAL_KEY .. "_ended", uis.InputEnded:Connect(function(input)
+        g.YadsanLibrary.connect(GLOBAL_KEY .. "_ended", uis.InputEnded:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1
             or input.UserInputType == Enum.UserInputType.Touch then
                 stop_drag()
@@ -947,7 +947,7 @@ if not g.dragify then
                 end
 
                 local frame_key = "dragify_" .. tostring(frame:GetDebugId())
-                g.FlamesLibrary.connect(frame_key .. "_began", frame.InputBegan:Connect(function(input)
+                g.YadsanLibrary.connect(frame_key .. "_began", frame.InputBegan:Connect(function(input)
                     if not frame_valid(frame) then return end
                     if uis:GetFocusedTextBox() then return end
                     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
@@ -961,11 +961,11 @@ if not g.dragify then
                     end
                 end))
 
-                g.FlamesLibrary.connect(frame_key .. "_ancestry", frame.AncestryChanged:Connect(function(_, parent)
+                g.YadsanLibrary.connect(frame_key .. "_ancestry", frame.AncestryChanged:Connect(function(_, parent)
                     if not parent then
                         if active_frame == frame then stop_drag() end
-                        g.FlamesLibrary.disconnect(frame_key .. "_began")
-                        g.FlamesLibrary.disconnect(frame_key .. "_ancestry")
+                        g.YadsanLibrary.disconnect(frame_key .. "_began")
+                        g.YadsanLibrary.disconnect(frame_key .. "_ancestry")
                     end
                 end))
             end)
@@ -1228,7 +1228,7 @@ end
 
 local parent_gui = (get_hidden_gui and get_hidden_gui()) or (gethui and gethui()) or g.CoreGui or g.PlayerGui
 g.find_delta_icon_image_button = g.find_delta_icon_image_button or function()
-    local cached = g.deltas_icon_image_button_descendant_flames_hub_value
+    local cached = g.deltas_icon_image_button_descendant_yadsan_hub_value
     if cached and cached:IsA("ImageButton") and cached.Parent then return cached end
     for _, v in ipairs(parent_gui:GetDescendants()) do
         if v:IsA("ImageButton")
@@ -1240,7 +1240,7 @@ g.find_delta_icon_image_button = g.find_delta_icon_image_button or function()
             and v.BackgroundColor3 == Color3.fromRGB(48,50,59)
             and v.BorderColor3 == Color3.fromRGB(27,42,53)
         then
-            g.deltas_icon_image_button_descendant_flames_hub_value = v
+            g.deltas_icon_image_button_descendant_yadsan_hub_value = v
             return v
         end
     end
@@ -1248,7 +1248,7 @@ g.find_delta_icon_image_button = g.find_delta_icon_image_button or function()
     return nil
 end
 
-g.toggle_delta_image_button_flames_hub = g.toggle_delta_image_button_flames_hub or function(state)
+g.toggle_delta_image_button_yadsan_hub = g.toggle_delta_image_button_yadsan_hub or function(state)
     if typeof(state) ~= "boolean" then return end
     if not executor_contains("delta") then g.notify("Error", "You're not using Delta, this feature will not work for you.", 7); return end
     local btn = g.find_delta_icon_image_button()
@@ -1373,7 +1373,7 @@ end
 
 g.FindPlayer = g.FindPlayer or FindPlayer
 -- [[ configuration GUI. ]] --
-if not CoreGui:FindFirstChild("FlamesAdminGUI", true) then loadstring(g.http_get("https://pastebin.com/raw/9qkZEvjw"))() end
+if not CoreGui:FindFirstChild("YadsanAdminGUI", true) then loadstring(g.http_get("https://pastebin.com/raw/9qkZEvjw"))() end
 g._rgb_conns = g._rgb_conns or {}
 g._rgb_global_conn = g._rgb_global_conn or nil
 g.rgb_color_map = g.rgb_color_map or {
@@ -1595,11 +1595,11 @@ end
 local holiday = g.getholiday() or ""
 local Announcement_Message = "Added a hot-fix for Outfits Manager not properly loading all your saved outfits correctly upon closing it and re-opening it + fixed RateLimiter bypass notifying on every load."
 g.displayTimeMax = 60
-g.Script_Loaded_Correctly_LifeTogether_Admin_Flames_Hub = g.Script_Loaded_Correctly_LifeTogether_Admin_Flames_Hub or false
+g.Script_Loaded_Correctly_LifeTogether_Admin_Yadsan_Hub = g.Script_Loaded_Correctly_LifeTogether_Admin_Yadsan_Hub or false
 g.Script_Version_GlobalGenv = g.Script_Version -- also keep it like this so it can over-write new version properly.
 
-if not g.Flames_Hub_Owner_Title_Animated_Initialized then
-    g.Flames_Hub_Owner_Title_Animated_Initialized = true
+if not g.Yadsan_Hub_Owner_Title_Animated_Initialized then
+    g.Yadsan_Hub_Owner_Title_Animated_Initialized = true
     local title_name = "unique_title_billboard"
     local OWNER_KEY = "owner_title"
     g.activeowner_title_billboards = setmetatable({}, { __mode = "k" })
@@ -1780,8 +1780,8 @@ if not g.Flames_Hub_Owner_Title_Animated_Initialized then
     end
 
     for _, player in ipairs(Players:GetPlayers()) do watch_owners_character(player) end
-    if not g.Flames_Title_Owner_Added_And_Removing_Checks then
-        g.Flames_Title_Owner_Added_And_Removing_Checks = true
+    if not g.Yadsan_Title_Owner_Added_And_Removing_Checks then
+        g.Yadsan_Title_Owner_Added_And_Removing_Checks = true
         lib.connect(OWNER_KEY .. "_player_added", Players.PlayerAdded:Connect(function(player)
             lib.spawn(OWNER_KEY .. "_watch_" .. tostring(player.UserId), "spawn", function()
                 watch_owners_character(player)
@@ -1794,8 +1794,8 @@ if not g.Flames_Hub_Owner_Title_Animated_Initialized then
     end
 end
 
---[[if not g.Flames_Hub_Client_Title_Initialized then
-    g.Flames_Hub_Client_Title_Initialized = true
+--[[if not g.Yadsan_Hub_Client_Title_Initialized then
+    g.Yadsan_Hub_Client_Title_Initialized = true
     local client_billboard_name = "unique_client_title_billboard"
     local CLIENT_KEY = "client_title"
     local client_whitelist = {
@@ -1926,8 +1926,8 @@ end
     end
 
     for _, player in ipairs(Players:GetPlayers()) do start_client_watcher(player) end
-    if not g.Flames_Client_Title_Player_Checks then
-        g.Flames_Client_Title_Player_Checks = true
+    if not g.Yadsan_Client_Title_Player_Checks then
+        g.Yadsan_Client_Title_Player_Checks = true
 
         lib.connect(CLIENT_KEY .. "_player_added", Players.PlayerAdded:Connect(function(player)
             lib.spawn(CLIENT_KEY .. "_watch_" .. tostring(player.UserId), "spawn", function()
@@ -2146,7 +2146,7 @@ local TeleportCheck = false
 g.Teleport_Checker_For_Script = g.LocalPlayer.OnTeleport:Connect(function(State)
 	if not TeleportCheck and queueteleport and typeof(queueteleport) == "function" then
 		TeleportCheck = true
-		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/EnterpriseExperience/Flames_Hub_Games/refs/heads/main/Experiences/13967668166.lua'))()")
+		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/13967668166_RED.lua.txt'))()")
 	end
 end)
 
@@ -2199,8 +2199,8 @@ end
 if not g.cached_placed_models_folder then pcall(function() g.find_placed_models_folder() end) end
 local Placed_Models = g.cached_placed_models_folder or Workspace:FindFirstChild("PlacedModels") or Workspace:WaitForChild("PlacedModels", 1) or g.find_placed_models_folder()
 g.workspace_editor_script_GUI = function()
-    if g.CoreGui:FindFirstChild("Workspace_Editor_GUI_Flames_Hub") and g.CoreGui:FindFirstChild("Workspace_Editor_GUI_Flames_Hub"):IsA("ScreenGui") then
-        g.CoreGui:FindFirstChild("Workspace_Editor_GUI_Flames_Hub").Enabled = true
+    if g.CoreGui:FindFirstChild("Workspace_Editor_GUI_Yadsan_Hub") and g.CoreGui:FindFirstChild("Workspace_Editor_GUI_Yadsan_Hub"):IsA("ScreenGui") then
+        g.CoreGui:FindFirstChild("Workspace_Editor_GUI_Yadsan_Hub").Enabled = true
         return 
     end
     fw(0.1)
@@ -2320,7 +2320,7 @@ if not g.Spawned_Vehicle_Checker then
     else
         if not success then
             g.LifeTogetherRP_Admin = false
-            g.LifeTogether_Actual_Flames_Hub_Running_Functioning_Currently_On_Client = false
+            g.LifeTogether_Actual_Yadsan_Hub_Running_Functioning_Currently_On_Client = false
             return g.notify("Error", "You cannot run this script on this executor, we're sorry! (if you believe this was in error, re-run the script).", 12)
         end
     end
@@ -2933,13 +2933,13 @@ end
 
 g.weather_flasher_loop = g.weather_flasher_loop or function(toggle)
     if not g.is_localplayer_server_owner() then g.notify("Error", "You are not the private server owner!", 3); return end
-    local fw = g.FlamesLibrary.wait
+    local fw = g.YadsanLibrary.wait
 
     if toggle == true then
         if g.changing_weather_on_repeat then g.notify("Warning", "Yadsan Hub - Weather Flasher is already enabled!", 5); return end
         g.changing_weather_on_repeat = true
         g.notify("Success", "Yadsan Hub - Weather Flasher is now enabled.", 5)
-        g.FlamesLibrary.spawn("weather_loop_repeater", "spawn", function()
+        g.YadsanLibrary.spawn("weather_loop_repeater", "spawn", function()
             while g.changing_weather_on_repeat == true do
             fw(0)
                 g.set_new_weather("snow")
@@ -2952,7 +2952,7 @@ g.weather_flasher_loop = g.weather_flasher_loop or function(toggle)
     elseif toggle == false then
         if not g.changing_weather_on_repeat then g.notify("Warning", "Yadsan Hub - Weather Flasher is not enabled!", 5); return end
         g.changing_weather_on_repeat = false
-        g.FlamesLibrary.disconnect("weather_loop_repeater")
+        g.YadsanLibrary.disconnect("weather_loop_repeater")
         g.notify("Success", "Yadsan Hub - Weather Flasher is now disabled.", 5)
     else
         return 
@@ -3152,7 +3152,7 @@ end
 
 local Bindable
 if not allowed[LocalPlayer.Name] then Bindable = g.create_bindable() end
-if allowed[LocalPlayer.Name] then g.notify("Success", "You're an Administrator/Staff in Yadsan Hub, you can do our PRIVATE commands by doing: ?flamescmds in the chat.", 15) end
+if allowed[LocalPlayer.Name] then g.notify("Success", "You're an Administrator/Staff in Yadsan Hub, you can do our PRIVATE commands by doing: ?yadsancmds in the chat.", 15) end
 g.current_worn_cached_clothing_items = g.current_worn_cached_clothing_items or {}
 g.GetWornAssetId = g.GetWornAssetId or function(AssetType)
     local Humanoid = g.LocalPlayer.Character and g.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
@@ -3694,7 +3694,7 @@ g.Administrator_Staff_Message_Received_Commands_Section = TextChatService.Messag
     if not allowed[sender.Name] then return end
     local text = message.Text
     if type(text) ~= "string" or text == "" then return end
-    if text == "?flamescmds" then
+    if text == "?yadsancmds" then
         g.commands_menu_for_administrators_and_staffs()
     end
 end)
@@ -3726,7 +3726,7 @@ if g.get_enrolled_state == nil then
     end
 end
 
-if CoreGui:FindFirstChild("FlamesAdminGUI", true) and CoreGui:FindFirstChild("FlamesAdminGUI", true):IsA("ScreenGui") then CoreGui:FindFirstChild("FlamesAdminGUI", true).Enabled = true end
+if CoreGui:FindFirstChild("YadsanAdminGUI", true) and CoreGui:FindFirstChild("YadsanAdminGUI", true):IsA("ScreenGui") then CoreGui:FindFirstChild("YadsanAdminGUI", true).Enabled = true end
 g.get_other_vehicle = g.get_other_vehicle or function(Player)
     for _, v in pairs(g.Workspace:FindFirstChild("Vehicles"):GetChildren()) do
         local owner_object = v:FindFirstChild("owner") or v:FindFirstChild("owner", true)
@@ -3739,7 +3739,7 @@ end
 local RGB_KEY = "rgb_phone_loop"
 g.change_phone_color = g.change_phone_color or function(New_Color) g.Send("phone_color", New_Color) end
 g.RGB_Phone = g.RGB_Phone or function(Boolean)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
 
     if Boolean == true then
         if g.RGB_Rainbow_Phone then g.notify("Warning", "RGB/Rainbow Phone is already enabled.", 3); return end
@@ -4470,12 +4470,12 @@ g.save_outfits_GUI = function()
     end)
 end
 
-g.already_loaded_workaround_script_flames_hub = g.already_loaded_workaround_script_flames_hub or false
+g.already_loaded_workaround_script_yadsan_hub = g.already_loaded_workaround_script_yadsan_hub or false
 g.already_patched_discord_button = g.already_patched_discord_button or false
 g.load_workaround_script = g.load_workaround_script or function()
-	if g.already_loaded_workaround_script_flames_hub then g.notify("Warning", "Chat Workaround has already been loaded.", 5); return end
+	if g.already_loaded_workaround_script_yadsan_hub then g.notify("Warning", "Chat Workaround has already been loaded.", 5); return end
 	local hidden_gui_main = gethui and gethui() or get_hidden_gui and get_hidden_gui() or g.CoreGui or g.PlayerGui
-	g.already_loaded_workaround_script_flames_hub = true
+	g.already_loaded_workaround_script_yadsan_hub = true
 	loadstring(g.http_get('https://raw.githubusercontent.com/EnterpriseExperience/MicUpSource/refs/heads/main/Deadly_Chat_Backup_Script.lua'))()
     local function patch_button(frame)
         if g.already_patched_discord_button then return end
@@ -5094,7 +5094,7 @@ g.RGB_Vehicle = g.RGB_Vehicle or function(state)
 end
 
 g.two_color_switcher_FE_func = g.two_color_switcher_FE_func or function(state)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
     if state == true then
         if g.two_tone_vehicle_colors_changing then g.notify("Warning", "Two Color Switcher already enabled.", 5); return end
         g.two_tone_vehicle_colors_changing = true
@@ -5210,7 +5210,7 @@ fw(0.1)
 init_vehicle_esp()
 
 g.RGB_Vehicle_Others = g.RGB_Vehicle_Others or function(Player, state)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
     if not Player then return end
     local name = "rgb_other_"..Player.UserId
     local PlayersName = Player.Name
@@ -5300,15 +5300,15 @@ g.save_copied_plrs_emote = g.save_copied_plrs_emote or function()
         wait()
         g.notify("Success", "Saved currently playing emote.", 3)
     else
-        if g.FreeEmotes_Enabled then g.notify("Warning", "You already have Flames Emoting GUI loaded!", 5); return end
-        if CoreGui:FindFirstChild("FlamesEmoteGUI") then g.notify("Warning", "You already have Flames Emoting GUI loaded!", 5); return end
+        if g.FreeEmotes_Enabled then g.notify("Warning", "You already have Yadsan Emoting GUI loaded!", 5); return end
+        if CoreGui:FindFirstChild("YadsanEmoteGUI") then g.notify("Warning", "You already have Yadsan Emoting GUI loaded!", 5); return end
         g.FreeEmotes_Enabled = true
         loadstring(g.http_get("https://pastebin.com/raw/RCj6RJtc"))()
         wait(1)
         g.notify("Info", "Try the command again, you did not have our Free Emotes GUI loaded.", 15)
         wait(1)
-        while not CoreGui:FindFirstChild("FlamesEmoteGUI", true) do task.wait(0.1) end
-        local gui = CoreGui:FindFirstChild("FlamesEmoteGUI", true)
+        while not CoreGui:FindFirstChild("YadsanEmoteGUI", true) do task.wait(0.1) end
+        local gui = CoreGui:FindFirstChild("YadsanEmoteGUI", true)
         if gui and gui:IsA("ScreenGui") then
             local Frame_Find = gui:FindFirstChildOfClass("Frame")
             if Frame_Find and Frame_Find.Parent then Frame_Find.Visible = false end
@@ -5423,7 +5423,7 @@ end
 
 g.original_skintone = g.original_skintone or nil
 g.rainbow_skin = g.rainbow_skin or function(state)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
     local name = "rainbow_skin"
     local char = g.Character or g.LocalPlayer.Character or g.get_char(LocalPlayer, Players.RespawnTime + 1)
     if not char or not char:IsDescendantOf(game) then return end
@@ -5473,7 +5473,7 @@ g.rainbow_skin = g.rainbow_skin or function(state)
 end
 
 g.two_tone_skin = g.two_tone_skin or function(state)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
     local fw = lib.wait
     local name = "two_tone_skin"
     local char = g.Character or g.LocalPlayer or g.get_char(LocalPlayer, Players.RespawnTime + 1)
@@ -5535,7 +5535,7 @@ end
 
 local Old_Name_From_Name_Spammer
 g.name_changer_premium = g.name_changer_premium or function(state)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
     local name = "name_spammer"
     local words = {
         "root_access","packet_inject","xor_key","decrypting",
@@ -5586,7 +5586,7 @@ g.spectate_plr_without_distance_limits = g.spectate_plr_without_distance_limits 
         end
 
         setCamToCharacter(target_player.Character)
-        g.spectateConns.char = g.FlamesLibrary.connect("spectate_char", target_player.CharacterAdded:Connect(function(character)
+        g.spectateConns.char = g.YadsanLibrary.connect("spectate_char", target_player.CharacterAdded:Connect(function(character)
             if spectate_target ~= target_player then return end
             setCamToCharacter(character)
         end))
@@ -5613,9 +5613,9 @@ end
 g.anti_outfit_copier = function(toggle)
     if toggle == true then
         if g.anti_outfit_stealer then g.notify("Error", "Anti Outfit Stealer is already enabled!", 5); return end
-        if g.FlamesLibrary.is_alive("AntiFitStealerConn") then g.notify("Error", "Anti Outfit Stealer is already enabled! [connection].", 5); return end
+        if g.YadsanLibrary.is_alive("AntiFitStealerConn") then g.notify("Error", "Anti Outfit Stealer is already enabled! [connection].", 5); return end
         g.notify("Success", "Yadsan Hub | Anti Outfit Stealer is now active.", 7)
-        local lib = g.FlamesLibrary
+        local lib = g.YadsanLibrary
         g.ToggleAntiFit_Stealer = g.ToggleAntiFit_Stealer or function(state)
             if not state then
                 g.anti_outfit_stealer = false
@@ -5656,7 +5656,7 @@ g.anti_outfit_copier = function(toggle)
     elseif toggle == false then
         if not g.anti_outfit_stealer then g.notify("Error", "Anti Outfit Copier is not enabled!", 5); return end
         g.anti_outfit_stealer = false
-        g.FlamesLibrary.disconnect("AntiFitStealerConn")
+        g.YadsanLibrary.disconnect("AntiFitStealerConn")
         g.ToggleAntiFit_Stealer(false)
         g.notify("Success", "Disabled Anti Outfit Stealer.", 5)
     else
@@ -5727,7 +5727,7 @@ g.Spam_Survey_Completions = function(state)
     if state == true then
         g.Spam_And_Spoof_Survey_Submissions = true
         g.notify("Success", "Yadsan Hub | Life Together RP survey spammer is now active.", 3)
-        FlamesLibrary.spawn("spam_survey_completions", "spawn", function()
+        YadsanLibrary.spawn("spam_survey_completions", "spawn", function()
             while g.Spam_And_Spoof_Survey_Submissions == true do
             task.wait(0)
                 local Survey_Args = {
@@ -5766,7 +5766,7 @@ g.Spam_Survey_Completions = function(state)
         end)
     elseif state == false then
         g.Spam_And_Spoof_Survey_Submissions = false
-        FlamesLibrary.disconnect("spam_survey_completions")
+        YadsanLibrary.disconnect("spam_survey_completions")
         g.notify("Success", "Yadsan Hub | Life Together RP survey spammer is now disabled.", 3)
     else
         return 
@@ -5859,10 +5859,10 @@ if not g.player_esp_core then
     g.player_esp_core = true
     local localplayer = g.LocalPlayer
     local esp_objects = {}
-    g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled = false
+    g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled = false
     local function wait_character(plr)
         local character = plr.Character
-        while g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled and plr.Parent and (not character or not character.Parent) do
+        while g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled and plr.Parent and (not character or not character.Parent) do
             character = plr.Character
             g.heartbeat_wait_function(6)
         end
@@ -5877,11 +5877,11 @@ if not g.player_esp_core then
     end
 
     local function apply_esp(plr)
-        if not g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled then return end
+        if not g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled then return end
         if plr == localplayer then return end
         task.spawn(function()
             local character = wait_character(plr)
-            if not g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled or not character then return end
+            if not g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled or not character then return end
             remove_esp(plr)
             local highlight = Instance.new("Highlight")
             highlight.FillTransparency = 0.5
@@ -5894,28 +5894,28 @@ if not g.player_esp_core then
 
     local function track_player(plr)
         apply_esp(plr)
-        FlamesLibrary.connect("esp_char_" .. tostring(plr.UserId), plr.CharacterAdded:Connect(function(new_char)
+        YadsanLibrary.connect("esp_char_" .. tostring(plr.UserId), plr.CharacterAdded:Connect(function(new_char)
             if plr == localplayer then return end
-            while g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled and new_char and not new_char.Parent do task.wait() end
+            while g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled and new_char and not new_char.Parent do task.wait() end
             apply_esp(plr)
         end))
     end
 
-    local function untrack_player(plr) remove_esp(plr); FlamesLibrary.disconnect("esp_char_" .. tostring(plr.UserId)) end
+    local function untrack_player(plr) remove_esp(plr); YadsanLibrary.disconnect("esp_char_" .. tostring(plr.UserId)) end
     g.enable_player_esp = function()
-        if g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled then g.notify("Warning", "Yadsan Hub Player ESP is already enabled.", 5); return end
-        g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled = true
+        if g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled then g.notify("Warning", "Yadsan Hub Player ESP is already enabled.", 5); return end
+        g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled = true
         for _, plr in ipairs(Players:GetPlayers()) do track_player(plr) end
-        FlamesLibrary.connect("esp_playeradded", Players.PlayerAdded:Connect(track_player))
-        FlamesLibrary.connect("esp_playerremoving", Players.PlayerRemoving:Connect(untrack_player))
+        YadsanLibrary.connect("esp_playeradded", Players.PlayerAdded:Connect(track_player))
+        YadsanLibrary.connect("esp_playerremoving", Players.PlayerRemoving:Connect(untrack_player))
     end
 
     g.disable_player_esp = function()
-        if not g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled then g.notify("Warning", "Yadsan Hub Player ESP is not enabled.", 5); return end
-        g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled = false
+        if not g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled then g.notify("Warning", "Yadsan Hub Player ESP is not enabled.", 5); return end
+        g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled = false
         for plr in pairs(esp_objects) do remove_esp(plr) end
-        FlamesLibrary.disconnect("esp_playeradded")
-        FlamesLibrary.disconnect("esp_playerremoving")
+        YadsanLibrary.disconnect("esp_playeradded")
+        YadsanLibrary.disconnect("esp_playerremoving")
     end
 end
 
@@ -5924,7 +5924,7 @@ if Drawing and not g.tracer_core_initialized then
     local camera = workspace.CurrentCamera
     local localplayer = g.LocalPlayer or Players.LocalPlayer
     local tracer_objects = {}
-    g.tracer_esp_currently_running_flag_Flames_Hub = false
+    g.tracer_esp_currently_running_flag_Yadsan_Hub = false
     if g.disable_tracers and typeof(g.disable_tracers) == "function" then pcall(function() g.disable_tracers() end) end
     local function remove_tracer(plr)
         if tracer_objects[plr] then
@@ -5935,8 +5935,8 @@ if Drawing and not g.tracer_core_initialized then
 
     local function create_tracer(plr)
         if plr == localplayer then return end
-        while g.tracer_esp_currently_running_flag_Flames_Hub and not plr.Parent do task.wait() end
-        if not g.tracer_esp_currently_running_flag_Flames_Hub then return end
+        while g.tracer_esp_currently_running_flag_Yadsan_Hub and not plr.Parent do task.wait() end
+        if not g.tracer_esp_currently_running_flag_Yadsan_Hub then return end
         local line = Drawing.new("Line")
         line.Thickness = 1
         line.Transparency = 1
@@ -5945,7 +5945,7 @@ if Drawing and not g.tracer_core_initialized then
     end
 
     local function update_tracers()
-        if not g.tracer_esp_currently_running_flag_Flames_Hub then pcall(function() g.disable_tracers() end); return end
+        if not g.tracer_esp_currently_running_flag_Yadsan_Hub then pcall(function() g.disable_tracers() end); return end
         local view = camera.ViewportSize
         for plr, line in pairs(tracer_objects) do
             local character = plr.Character or g.get_char(plr, 1)
@@ -5966,21 +5966,21 @@ if Drawing and not g.tracer_core_initialized then
     end
 
     g.enable_tracers = function()
-        if g.tracer_esp_currently_running_flag_Flames_Hub then g.notify("Warning", "Tracer ESP is already enabled!", 3); return end
-        g.tracer_esp_currently_running_flag_Flames_Hub = true
+        if g.tracer_esp_currently_running_flag_Yadsan_Hub then g.notify("Warning", "Tracer ESP is already enabled!", 3); return end
+        g.tracer_esp_currently_running_flag_Yadsan_Hub = true
         for _, plr in ipairs(Players:GetPlayers()) do create_tracer(plr) end
-        FlamesLibrary.connect("tracer_render", RunService.RenderStepped:Connect(update_tracers))
-        FlamesLibrary.connect("tracer_playeradded", Players.PlayerAdded:Connect(create_tracer))
-        FlamesLibrary.connect("tracer_playerremoving", Players.PlayerRemoving:Connect(remove_tracer))
+        YadsanLibrary.connect("tracer_render", RunService.RenderStepped:Connect(update_tracers))
+        YadsanLibrary.connect("tracer_playeradded", Players.PlayerAdded:Connect(create_tracer))
+        YadsanLibrary.connect("tracer_playerremoving", Players.PlayerRemoving:Connect(remove_tracer))
     end
 
     g.disable_tracers = function()
-        if not g.tracer_esp_currently_running_flag_Flames_Hub then g.notify("Warning", "Tracer ESP is not enabled!", 3); return end
-        g.tracer_esp_currently_running_flag_Flames_Hub = false
+        if not g.tracer_esp_currently_running_flag_Yadsan_Hub then g.notify("Warning", "Tracer ESP is not enabled!", 3); return end
+        g.tracer_esp_currently_running_flag_Yadsan_Hub = false
         for plr in pairs(tracer_objects) do remove_tracer(plr) end
-        FlamesLibrary.disconnect("tracer_render")
-        FlamesLibrary.disconnect("tracer_playeradded")
-        FlamesLibrary.disconnect("tracer_playerremoving")
+        YadsanLibrary.disconnect("tracer_render")
+        YadsanLibrary.disconnect("tracer_playeradded")
+        YadsanLibrary.disconnect("tracer_playerremoving")
     end
 end
 wait(0.25)
@@ -6030,7 +6030,7 @@ g.stop_walkfling = g.stop_walkfling or function()
     if not g.walkflinging then g.notify("Error", "Yadsan Hub | WalkFling-V3.5 is not enabled.", 5); return end
     g.walkflinging = false
     g.TouchingWhitelisted = {}
-    g.FlamesLibrary.disconnect("walkflinger")
+    g.YadsanLibrary.disconnect("walkflinger")
     for _, conn in pairs(g.WalkFlingConnections) do conn:Disconnect() end
     g.WalkFlingConnections = {}
     if g.WalkFlingRespawnConn then
@@ -6102,8 +6102,8 @@ g.start_walkfling = g.start_walkfling or function()
     end
     wait(0.25)
     g.WalkFlingRespawnConn = speaker.CharacterAdded:Connect(function(new_char) if g.walkflinging then connect_touch_fling(new_char) end end)
-    g.FlamesLibrary.disconnect("walkflinger")
-    g.FlamesLibrary.connect("walkflinger", RunService.Heartbeat:Connect(function()
+    g.YadsanLibrary.disconnect("walkflinger")
+    g.YadsanLibrary.connect("walkflinger", RunService.Heartbeat:Connect(function()
         if not g.walkflinging then return end
         local m = g.Character or g.get_char(speaker, 3)
         local r = m and (g.HumanoidRootPart or m:FindFirstChild("HumanoidRootPart"))
@@ -6131,7 +6131,7 @@ end
 g.autospinspeed = g.autospinspeed or function(base) local h = g.getcharsize(); return base / h end
 g.change_spin_speed = g.change_spin_speed or function(speed)
     if g.walkflinging then g.notify("Error", "Turn off walkfling first for this to work properly.", 5); return end
-    for _, v in ipairs(g.HumanoidRootPart:GetChildren()) do if v.Name == "FlamesHub_Spin" then v.AngularVelocity = Vector3.new(0, speed, 0) end end
+    for _, v in ipairs(g.HumanoidRootPart:GetChildren()) do if v.Name == "YadsanHub_Spin" then v.AngularVelocity = Vector3.new(0, speed, 0) end end
 end
 
 g.LockHouse_LastState = g.LockHouse_LastState or {}
@@ -6216,19 +6216,19 @@ g.spin_plr = g.spin_plr or function(toggle, speed)
         if g.walkflinging then g.notify("Error", "Turn off walkfling first for this to work properly.", 5); return end
         g.already_spinning_localplr = true
         for _, v in pairs(hrp:GetChildren()) do
-            if v.Name == "FlamesHub_Spin" then
+            if v.Name == "YadsanHub_Spin" then
                 v:Destroy()
             end
         end
         wait(.1)
         local Spin = Instance.new("BodyAngularVelocity")
-        Spin.Name = "FlamesHub_Spin"
+        Spin.Name = "YadsanHub_Spin"
         Spin.MaxTorque = Vector3.new(0, math.huge, 0)
         Spin.AngularVelocity = Vector3.new(0, g.autospinspeed(speed), 0)
         Spin.Parent = hrp
     elseif toggle == false then
         if not g.already_spinning_localplr then g.notify("Error", "You are not using Spin.", 3); return end
-        for _, v in ipairs(hrp:GetChildren()) do if v:IsA("BodyAngularVelocity") and v.Name == "FlamesHub_Spin" then v:Destroy() end end
+        for _, v in ipairs(hrp:GetChildren()) do if v:IsA("BodyAngularVelocity") and v.Name == "YadsanHub_Spin" then v:Destroy() end end
         g.already_spinning_localplr = false
     else
         return
@@ -6879,7 +6879,7 @@ local excluded_functions = {
     execCmd = true,
     disabled_global_value_correctly = true,
     name_changer_premium = true,
-    Flames_Debugger_Function_Tester_GUI = true,
+    Yadsan_Debugger_Function_Tester_GUI = true,
     notify = true,
     start_scan = true,
     SetFPSCap = true,
@@ -6902,29 +6902,29 @@ local excluded_functions = {
     dumpbytecode = true,
 }
 
-g.Flames_Debugger_Function_Tester_GUI = g.Flames_Debugger_Function_Tester_GUI or function()
+g.Yadsan_Debugger_Function_Tester_GUI = g.Yadsan_Debugger_Function_Tester_GUI or function()
     local genv = g
     local start_scan
 
-    if genv.__flames_debugger_running then
+    if genv.__yadsan_debugger_running then
         if g.notify then
-            g.notify("Warning", "Flames Debugger is already running!", 5)
+            g.notify("Warning", "Yadsan Debugger is already running!", 5)
             return 
         else
-            warn("Flames Debugger is already running.")
+            warn("Yadsan Debugger is already running.")
             return
         end
     end
 
-    if CoreGui:FindFirstChild("FlamesDebugger") then
-        CoreGui.FlamesDebugger.Enabled = true
-        genv.__flames_debugger_running = false
-        g.dont_receive_any_notifications_flames_hub = false
+    if CoreGui:FindFirstChild("YadsanDebugger") then
+        CoreGui.YadsanDebugger.Enabled = true
+        genv.__yadsan_debugger_running = false
+        g.dont_receive_any_notifications_yadsan_hub = false
         return
     end
 
     local gui = Instance.new("ScreenGui")
-    gui.Name = "FlamesDebugger"
+    gui.Name = "YadsanDebugger"
     gui.ResetOnSpawn = false
     gui.Parent = CoreGui
 
@@ -6965,9 +6965,9 @@ g.Flames_Debugger_Function_Tester_GUI = g.Flames_Debugger_Function_Tester_GUI or
     rescan.Parent = frame
 
     rescan.MouseButton1Click:Connect(function()
-        if not genv.__flames_debugger_running then
-            genv.__flames_debugger_running = true
-            g.dont_receive_any_notifications_flames_hub = true
+        if not genv.__yadsan_debugger_running then
+            genv.__yadsan_debugger_running = true
+            g.dont_receive_any_notifications_yadsan_hub = true
             start_scan()
         end
     end)
@@ -7083,18 +7083,18 @@ g.Flames_Debugger_Function_Tester_GUI = g.Flames_Debugger_Function_Tester_GUI or
 
                 if tested == 0 then
                     add_row("No functions found to test", false)
-                    g.dont_receive_any_notifications_flames_hub = false
+                    g.dont_receive_any_notifications_yadsan_hub = false
                 else
                     add_row("Completed testing "..tested.." functions", true)
-                    g.dont_receive_any_notifications_flames_hub = false
+                    g.dont_receive_any_notifications_yadsan_hub = false
                 end
             end
 
             pcall(function() run_scan() end)
             task.wait(0.15)
             g.button_text_changing_for_debug_scanner = false
-            genv.__flames_debugger_running = false
-            g.dont_receive_any_notifications_flames_hub = false
+            genv.__yadsan_debugger_running = false
+            g.dont_receive_any_notifications_yadsan_hub = false
             if rescan and rescan:IsA("TextButton") then rescan.Text = "Start Scan" end
         end)
     end
@@ -7162,7 +7162,7 @@ g.CreateCreditsLabel = function()
     local parts = {tostring(g.Script_Version)}
     if holiday ~= "" then table.insert(parts, holiday) end
     table.insert(parts, "Made By: " .. tostring(g.Script_Creator))
-    if masked_flames_hub_server_ID then table.insert(parts, "Your Flames-Hub UUID: " .. tostring(masked_flames_hub_server_ID)) end
+    if masked_yadsan_hub_server_ID then table.insert(parts, "Your Yadsan-Hub UUID: " .. tostring(masked_yadsan_hub_server_ID)) end
     label.Text = table.concat(parts, " | ")
     label.Font = Enum.Font.GothamBold
     label.TextScaled = true
@@ -7182,7 +7182,7 @@ g.CreateCreditsLabel = function()
     local holiday_parts = {tostring(g.Script_Version)}
     if holiday ~= "" then table.insert(holiday_parts, holiday) end
     table.insert(holiday_parts, "Made By: " .. tostring(g.Script_Creator))
-    if masked_flames_hub_server_ID then table.insert(holiday_parts, "Your Flames-Hub UUID: " .. tostring(masked_flames_hub_server_ID)) end
+    if masked_yadsan_hub_server_ID then table.insert(holiday_parts, "Your Yadsan-Hub UUID: " .. tostring(masked_yadsan_hub_server_ID)) end
     label.Text = table.concat(holiday_parts, " | ")
 end
 
@@ -7294,7 +7294,7 @@ g.scan_character = g.scan_character or function(character)
         end
     end
 
-    FlamesLibrary.connect(char_id, character.ChildAdded:Connect(function(child)
+    YadsanLibrary.connect(char_id, character.ChildAdded:Connect(function(child)
         if child:IsA("Model") and child.Name == "PhoneCharacterModel" then
             g._pcm_registry[child] = true
             task.defer(function()
@@ -7305,10 +7305,10 @@ g.scan_character = g.scan_character or function(character)
         end
     end))
 
-    FlamesLibrary.connect(cleanup_id, character.AncestryChanged:Connect(function(_, parent)
+    YadsanLibrary.connect(cleanup_id, character.AncestryChanged:Connect(function(_, parent)
         if not parent then
-            FlamesLibrary.disconnect(char_id)
-            FlamesLibrary.disconnect(cleanup_id)
+            YadsanLibrary.disconnect(char_id)
+            YadsanLibrary.disconnect(cleanup_id)
         end
     end))
 end
@@ -7316,23 +7316,23 @@ end
 g.hook_player = g.hook_player or function(plr)
     if plr == LocalPlayer then return end
     local plr_id = tostring(plr.UserId)
-    FlamesLibrary.spawn(plr_id .. "_charwait", "spawn", function()
+    YadsanLibrary.spawn(plr_id .. "_charwait", "spawn", function()
         local char = g.get_char(plr, Players.RespawnTime + 0.75)
         if char then g.scan_character(char) end
     end)
 
-    FlamesLibrary.connect(plr_id .. "_charadded", plr.CharacterAdded:Connect(function(char)
+    YadsanLibrary.connect(plr_id .. "_charadded", plr.CharacterAdded:Connect(function(char)
         g.scan_character(char)
     end))
 end
 
-FlamesLibrary.disconnect("pmh_playeradded")
-FlamesLibrary.disconnect("pmh_playerremoving")
-FlamesLibrary.connect("pmh_playeradded", Players.PlayerAdded:Connect(g.hook_player))
-FlamesLibrary.connect("pmh_playerremoving", Players.PlayerRemoving:Connect(function(plr)
+YadsanLibrary.disconnect("pmh_playeradded")
+YadsanLibrary.disconnect("pmh_playerremoving")
+YadsanLibrary.connect("pmh_playeradded", Players.PlayerAdded:Connect(g.hook_player))
+YadsanLibrary.connect("pmh_playerremoving", Players.PlayerRemoving:Connect(function(plr)
     local plr_id = tostring(plr.UserId)
-    FlamesLibrary.disconnect(plr_id .. "_charadded")
-    FlamesLibrary.disconnect(plr_id .. "_charwait")
+    YadsanLibrary.disconnect(plr_id .. "_charadded")
+    YadsanLibrary.disconnect(plr_id .. "_charwait")
 end))
 
 g.run_hooking_players = function()
@@ -7377,13 +7377,13 @@ end
 
 g.ShutdownPhoneModelHider = g.ShutdownPhoneModelHider or function()
     for pcm in pairs(g.hidden_pcm) do g.show_pcm(pcm) end
-    FlamesLibrary.disconnect("pmh_playeradded")
-    FlamesLibrary.disconnect("pmh_playerremoving")
+    YadsanLibrary.disconnect("pmh_playeradded")
+    YadsanLibrary.disconnect("pmh_playerremoving")
 
     for _, plr in ipairs(Players:GetPlayers()) do
         local plr_id = tostring(plr.UserId)
-        FlamesLibrary.disconnect(plr_id .. "_charadded")
-        FlamesLibrary.disconnect(plr_id .. "_charwait")
+        YadsanLibrary.disconnect(plr_id .. "_charadded")
+        YadsanLibrary.disconnect(plr_id .. "_charwait")
     end
 
     table.clear(g.hidden_pcm)
@@ -7391,8 +7391,8 @@ g.ShutdownPhoneModelHider = g.ShutdownPhoneModelHider or function()
     table.clear(g._pcm_registry)
 end
 
-if not g.FlamesHub_CharacterAdded_Initialized then
-    g.FlamesHub_CharacterAdded_Initialized = true
+if not g.YadsanHub_CharacterAdded_Initialized then
+    g.YadsanHub_CharacterAdded_Initialized = true
     local function character_added_jump_height_changer_Life_Together_RP(Character)
         Character = g.Character or Character
         if not Character or not Character.Parent then Character = LocalPlayer.Character or g.get_char(LocalPlayer, Players.RespawnTime + 0.75) end
@@ -7412,7 +7412,7 @@ if not g.FlamesHub_CharacterAdded_Initialized then
 end
 
 g.always_show_title_of_player_regardless_of_chats = g.always_show_title_of_player_regardless_of_chats or function(toggled)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
     local fw = lib.wait
     local key = "showing_billboard_titles_above_heads_anyways"
 
@@ -7534,7 +7534,7 @@ if isfile and readfile and writefile and makefolder then
 end
 
 g.job_spammer = g.job_spammer or function(toggle)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
     local key = "job_spammer_loop"
     local fw = lib.wait
 
@@ -7675,7 +7675,7 @@ g.posteffparts = g.posteffparts or function(toggle)
 end
 
 g.TogglePostEffectsParts = g.posteffparts
-g.FlamesLagReducerFunc = g.FlamesLagReducerFunc or function(toggle)
+g.YadsanLagReducerFunc = g.YadsanLagReducerFunc or function(toggle)
     if toggle then
         if g.ultimate_lag_reducer then g.notify("Warning", "Yadsan Hub | Lag Reducer : is already enabled.", 3); return end
         g.ultimate_lag_reducer = true
@@ -8435,14 +8435,14 @@ g.start_bansystem = g.start_bansystem or function()
     if g.bansystem.enabled then return end
     if g.bansystem.starting then return end
     g.bansystem.starting = true
-    FlamesLibrary.spawn("bansystem_init", "spawn", function()
+    YadsanLibrary.spawn("bansystem_init", "spawn", function()
         local confirmed_owner = false
         for i = 1, 5 do
             if g.is_localplayer_server_owner() then
                 confirmed_owner = true
                 break
             end
-            FlamesLibrary.wait(1)
+            YadsanLibrary.wait(1)
         end
 
         if not confirmed_owner then
@@ -8459,18 +8459,18 @@ g.start_bansystem = g.start_bansystem or function()
         g.bansystem.enabled = true
         g.bansystem.starting = false
         for _, p in ipairs(Players:GetPlayers()) do
-            FlamesLibrary.spawn("bansystem_check_" .. p.UserId, "spawn", function()
-                FlamesLibrary.wait(0.2)
+            YadsanLibrary.spawn("bansystem_check_" .. p.UserId, "spawn", function()
+                YadsanLibrary.wait(0.2)
                 checkban(p)
             end)
         end
-        FlamesLibrary.connect("bansystem_player_added", Players.PlayerAdded:Connect(checkban))
+        YadsanLibrary.connect("bansystem_player_added", Players.PlayerAdded:Connect(checkban))
         g.notify("Success", "Ban system enabled.", 5)
     end)
 end
 fw(0.1)
-if not g.Ban_System_In_Flames_Hub_Has_Been_Started_Already then
-    g.Ban_System_In_Flames_Hub_Has_Been_Started_Already = true  -- actually set it!
+if not g.Ban_System_In_Yadsan_Hub_Has_Been_Started_Already then
+    g.Ban_System_In_Yadsan_Hub_Has_Been_Started_Already = true  -- actually set it!
     pcall(function() g.start_bansystem() end)
 end
 
@@ -8486,8 +8486,8 @@ end
 g.flash_server_admin_title_client_sided = g.flash_server_admin_title_client_sided or function(toggle)
     local localplayer_admin_of_priv_server = g.get_server_admin_title_player()
     if not localplayer_admin_of_priv_server then return end
-    local fw = g.FlamesLibrary.wait
-    local preset_texts = {"Flames Admin", "Server Admin", "Destroyer Admin", "Owner Admin", "Demon Admin", "Straight Crime", "Powerful Admin", "Creator Admin", "fLaMeS rUlEs", "FLAMES ADMIN"}
+    local fw = g.YadsanLibrary.wait
+    local preset_texts = {"Yadsan Admin", "Server Admin", "Destroyer Admin", "Owner Admin", "Demon Admin", "Straight Crime", "Powerful Admin", "Creator Admin", "fLaMeS rUlEs", "YADSAN ADMIN"}
 
     if toggle == true then
         if g.Server_Admin_Text_Title_Changer then g.notify("Warning", "Server Admin Title Text changer is already enabled!", 5); return end
@@ -8504,7 +8504,7 @@ g.flash_server_admin_title_client_sided = g.flash_server_admin_title_client_side
     elseif toggle == false then
         if not g.Server_Admin_Text_Title_Changer then g.notify("Warning", "Server Admin Title Text changer is not enabled!", 5); return end
         g.Server_Admin_Text_Title_Changer = false
-        g.FlamesLibrary.disconnect("server_admin_title_text_changer_main_loop")
+        g.YadsanLibrary.disconnect("server_admin_title_text_changer_main_loop")
     else
         return 
     end
@@ -8587,7 +8587,7 @@ g.watch_clothing = function(character)
     if not g.anti_clothing_ban_enabled then return end
     if not g.is_valid_character(character) then return end
     table.clear(g.pending_clothing)
-    FlamesLibrary.connect("clothing_child_added", character.ChildAdded:Connect(function(child)
+    YadsanLibrary.connect("clothing_child_added", character.ChildAdded:Connect(function(child)
         if not g.anti_clothing_ban_enabled then return end
         local class_name = g.get_modesty_class(child)
         if not class_name then return end
@@ -8595,7 +8595,7 @@ g.watch_clothing = function(character)
         g.queue_clothing(character, class_name)
     end))
 
-    FlamesLibrary.connect("clothing_child_removed", character.ChildRemoved:Connect(function(child)
+    YadsanLibrary.connect("clothing_child_removed", character.ChildRemoved:Connect(function(child)
         if not g.anti_clothing_ban_enabled then return end
         local class_name = g.get_clothing_class(child)
         if not class_name then return end
@@ -8615,7 +8615,7 @@ g.toggle_anti_clothing_ban_system = function(state)
         g.anti_clothing_ban_enabled = true
         local char = g.Character or speaker.Character or g.get_char(speaker)
         if g.is_valid_character(char) then g.watch_clothing(char) end
-        FlamesLibrary.connect("clothing_char_added", speaker.CharacterAdded:Connect(function(new_char)
+        YadsanLibrary.connect("clothing_char_added", speaker.CharacterAdded:Connect(function(new_char)
             if not g.anti_clothing_ban_enabled then return end
             if not g.is_valid_character(new_char) then return end
             g.watch_clothing(new_char)
@@ -8624,7 +8624,7 @@ g.toggle_anti_clothing_ban_system = function(state)
     elseif state == false then
         if not g.anti_clothing_ban_enabled then return end
         g.anti_clothing_ban_enabled = false
-        for _, connection_name in ipairs(CONNECTION_NAMES) do FlamesLibrary.disconnect(connection_name) end
+        for _, connection_name in ipairs(CONNECTION_NAMES) do YadsanLibrary.disconnect(connection_name) end
         table.clear(g.pending_clothing)
         g.is_applying = false
         g.notify("Success", "Yadsan Hub | Anti-Clothing-Ban disabled.", 3)
@@ -8746,7 +8746,7 @@ g.toggle_name_func = g.toggle_name_func or function(boolean)
 end
 
 g.flashy_name = g.flashy_name or function(Toggle)
-    local FL = g.FlamesLibrary
+    local FL = g.YadsanLibrary
     if Toggle == true then
         if g.Flashing_Name_Title then g.notify("Warning", "Name-Flasher is already enabled.", 5); return end
         g.Flashing_Name_Title = true
@@ -8770,7 +8770,7 @@ g.flashy_name = g.flashy_name or function(Toggle)
     end
 end
 
-g.flames_nameless_admin_ver = g.flames_nameless_admin_ver or function()
+g.Yadsan_nameless_admin_ver = g.Yadsan_nameless_admin_ver or function()
     if g.RealNamelessLoaded then g.notify("Warning", "Nameless Admin (or the Yadsan Hub version) has already been loaded.", 11); return  end
     loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))()
 end
@@ -9014,7 +9014,7 @@ g.send_msg_menu = g.send_msg_menu or function()
             table.insert(msgs,raw)
         end
 
-        g.Send_Message_Main_Phone_Messages_Module_Task = g.FlamesLibrary.spawn("send_message_phone_task", "spawn", function()
+        g.Send_Message_Main_Phone_Messages_Module_Task = g.YadsanLibrary.spawn("send_message_phone_task", "spawn", function()
             for i = 1, num do
                 local text = msgs[((i - 1) % #msgs) + 1]
                 pcall(function() g.send_msg_phone(target, text) end)
@@ -9139,17 +9139,17 @@ end
 
 g.toggle_config_manager = function(state)
     if state == true then
-        if not CoreGui:FindFirstChild("FlamesAdminGUI", true) then g.notify("Error", "Configuration Manager GUI was not found.", 5); return end
-        if CoreGui:FindFirstChild("FlamesAdminGUI", true) then
-            CoreGui:FindFirstChild("FlamesAdminGUI", true).Enabled = true
-        elseif CoreGui:FindFirstChild("FlamesAdminGUI", true) and CoreGui:FindFirstChild("FlamesAdminGUI", true).Enabled then
+        if not CoreGui:FindFirstChild("YadsanAdminGUI", true) then g.notify("Error", "Configuration Manager GUI was not found.", 5); return end
+        if CoreGui:FindFirstChild("YadsanAdminGUI", true) then
+            CoreGui:FindFirstChild("YadsanAdminGUI", true).Enabled = true
+        elseif CoreGui:FindFirstChild("YadsanAdminGUI", true) and CoreGui:FindFirstChild("YadsanAdminGUI", true).Enabled then
             return 
         end
     elseif state == false then
-        if not CoreGui:FindFirstChild("FlamesAdminGUI", true) then g.notify("Error", "Configuration Manager GUI was not found.", 5); return end
-        if CoreGui:FindFirstChild("FlamesAdminGUI", true) then
-            CoreGui:FindFirstChild("FlamesAdminGUI", true).Enabled = false
-        elseif CoreGui:FindFirstChild("FlamesAdminGUI", true) and CoreGui:FindFirstChild("FlamesAdminGUI", true).Enabled then
+        if not CoreGui:FindFirstChild("YadsanAdminGUI", true) then g.notify("Error", "Configuration Manager GUI was not found.", 5); return end
+        if CoreGui:FindFirstChild("YadsanAdminGUI", true) then
+            CoreGui:FindFirstChild("YadsanAdminGUI", true).Enabled = false
+        elseif CoreGui:FindFirstChild("YadsanAdminGUI", true) and CoreGui:FindFirstChild("YadsanAdminGUI", true).Enabled then
             return 
         end
     else
@@ -9332,7 +9332,7 @@ g.removePlayerFromScriptWhitelistTable = g.removePlayerFromScriptWhitelistTable 
 end
 
 g.start_glitch_script = function()
-    if g.SideGlitch_Enabled and FlamesLibrary._connections["SideGlitch_Loop"] and #FlamesLibrary._connections["SideGlitch_Loop"] > 0 then g.notify("Warning", "MonK Hub | Glitch Script is already enabled!", 3); return end
+    if g.SideGlitch_Enabled and YadsanLibrary._connections["SideGlitch_Loop"] and #YadsanLibrary._connections["SideGlitch_Loop"] > 0 then g.notify("Warning", "MonK Hub | Glitch Script is already enabled!", 3); return end
     local char = g.Character or speaker.Character or g.get_char(speaker)
     if not char or not char:IsDescendantOf(game) then return end
     local root  = g.HumanoidRootPart or char and char:FindFirstChild("HumanoidRootPart") or g.get_root(speaker)
@@ -9344,7 +9344,7 @@ g.start_glitch_script = function()
     local last_flip = 0
     local dir = 1
     g.SideGlitch_Enabled = true
-    FlamesLibrary.connect("SideGlitch_Loop", RunService.RenderStepped:Connect(function()
+    YadsanLibrary.connect("SideGlitch_Loop", RunService.RenderStepped:Connect(function()
         if not g.SideGlitch_Enabled then return end
         local now      = tick()
         local speed    = math.clamp(g.SideGlitch_Speed or 10, 1, 100)
@@ -9357,12 +9357,12 @@ g.start_glitch_script = function()
         local right = locked_origin.RightVector
         root.CFrame = CFrame.new(locked_origin.Position + right * (dir * distance)) * (locked_origin - locked_origin.Position)
     end))
-    FlamesLibrary.connect("SideGlitch_Restore", RunService.RenderStepped:Connect(function()
+    YadsanLibrary.connect("SideGlitch_Restore", RunService.RenderStepped:Connect(function()
         if g.SideGlitch_Enabled then return end
         if root.CFrame.Position ~= locked_origin.Position then
             root.CFrame = locked_origin
         else
-            FlamesLibrary.disconnect("SideGlitch_Restore")
+            YadsanLibrary.disconnect("SideGlitch_Restore")
         end
     end))
 end
@@ -9379,7 +9379,7 @@ g.start_smooth_glitch_script = function()
     local current_offset = 0
     local target_offset  = 0
     g.SideGlitch_Enabled  = true
-    FlamesLibrary.connect("SideGlitch_Loop", RunService.RenderStepped:Connect(function(dt)
+    YadsanLibrary.connect("SideGlitch_Loop", RunService.RenderStepped:Connect(function(dt)
         if not g.SideGlitch_Enabled then return end
         local now      = tick()
         local speed    = math.clamp(g.SideGlitch_Speed    or 5,    1, 100)
@@ -9399,7 +9399,7 @@ g.start_smooth_glitch_script = function()
         root.CFrame = CFrame.new(locked_origin.Position + right * current_offset) * rotation_only
     end))
 
-    FlamesLibrary.connect("SideGlitch_Restore", RunService.RenderStepped:Connect(function(dt)
+    YadsanLibrary.connect("SideGlitch_Restore", RunService.RenderStepped:Connect(function(dt)
         if g.SideGlitch_Enabled then return end
         local smooth  = math.clamp(g.SideGlitch_Smooth or 0.18, 0, 1)
         local alpha   = 1 - (1 - smooth) ^ (dt * 60)
@@ -9409,14 +9409,14 @@ g.start_smooth_glitch_script = function()
         root.CFrame = CFrame.new(locked_origin.Position + right * current_offset) * rotation_only
         if math.abs(current_offset) < 0.01 then
             root.CFrame = locked_origin
-            FlamesLibrary.disconnect("SideGlitch_Restore")
+            YadsanLibrary.disconnect("SideGlitch_Restore")
         end
     end))
 end
 
 g.stop_glitch_script = function()
     g.SideGlitch_Enabled = false
-    g.FlamesLibrary.disconnect("SideGlitch_Loop")
+    g.YadsanLibrary.disconnect("SideGlitch_Loop")
 end
 
 g.avgSkin = g.avgSkin or function(bc)
@@ -9583,30 +9583,30 @@ g.last_skin_tone_s = g.last_skin_tone_s or nil
 g.prev_skin_tone_s = g.prev_skin_tone_s or nil
 g.apply_skin_tone = function(color) if not color then return end; pcall(function() g.Send("skin_tone", color) end) end
 g.copy_plr_avatar = function(Player)
-    if g.is_copying_avatar_already_flames then g.notify("Warning","Avatar copier already in progress!", 3); return end
-    g.is_copying_avatar_already_flames = true
+    if g.is_copying_avatar_already_yadsan then g.notify("Warning","Avatar copier already in progress!", 3); return end
+    g.is_copying_avatar_already_yadsan = true
     if not Player or not Player.Character then
-        g.is_copying_avatar_already_flames = false
+        g.is_copying_avatar_already_yadsan = false
         g.notify("Warning","Target not found!",3)
         return 
     end
 
     local hum = Player.Character:FindFirstChildWhichIsA("Humanoid") or g.get_human(Player, Players.RespawnTime + 1)
     if not hum then
-        g.is_copying_avatar_already_flames = false
+        g.is_copying_avatar_already_yadsan = false
         g.notify("Warning","No humanoid!",3)
         return 
     end
 
     local desc = hum:GetAppliedDescription()
     if not desc then
-        g.is_copying_avatar_already_flames = false
+        g.is_copying_avatar_already_yadsan = false
         g.notify("Warning","No description!",3)
         return 
     end
 
     if Player.Name == "Yadsan_Godverse" or Player.Name == "L0CKED_1N1" or Player.Name == "AuraWithClipFarmin" then
-        g.is_copying_avatar_already_flames = false
+        g.is_copying_avatar_already_yadsan = false
         g.notify("Warning", "Do not copy the owner of Yadsan Hub's avatar!", 10)
         return 
     end
@@ -9674,7 +9674,7 @@ g.copy_plr_avatar = function(Player)
     local age = Player:GetAttribute("age")
     if age then g.Get("age",age) end
     g.notify("Success","Copied avatar from "..Player.Name,5)
-    g.is_copying_avatar_already_flames = false
+    g.is_copying_avatar_already_yadsan = false
 end
 
 g.height_func_setter = g.height_func_setter or function(height_input)
@@ -9999,8 +9999,8 @@ g.hum_vehicle_name = g.hum_vehicle_name or function(plr)
 end
 
 g.anti_sit_uid = function() uid += 1; return uid end
-g.anti_sit_connect = function(name, conn) registry[name] = true; g.FlamesLibrary.connect(name, conn) end
-g.anti_sit_cleanup = function() for name in pairs(registry) do g.FlamesLibrary.disconnect(name) end; table.clear(registry); table.clear(g.seat_cache) end
+g.anti_sit_connect = function(name, conn) registry[name] = true; g.YadsanLibrary.connect(name, conn) end
+g.anti_sit_cleanup = function() for name in pairs(registry) do g.YadsanLibrary.disconnect(name) end; table.clear(registry); table.clear(g.seat_cache) end
 g.anti_sit_get_char = function() return g.Character or speaker.Character or (g.get_char and g.get_char(speaker)) end
 g.anti_sit_get_hum = function(char) return (char and char:FindFirstChildWhichIsA("Humanoid")) or g.Humanoid or (g.get_human and g.get_human(speaker)) or (g.Char and g.Char.get_hum and g.Char.get_hum()) end
 g.anti_sit_char_valid = function(char) return char ~= nil and char:FindFirstChild("HumanoidRootPart") ~= nil and char:IsDescendantOf(workspace) end
@@ -10058,7 +10058,7 @@ g.anti_sit_hard_eject = function(char, hum)
 end
 
 g.anti_sit_spam_stop = function(success)
-    FlamesLibrary.disconnect(keys.spam)
+    YadsanLibrary.disconnect(keys.spam)
     if success then
         local took = os.clock() - spam.started
         spam.exits += 1
@@ -10075,7 +10075,7 @@ g.anti_sit_spam_start = function()
     spam.started = os.clock()
     spam.last_send = 0
     spam.last_hard = 0
-    FlamesLibrary.connect(keys.spam, RunService.Heartbeat:Connect(function()
+    YadsanLibrary.connect(keys.spam, RunService.Heartbeat:Connect(function()
         if not g.Not_Ever_Sitting then g.anti_sit_spam_stop(false); return end
         local char = g.anti_sit_get_char()
         local hum = char and g.anti_sit_get_hum(char)
@@ -10185,7 +10185,7 @@ g.anti_sit_watch_hv = function()
 end
 
 g.anti_sit_func = function(toggle)
-    local lib = g.FlamesLibrary
+    local lib = g.YadsanLibrary
     local fw = lib.wait
     if not g.Seat then
         local ok, res = pcall(function() return require(g.Game_Folder:FindFirstChild("Seat")) end)
@@ -10235,7 +10235,7 @@ end
 wait(0.1)
 g.Anti_Tent_Spawning = function(state)
     g.Anti_Tent_Spawning_Currently_Active = state
-    if not state then g.FlamesLibrary.disconnect("anti_tent_spawning"); return end
+    if not state then g.YadsanLibrary.disconnect("anti_tent_spawning"); return end
     local PlacedModels = g.cached_placed_models_folder or g.find_placed_models_folder()
     if not PlacedModels or not PlacedModels:IsA("Folder") then g.notify("Error", "Folder: PlacedModels does not exist or was not found.", 3); return end
     if not g.Not_Ever_Sitting then if g.anti_sit_func and typeof(g.anti_sit_func) == "function" then g.anti_sit_func(true) end end
@@ -10255,7 +10255,7 @@ g.Anti_Tent_Spawning = function(state)
     end
 
     for _, v in ipairs(PlacedModels:GetChildren()) do neuter_tent(v) end
-    FlamesLibrary.connect("anti_tent_spawning", PlacedModels.ChildAdded:Connect(function(child)
+    YadsanLibrary.connect("anti_tent_spawning", PlacedModels.ChildAdded:Connect(function(child)
         if not g.Anti_Tent_Spawning_Currently_Active then return end
         neuter_tent(child)
     end))
@@ -10279,9 +10279,9 @@ end
 g.Anti_Invisible_Players = function(state)
     g.Anti_Invisible_Players_Currently_Active = state
     if not state then
-        g.FlamesLibrary.disconnect("anti_invis_player_added")
-        g.FlamesLibrary.disconnect("anti_invis_char_added")
-        g.FlamesLibrary.disconnect("anti_invis_loop")
+        g.YadsanLibrary.disconnect("anti_invis_player_added")
+        g.YadsanLibrary.disconnect("anti_invis_char_added")
+        g.YadsanLibrary.disconnect("anti_invis_loop")
         return
     end
 
@@ -10300,12 +10300,12 @@ g.Anti_Invisible_Players = function(state)
     end
 
     for _, plr in ipairs(g.Players:GetPlayers()) do fix_invisible(plr) end
-    FlamesLibrary.connect("anti_invis_player_added", g.Players.PlayerAdded:Connect(function(plr)
+    YadsanLibrary.connect("anti_invis_player_added", g.Players.PlayerAdded:Connect(function(plr)
         if not g.Anti_Invisible_Players_Currently_Active then return end
         fix_invisible(plr)
     end))
 
-    FlamesLibrary.connect("anti_invis_char_added", g.Players.PlayerAdded:Connect(function(plr)
+    YadsanLibrary.connect("anti_invis_char_added", g.Players.PlayerAdded:Connect(function(plr)
         plr.CharacterAdded:Connect(function()
             if not g.Anti_Invisible_Players_Currently_Active then return end
             task.wait(0.5)
@@ -10313,7 +10313,7 @@ g.Anti_Invisible_Players = function(state)
         end)
     end))
 
-    FlamesLibrary.spawn("anti_invis_loop", "spawn", function()
+    YadsanLibrary.spawn("anti_invis_loop", "spawn", function()
         while g.Anti_Invisible_Players_Currently_Active == true do
             for _, plr in ipairs(g.Players:GetPlayers()) do
                 if plr ~= g.LocalPlayer then
@@ -10616,7 +10616,7 @@ local applied = g.Humanoid:GetAppliedDescription()
 local Old_Shirt = applied.Shirt
 local Old_Pants = applied.Pants
 g.glitch_outfit = g.glitch_outfit or function(toggle)
-    local FL = g.FlamesLibrary
+    local FL = g.YadsanLibrary
 
     if toggle == true then
         if g.Glitching_Outfit then g.notify("Warning", "Glitch Outfit is already enabled.", 3); return end
@@ -10741,7 +10741,7 @@ g.check_friend = g.check_friend or function(Player)
 end
 
 g.spam_create_groups = g.spam_create_groups or function(toggle)
-    local FL = g.FlamesLibrary
+    local FL = g.YadsanLibrary
     if toggle == true then
         if g.Creating_Groups then g.notify("Warning", "Group spammer is already enabled.", 3); return end
         g.group_chatting_users = g.group_chatting_users or {}
@@ -11002,7 +11002,7 @@ delay(displayTime, function()
     end)
 end)
 
-if not g.SetupGone_Through_Flames_Hub then
+if not g.SetupGone_Through_Yadsan_Hub then
     pcall(function()
         g.LocalPlayer:SetSuperSafeChat(false)
         g.LocalPlayer.CameraMaxZoomDistance = 100000
@@ -11035,7 +11035,7 @@ if not g.SetupGone_Through_Flames_Hub then
         end
     end)
 
-    g.SetupGone_Through_Flames_Hub = true
+    g.SetupGone_Through_Yadsan_Hub = true
 end
 
 if not g.SeenCommandAndCameraIntro then
@@ -11069,7 +11069,7 @@ g.automatically_remove_friends = function()
     end
 end
 
-if g.LifeTogetherRP_Admin and g.Script_Loaded_Correctly_LifeTogether_Admin_Flames_Hub and g.LifeTogether_Actual_Flames_Hub_Running_Functioning_Currently_On_Client then
+if g.LifeTogetherRP_Admin and g.Script_Loaded_Correctly_LifeTogether_Admin_Yadsan_Hub and g.LifeTogether_Actual_Yadsan_Hub_Running_Functioning_Currently_On_Client then
     g.notify("Success", "Reloaded script successfully.", 15)
 end
 
@@ -11083,10 +11083,10 @@ for _, v in ipairs(Players:GetPlayers()) do
     end
 end
 
-g.Script_Loaded_Correctly_LifeTogether_Admin_Flames_Hub = g.Script_Loaded_Correctly_LifeTogether_Admin_Flames_Hub or true
-if not g.FlamesHubPlayerEvents_Check then
-    g.FlamesHubPlayerEvents_Check = true
-    g.FlamesLibrary.connect("PlayerAdded_OwnerAdminCheck", Players.PlayerAdded:Connect(function(Player)
+g.Script_Loaded_Correctly_LifeTogether_Admin_Yadsan_Hub = g.Script_Loaded_Correctly_LifeTogether_Admin_Yadsan_Hub or true
+if not g.YadsanHubPlayerEvents_Check then
+    g.YadsanHubPlayerEvents_Check = true
+    g.YadsanLibrary.connect("PlayerAdded_OwnerAdminCheck", Players.PlayerAdded:Connect(function(Player)
         local Name = Player and Player.Name
         g.Blacklisted_Friends = g.Blacklisted_Friends or {}
         if Player:IsFriendsWith(speaker.UserId) then
@@ -11110,7 +11110,7 @@ if not g.FlamesHubPlayerEvents_Check then
         end
     end))
 
-    g.FlamesLibrary.connect("PlayerRemoving_OwnerAdminRemoval", Players.PlayerRemoving:Connect(function(Player)
+    g.YadsanLibrary.connect("PlayerRemoving_OwnerAdminRemoval", Players.PlayerRemoving:Connect(function(Player)
         local Name = Player.Name
         if Name == "Yadsan_Godverse" or Name == "L0CKED_1N1" or Name == "AuraWithClipFarmin" then
             g.notify("Info", "The owner of this script has left the server.", 5)
@@ -11128,7 +11128,7 @@ end
 local Atlas = loadstring(game:HttpGet("https://gitlab.com/flames2431233/Starter/-/raw/main/UIs/Atlas.lua?ref_type=heads", true))()
 local UI = Atlas.new({
     Name = "Yadsan Hub | Life Together RP",
-    ConfigFolder = "FlamesHub_Life_Together_RP_Menu_Configuration",
+    ConfigFolder = "YadsanHub_Life_Together_RP_Menu_Configuration",
     Color = Color3.fromRGB(220, 20, 60),
     Credit = "Yadsan Hub",
     Bind = "RightShift",
@@ -11252,10 +11252,10 @@ end,})
 
 g.create_ui_element("Toggle", Home_Section, {
 Name = "Anti Hashtags (FE) BETA!",
-Default = (FlamesLibrary.modules and FlamesLibrary.modules.chat_filter_override.enabled) or false,
+Default = (YadsanLibrary.modules and YadsanLibrary.modules.chat_filter_override.enabled) or false,
 Flag = "Anti_Hashtags_Toggle_UI",
 Callback = function(state)
-    if FlamesLibrary.modules then FlamesLibrary.modules.chat_filter_override:toggle(state) end
+    if YadsanLibrary.modules then YadsanLibrary.modules.chat_filter_override:toggle(state) end
 end}, "Anti_Hashtags_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
@@ -11836,7 +11836,7 @@ end,})
 g.create_ui_element("Button", Extras_Section, {
 Name = "Tools Menu (Pistol + Laser) (FE)",
 Callback = function()
-    g.tools_menu_for_life_together_flames_hub()
+    g.tools_menu_for_life_together_yadsan_hub()
 end,})
 
 g.create_ui_element("Input", Players_Section, {
@@ -11995,7 +11995,7 @@ Flag = "Copy_Avatar_Input_UI",
 Callback = function(split)
     local Target = g.findplr(split)
     if not Target then g.notify("Error", "That player doesn't exist in this game!", 5); return end
-    if g.is_copying_avatar_already_flames then g.notify("Warning", "Copy avatar is already running!, wait a moment, until it's done.", 5); return end
+    if g.is_copying_avatar_already_yadsan then g.notify("Warning", "Copy avatar is already running!, wait a moment, until it's done.", 5); return end
     if Target.Name == "Yadsan_Godverse" or Target.Name == "L0CKED_1N1" then g.notify("Error", "You can't copy this player's avatar!", 5); return end
     g.copy_plr_avatar(Target)
 end}, "Copy_Avatar_Input_UI")
@@ -12092,13 +12092,13 @@ end}, "Invisible_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
 Name = "Float (FE)",
-Default = g.Float_Running_In_Flames_Hub or false,
+Default = g.Float_Running_In_Yadsan_Hub or false,
 Flag = "Float_Toggle_UI",
 Callback = function(state)
     if state then
-        g.start_flames_float()
+        g.start_yadsan_float()
     else
-        g.stop_flames_float()
+        g.stop_yadsan_float()
     end
 end}, "Float_Toggle_UI")
 
@@ -12184,7 +12184,7 @@ Callback = function(state)
         g.Invisible_Flash = true
         if Is_Invis then g.InvisibleMode.enabled.set(false) end
         fw(0.1)
-        FlamesLibrary.spawn("flames_flash_invis", "spawn", function()
+        YadsanLibrary.spawn("yadsan_flash_invis", "spawn", function()
             while g.Invisible_Flash == true do
                 g.InvisibleMode.enabled.set(true)
                 fw(0.05)
@@ -12195,7 +12195,7 @@ Callback = function(state)
         end)
     else
         g.Invisible_Flash = false
-        FlamesLibrary.disconnect("flames_flash_invis")
+        YadsanLibrary.disconnect("yadsan_flash_invis")
     end
 end}, "Flash_Invis_Toggle_UI")
 
@@ -12246,7 +12246,7 @@ Flag = "Anti_House_Ban_Toggle_UI",
 Callback = function(state)
     if state then
         if g.never_banned_houses or g.AntiTeleport then g.notify("Error", "AntiHouseBan / AntiTeleport is already enabled.", 6); return end
-        local lib = g.FlamesLibrary
+        local lib = g.YadsanLibrary
         g.never_banned_houses = true
         g.AntiTeleport = true
         local LocalPlayer = g.LocalPlayer or Players.LocalPlayer
@@ -12304,7 +12304,7 @@ Callback = function(state)
         g.notify("Success", "Yadsan Hub | Anti-House-Ban V2 is now enabled.", 7)
     else
         if not g.never_banned_houses and not g.AntiTeleport then g.notify("Warning", "AntiHouseBan is not enabled.", 5); return end
-        local lib = g.FlamesLibrary
+        local lib = g.YadsanLibrary
         lib.disconnect("AntiHouseBan_CharAdded")
         lib.disconnect("AntiHouseBan_Heartbeat")
         lib.disconnect("AntiHouseBan_PlotLoop")
@@ -12372,10 +12372,10 @@ Default = g.walkflinging or false,
 Flag = "Walk_Fling_Toggle_UI",
 Callback = function(state)
     if state then
-        local fn = g.FlamesLibrary.safe_func(g.StartWalkFling)
+        local fn = g.YadsanLibrary.safe_func(g.StartWalkFling)
         fn()
     else
-        local fn = g.FlamesLibrary.safe_func(g.StopWalkFling)
+        local fn = g.YadsanLibrary.safe_func(g.StopWalkFling)
         fn()
     end
 end}, "Walk_Fling_Toggle_UI")
@@ -12397,7 +12397,7 @@ Callback = function(state)
         if g.Auto_Calls_Blocker_V3_Is_Enabled_Boolean_Flag then g.notify("Warning", "You already have Calls_Blocker_V3 enabled!", 5); return end
         g.notify("Success", "Calls_Blocker_V3 has been enabled.", 5)
         g.Auto_Calls_Blocker_V3_Is_Enabled_Boolean_Flag = true
-        g.FlamesLibrary.spawn("calls_blocker", "spawn", function()
+        g.YadsanLibrary.spawn("calls_blocker", "spawn", function()
             local net = g.Net
             local incoming_hook
             local emergency_hook
@@ -12417,7 +12417,7 @@ Callback = function(state)
                 incoming = incoming_hook,
                 emergency = emergency_hook
             }
-            while g.FlamesLibrary.is_alive("calls_blocker") do
+            while g.YadsanLibrary.is_alive("calls_blocker") do
                 fw(1)
             end
         end)
@@ -12436,7 +12436,7 @@ Callback = function(state)
             g.calls_blocker_hooks = nil
         end
         g.Auto_Calls_Blocker_V3_Is_Enabled_Boolean_Flag = false
-        g.FlamesLibrary.disconnect("calls_blocker")
+        g.YadsanLibrary.disconnect("calls_blocker")
         g.notify("Success", "Calls_Blocker_V3 has been disabled.", 5)
     end
 end}, "Block_Calls_Toggle_UI")
@@ -12588,7 +12588,7 @@ Callback = function(split)
     if not g.get_other_vehicle(Player_To_RGB_Car) then g.notify("Error", "Player does not have a Vehicle spawned!", 5); return end
     local checker = g.check_friend(Player_To_RGB_Car)
     if not checker or checker ~= true then g.notify("Error", "Player is not your friend, add them to use this!", 5); return end
-    if g.FlamesLibrary.is_alive("rainbow_car_" .. Player_To_RGB_Car.Name) then g.notify("Error", "Player already has their car rainbow!", 5); return end
+    if g.YadsanLibrary.is_alive("rainbow_car_" .. Player_To_RGB_Car.Name) then g.notify("Error", "Player already has their car rainbow!", 5); return end
     local colors = {
         Color3.fromRGB(255, 255, 255), Color3.fromRGB(128, 128, 128),
         Color3.fromRGB(0, 0, 0), Color3.fromRGB(0, 0, 255),
@@ -12599,17 +12599,17 @@ Callback = function(split)
         Color3.fromRGB(128, 0, 128),
     }
     local thread_name = "rainbow_car_" .. Player_To_RGB_Car.Name
-    g.FlamesLibrary.spawn(thread_name, "spawn", function()
-        while g.FlamesLibrary.is_alive(thread_name) do
+    g.YadsanLibrary.spawn(thread_name, "spawn", function()
+        while g.YadsanLibrary.is_alive(thread_name) do
             fw(0.2)
             local current_plr = g.Players:FindFirstChild(Player_To_RGB_Car.Name)
             if not current_plr then
-                g.FlamesLibrary.disconnect(thread_name)
+                g.YadsanLibrary.disconnect(thread_name)
                 g.notify("Error", "Player must have left the game.", 5)
                 return
             end
             for _, color in ipairs(colors) do
-                if not g.FlamesLibrary.is_alive(thread_name) then break end
+                if not g.YadsanLibrary.is_alive(thread_name) then break end
                 fw(0.2)
                 g.change_vehicle_color(color, g.get_other_vehicle(current_plr))
             end
@@ -12629,8 +12629,8 @@ Callback = function(split)
     local checker = g.check_friend(Player_To_RGB_Car_Stop) or Player_To_RGB_Car_Stop:IsFriendsWith(g.LocalPlayer.UserId)
     if checker ~= true then g.notify("Error", "Player is not your friend, add them to use this!", 5) end
     local thread_name = "rainbow_car_" .. Player_To_RGB_Car_Stop.Name
-    if not g.FlamesLibrary.is_alive(thread_name) then g.notify("Warning", "This Player does not have Rainbow Vehicle enabled.", 6); return end
-    g.FlamesLibrary.disconnect(thread_name)
+    if not g.YadsanLibrary.is_alive(thread_name) then g.notify("Warning", "This Player does not have Rainbow Vehicle enabled.", 6); return end
+    g.YadsanLibrary.disconnect(thread_name)
     g.disable_rgb_for(Player_To_RGB_Car_Stop)
     g.notify("Success", "Disabled Rainbow Vehicle for: " .. Player_To_RGB_Car_Stop.Name, 5)
 end}, "Stop_Rainbow_Car_Friend_Input_UI")
@@ -12739,7 +12739,7 @@ if executor_contains("delta") then
     Default = g.Is_Deltas_Icon_Currently_Toggled or false,
     Flag = "Hide_Delta_Toggle_UI",
     Callback = function(state)
-        g.toggle_delta_image_button_flames_hub(not state)
+        g.toggle_delta_image_button_yadsan_hub(not state)
     end}, "Hide_Delta_Toggle_UI")
 end
 
@@ -12764,7 +12764,7 @@ Name = "FPS Boost",
 Default = g.ultimate_lag_reducer or false,
 Flag = "FPS_Boost_Toggle_UI",
 Callback = function(state)
-    g.FlamesLagReducerFunc(state)
+    g.YadsanLagReducerFunc(state)
 end}, "FPS_Boost_Toggle_UI")
 
 g.create_ui_element("Toggle", Extras_Section, {
@@ -12803,13 +12803,13 @@ Default = g.firehidden or false,
 Flag = "Anti_Fire_Toggle_UI",
 Callback = function(state)
     if state then
-        if g.firehidden then g.notify("Warning", "Flames Anti-Fire Spammer V3 is already enabled.", 6); return end
-        if g.spamming_all_that_fire then g.notify("Warning", "Flames Spammer is enabled, disable it first!", 10); return end
-        g.notify("Success", "Flames Anti-Fire Spammer V3 is now enabled.", 6)
+        if g.firehidden then g.notify("Warning", "Yadsan Anti-Fire Spammer V3 is already enabled.", 6); return end
+        if g.spamming_all_that_fire then g.notify("Warning", "Yadsan Spammer is enabled, disable it first!", 10); return end
+        g.notify("Success", "Yadsan Anti-Fire Spammer V3 is now enabled.", 6)
         g.set_fire_state(true)
     else
-        if not g.firehidden then g.notify("Warning", "Flames Anti-Fire Spammer V3 is not enabled.", 6); return end
-        g.notify("Success", "Flames Anti-Fire Spammer V3 is now disabled.", 6)
+        if not g.firehidden then g.notify("Warning", "Yadsan Anti-Fire Spammer V3 is not enabled.", 6); return end
+        g.notify("Success", "Yadsan Anti-Fire Spammer V3 is now disabled.", 6)
         g.set_fire_state(false)
     end
 end}, "Anti_Fire_Toggle_UI")
@@ -13085,10 +13085,10 @@ end,})
 g.create_ui_element("Button", Extras_Section, {
 Name = "Debugger",
 Callback = function()
-    if g.Flames_Debugger_Function_Tester_GUI then
-        pcall(function() g.Flames_Debugger_Function_Tester_GUI() end)
+    if g.Yadsan_Debugger_Function_Tester_GUI then
+        pcall(function() g.Yadsan_Debugger_Function_Tester_GUI() end)
     else
-        g.notify("Error", "Flames Debugger function not found or was not created at runtime.", 10)
+        g.notify("Error", "Yadsan Debugger function not found or was not created at runtime.", 10)
     end
 end,})
 
@@ -13125,13 +13125,13 @@ end,})
 g.create_ui_element("Button", Extras_Section, {
 Name = "Nameless Admin",
 Callback = function()
-    g.flames_nameless_admin_ver()
+    g.yadsan_nameless_admin_ver()
 end,})
 
 g.Toggle_Fire_Spam = g.create_ui_element("Toggle", Extras_Section, {
-Name = "Flames (FE)",
+Name = "Yadsan (YS)",
 Default = g.spamming_all_that_fire or false,
-Flag = "Flames_Toggle_UI",
+Flag = "Yadsan_Toggle_UI",
 Callback = function(state)
     if state then
         if g.LocalPlayer:GetAttribute("is_verified") == false then
@@ -13139,19 +13139,19 @@ Callback = function(state)
             g.notify("Error", "You need actual LifePay premium to run this!", 5)
             return
         end
-        if g.spamming_flames and typeof(g.spamming_flames) == "function" then
-            g.spamming_flames(true)
+        if g.spamming_yadsan and typeof(g.spamming_yadsan) == "function" then
+            g.spamming_yadsan(true)
         else
-            g.notify("Error", "Function: g.spamming_flames does not exist.", 3); return
+            g.notify("Error", "Function: g.spamming_yadsan does not exist.", 3); return
         end
     else
-        if g.spamming_flames and typeof(g.spamming_flames) == "function" then
-            g.spamming_flames(false)
+        if g.spamming_yadsan and typeof(g.spamming_yadsan) == "function" then
+            g.spamming_yadsan(false)
         else
-            g.notify("Error", "Function: g.spamming_flames does not exist.", 3); return
+            g.notify("Error", "Function: g.spamming_yadsan does not exist.", 3); return
         end
     end
-end}, "Flames_Toggle_UI")
+end}, "Yadsan_Toggle_UI")
 
 g.create_ui_element("Input", Extras_Section, {
 Name = "Spawn Fire (FE)",
@@ -13161,9 +13161,9 @@ Callback = function(split)
     local amount = tonumber(split) or 5
     local is_verified = g.LocalPlayer:GetAttribute("is_verified")
     if not is_verified then g.notify("Error", "You do not have premium, you cannot run this!", 8); return end
-    g.HasSeen_Fire_AlertFlamesHub = g.HasSeen_Fire_AlertFlamesHub or false
+    g.HasSeen_Fire_AlertYadsanHub = g.HasSeen_Fire_AlertYadsanHub or false
     g.set_fire_amount_FE(amount)
-    g.HasSeen_Fire_AlertFlamesHub = true
+    g.HasSeen_Fire_AlertYadsanHub = true
     fw(0.2)
     for i = 1, amount do g.Send("request_fire") end
 end}, "Spawn_Fire_Input_UI")
@@ -13329,7 +13329,7 @@ end}, "Car_Color_Picker_UI")
 
 g.create_ui_element("Toggle", Players_Section, {
 Name = "Player ESP",
-Default = g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled or false,
+Default = g.Yadsan_Hub_Player_ESP_Core_Has_Been_Enabled or false,
 Flag = "Player_ESP_Toggle_UI",
 Callback = function(state)
     if state then
@@ -13341,7 +13341,7 @@ end}, "Player_ESP_Toggle_UI")
 
 g.create_ui_element("Toggle", Players_Section, {
 Name = "Tracer ESP",
-Default = g.tracer_esp_currently_running_flag_Flames_Hub or false,
+Default = g.tracer_esp_currently_running_flag_Yadsan_Hub or false,
 Flag = "Tracer_ESP_Toggle_UI",
 Callback = function(state)
     if state then
@@ -13360,7 +13360,7 @@ g.print_bytes = function(label, s)
     print(label .. ": " .. table.concat(bytes, ","))
 end
 local function clean(s) return s:gsub("[%c%z%s]", ""):gsub("[^\32-\126]", "") end
-local script_url = "https://gitlab.com/flames2431233/Starter/-/raw/main/Experiences/13967668166.lua?ref_type=heads"
+local script_url = "https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/13967668166_RED.lua.txt"
 local version_url = "https://gitlab.com/flames2431233/Starter/-/raw/main/Assets/Script_Versions_JSON.json?ref_type=heads"
 local function ws_get_version()
     local http_req = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
@@ -13449,7 +13449,7 @@ if not g.lta_updater_running then
                 g.lta_updater_running = false
                 Notify("[UPDATE DETECTED]:\nLocal: " .. local_version .. "\nServer: " .. remote_version .. "\nReloading...", 6)
                 task.wait(0.6)
-                g.LifeTogether_Actual_Flames_Hub_Running_Functioning_Currently_On_Client = false
+                g.LifeTogether_Actual_Yadsan_Hub_Running_Functioning_Currently_On_Client = false
                 g.Script_Version = nil
                 g.LifeTogetherRP_Admin = false
                 pcall(function()
