@@ -1024,7 +1024,7 @@ end
 -- [[ you can use these, or you can modify the source code from each one and upload it to your own GitHub. ]] --
 local github_urls = {
     GlobalEnv_Framework = {
-        "https://gitlab.com/flames2431233/Starter/-/raw/main/Assets/Global_Environment.lua?ref_type=heads"
+        "https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Global_Environment.txt"
     },
     Functions_API_LifeTogether = {
         "https://gitlab.com/flames2431233/Starter/-/raw/main/Life_Together_Framework/Life_Together_Functions_API.lua?ref_type=heads"
