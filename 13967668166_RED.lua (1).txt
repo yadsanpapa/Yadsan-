@@ -1024,7 +1024,7 @@ end
 -- [[ you can use these, or you can modify the source code from each one and upload it to your own GitHub. ]] --
 local github_urls = {
     GlobalEnv_Framework = {
-        "https://gitlab.com/flames2431233/Starter/-/raw/main/Assets/Global_Environment.lua?ref_type=heads"
+        "https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Global_Environment.txt"
     },
     Functions_API_LifeTogether = {
         "https://gitlab.com/flames2431233/Starter/-/raw/main/Life_Together_Framework/Life_Together_Functions_API.lua?ref_type=heads"
@@ -2146,7 +2146,7 @@ local TeleportCheck = false
 g.Teleport_Checker_For_Script = g.LocalPlayer.OnTeleport:Connect(function(State)
 	if not TeleportCheck and queueteleport and typeof(queueteleport) == "function" then
 		TeleportCheck = true
-		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/EnterpriseExperience/Flames_Hub_Games/refs/heads/main/Experiences/13967668166.lua'))()")
+		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/13967668166_RED.lua%20(1).txt'))()")
 	end
 end)
 
@@ -13360,7 +13360,7 @@ g.print_bytes = function(label, s)
     print(label .. ": " .. table.concat(bytes, ","))
 end
 local function clean(s) return s:gsub("[%c%z%s]", ""):gsub("[^\32-\126]", "") end
-local script_url = "https://gitlab.com/flames2431233/Starter/-/raw/main/Experiences/13967668166.lua?ref_type=heads"
+local script_url = "https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/13967668166_RED.lua%20(1).txt"
 local version_url = "https://gitlab.com/flames2431233/Starter/-/raw/main/Assets/Script_Versions_JSON.json?ref_type=heads"
 local function ws_get_version()
     local http_req = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
