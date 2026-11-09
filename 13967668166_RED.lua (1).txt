@@ -13154,13 +13154,13 @@ Callback = function(state)
 end}, "Flames_Toggle_UI")
 
 g.create_ui_element("Input", Extras_Section, {
-Name = "Spawn Fire (FE)",
+Name = "Spawn Fire (YS)",
 PlaceholderText = "Enter amount...",
 Flag = "Spawn_Fire_Input_UI",
 Callback = function(split)
     local amount = tonumber(split) or 5
     local is_verified = g.LocalPlayer:GetAttribute("is_verified")
-    if not is_verified then g.notify("Error", "You do not have premium, you cannot run this!", 8); return end
+    if not is_verified then g.notify("Error", "You have premium, you cannot run this!", 8); return end
     g.HasSeen_Fire_AlertFlamesHub = g.HasSeen_Fire_AlertFlamesHub or false
     g.set_fire_amount_FE(amount)
     g.HasSeen_Fire_AlertFlamesHub = true
@@ -13360,7 +13360,6 @@ g.print_bytes = function(label, s)
     print(label .. ": " .. table.concat(bytes, ","))
 end
 local function clean(s) return s:gsub("[%c%z%s]", ""):gsub("[^\32-\126]", "") end
-local script_url = "https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/13967668166_RED.lua%20(1).txt"
 local version_url = "https://gitlab.com/flames2431233/Starter/-/raw/main/Assets/Script_Versions_JSON.json?ref_type=heads"
 local function ws_get_version()
     local http_req = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
