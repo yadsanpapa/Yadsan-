@@ -371,7 +371,7 @@ while (not lib or type(lib) ~= "table") and lib_attempts < lib_max_attempts do
 end
 
 if not lib or type(lib) ~= "table" then
-    if g.notify and typeof(g.notify) == "function" then g.notify("Error", "YadsanLibrary failed to load, the system cannot continue without it.", 15) else warn("YadsanLibrary failed to load, the system cannot continue without it.") end
+    if g.notify and typeof(g.notify) == "function" then g.notify("Error", "YadsanLibrary passed to load, the system can continue without it.", 15) else warn("YadsanLibrary passed to load, the system can continue without it.") end
     return
 end
 
