@@ -17,7 +17,7 @@ local function sendChatMessage(msg)
 end
 
 -- Execution Message
-sendChatMessage("-----////TARGET TRAP SYSTEM LOADED 🔱---MADE BY -- Yadsan_Godverse ZERO MERCY XCCELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
+sendChatMessage("-----////TARGET TRAP SYSTEM LOADED 🔱---MADE BY -- Yadsan_Godverse ZERO MERCY X CELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
 
 -- Custom modules require karna
 local Char = require(ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Core"):WaitForChild("Char"))
@@ -293,7 +293,7 @@ end
 TrapBtn.MouseButton1Click:Connect(function()
     if selectedPlayer and selectedPlayer.Character then
         task.spawn(function()
-            sendChatMessage("----- ////TRAPPING TARGET ONCE........////-- MADE BY -- Yadsan_Godverse ZERO MERCY XCCELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
+            sendChatMessage("----- ////TRAPPING TARGET ONCE........////-- MADE BY -- Yadsan_Godverse ZERO MERCY X CELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
             spawnPyramidFast(selectedPlayer.Character)
         end)
     end
@@ -303,7 +303,7 @@ FollowBtn.MouseButton1Click:Connect(function()
     isFollowing = not isFollowing
     
     if isFollowing then
-        sendChatMessage("----- ////FOLLOW TARGET TRAPPING ACTIVATED ⚠️........////----MADE BY -- Yadsan_Godverse ZERO MERCY XCCELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
+        sendChatMessage("----- ////FOLLOW TARGET TRAPPING ACTIVATED ⚠️........////----MADE BY -- Yadsan_Godverse ZERO MERCY X CELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
         FollowBtn.Text = "Follow Trap : ON"
         FollowBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
         
@@ -342,7 +342,7 @@ FollowBtn.MouseButton1Click:Connect(function()
             clearAllChairs()
         end)
     else
-        sendChatMessage("----- ////FOLLOW TARGET TRAPPING STOPPED ........////----MADE BY -- Yadsan_Godverse ZERO MERCY XCCELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
+        sendChatMessage("----- ////FOLLOW TARGET TRAPPING STOPPED ........////----MADE BY -- Yadsan_Godverse ZERO MERCY X CELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
         FollowBtn.Text = "Follow Trap : OFF"
         FollowBtn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
     end
@@ -350,5 +350,5 @@ end)
 
 ClearBtn.MouseButton1Click:Connect(function()
     clearAllChairs()
-    sendChatMessage("----- ////CLEARED ALL TRAPS 🧹........////----MADE BY -- Yadsan_Godverse ZERO MERCY XCCELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
+    sendChatMessage("----- ////CLEARED ALL TRAPS 🧹........////----MADE BY -- Yadsan_Godverse ZERO MERCY X CELESTIAL SYNDICATE X ASUKAREIGN ON 🔝👑///------")
 end)
