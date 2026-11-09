@@ -8775,6 +8775,11 @@ g.flames_nameless_admin_ver = g.flames_nameless_admin_ver or function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))()
 end
 
+g.MegaVerse = g.MegaVerse or function()
+    if g.RealMegaVerseLoaded then g.notify("Warning", "MegaVerse (or the Yadsan Hub version) has already been loaded.", 11); return  end
+    loadstring(game:HttpGet('https://scriptblox.com/raw/NewSmith-RP-Lakshy-Hub-V3-232517'))()
+end
+
 g.infinite_premium = g.infinite_premium or function()
     if g.GET_LOADED_IY then g.notify("Warning", "You already have Infinite Premium running.", 5); return end
     if g.IY_LOADED then g.notify("Warning", "You already have Infinite Yield running! You cannot and should NOT run both at the same time.", 10); return end
