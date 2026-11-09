@@ -2778,7 +2778,7 @@ end
 g.server_lock_toggle = g.server_lock_toggle or function(toggle)
     if not g.is_localplayer_server_owner() then g.notify("Error", "You are not the private server owner!", 5); return end
     g.server_whitelist = g.server_whitelist or {}
-    if not g.server_whitelist["SUPERMONKXSCRIPTS"] then g.server_whitelist["Yadsan_Godverse"] = true end
+    if not g.server_whitelist["Yadsan_Godverse"] then g.server_whitelist["Yadsan_Godverse"] = true end
     local function should_kick(v)
         if v == g.LocalPlayer then return false end
         if g.server_whitelist[v.Name] then return false end
@@ -2789,7 +2789,7 @@ g.server_lock_toggle = g.server_lock_toggle or function(toggle)
         if g.server_lock_enabled then g.notify("Warning", "Server-Lock is already enabled!", 5); return end
         if not workspace:FindFirstChildOfClass("Hint") then
             local hint_instance = Instance.new("Hint")
-            hint_instance.Text = "MonK Hub - ServerLock V2 is now enabled."
+            hint_instance.Text = "Yadsan Hub - ServerLock V2 is now enabled."
             if typeof(workspace) == "Instance" and workspace:IsDescendantOf(game) then hint_instance.Parent = workspace end
         end
 
@@ -2936,9 +2936,9 @@ g.weather_flasher_loop = g.weather_flasher_loop or function(toggle)
     local fw = g.FlamesLibrary.wait
 
     if toggle == true then
-        if g.changing_weather_on_repeat then g.notify("Warning", "MonK Hub - Weather Flasher is already enabled!", 5); return end
+        if g.changing_weather_on_repeat then g.notify("Warning", "Yadsan Hub - Weather Flasher is already enabled!", 5); return end
         g.changing_weather_on_repeat = true
-        g.notify("Success", "MonK Hub - Weather Flasher is now enabled.", 5)
+        g.notify("Success", "Yadsan Hub - Weather Flasher is now enabled.", 5)
         g.FlamesLibrary.spawn("weather_loop_repeater", "spawn", function()
             while g.changing_weather_on_repeat == true do
             fw(0)
@@ -2950,10 +2950,10 @@ g.weather_flasher_loop = g.weather_flasher_loop or function(toggle)
             end
         end)
     elseif toggle == false then
-        if not g.changing_weather_on_repeat then g.notify("Warning", "MonK Hub - Weather Flasher is not enabled!", 5); return end
+        if not g.changing_weather_on_repeat then g.notify("Warning", "Yadsan Hub - Weather Flasher is not enabled!", 5); return end
         g.changing_weather_on_repeat = false
         g.FlamesLibrary.disconnect("weather_loop_repeater")
-        g.notify("Success", "MonK Hub - Weather Flasher is now disabled.", 5)
+        g.notify("Success", "Yadsan Hub - Weather Flasher is now disabled.", 5)
     else
         return 
     end
@@ -3152,7 +3152,7 @@ end
 
 local Bindable
 if not allowed[LocalPlayer.Name] then Bindable = g.create_bindable() end
-if allowed[LocalPlayer.Name] then g.notify("Success", "You're an Administrator/Staff in MonK Hub, you can do our PRIVATE commands by doing: ?flamescmds in the chat.", 15) end
+if allowed[LocalPlayer.Name] then g.notify("Success", "You're an Administrator/Staff in Yadsan Hub, you can do our PRIVATE commands by doing: ?flamescmds in the chat.", 15) end
 g.current_worn_cached_clothing_items = g.current_worn_cached_clothing_items or {}
 g.GetWornAssetId = g.GetWornAssetId or function(AssetType)
     local Humanoid = g.LocalPlayer.Character and g.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
@@ -3336,7 +3336,7 @@ local commands = {
         run = function(args)
             local target = args[2]
             if not g.is_me(target) then return end
-            LocalPlayer:Kick("The owner of MonK Hub or an official Administrator/Staff of MonK Hub has kicked you.")
+            LocalPlayer:Kick("The owner of Yadsan Hub or an official Administrator/Staff of Yadsan Hub has kicked you.")
             wait(3)
             while true do end
         end
@@ -3586,7 +3586,7 @@ g.commands_menu_for_administrators_and_staffs = g.commands_menu_for_administrato
     Subtitle.Size = UDim2.new(1, -10, 0, 20)
     Subtitle.Position = UDim2.new(0, 5, 0, 35)
     Subtitle.BackgroundTransparency = 1
-    Subtitle.Text = "Commands only work on other MonK Hub users."
+    Subtitle.Text = "Commands only work on other Yadsan Hub users."
     Subtitle.TextColor3 = Color3.fromRGB(180, 180, 180)
     Subtitle.TextScaled = true
     Subtitle.Font = Enum.Font.Gotham
@@ -5068,9 +5068,9 @@ end
 
 g.RGB_Vehicle = g.RGB_Vehicle or function(state)
     if state == true then
-        if g.Rainbow_Vehicle then g.notify("Warning", "MonK Hub | Rainbow Vehicle is already enabled.", 5); return end
+        if g.Rainbow_Vehicle then g.notify("Warning", "Yadsan Hub | Rainbow Vehicle is already enabled.", 5); return end
         g.Rainbow_Vehicle = true
-        g.notify("Success", "MonK Hub | Rainbow Vehicle is now enabled.", 5)
+        g.notify("Success", "Yadsan Hub | Rainbow Vehicle is now enabled.", 5)
         lib.spawn("rgb_vehicle", "spawn", function()
             while g.Rainbow_Vehicle == true do
                 for _, color in ipairs(g.colors) do
@@ -5082,12 +5082,12 @@ g.RGB_Vehicle = g.RGB_Vehicle or function(state)
         end)
     elseif state == false then
         if not g.Rainbow_Vehicle then
-            if g.notify and typeof(g.notify) == "function" then g.notify("Warning", "MonK Hub | Rainbow Vehicle is not enabled.", 5) end
+            if g.notify and typeof(g.notify) == "function" then g.notify("Warning", "Yadsan Hub | Rainbow Vehicle is not enabled.", 5) end
             return
         end
         g.Rainbow_Vehicle = false
         lib.disconnect("rgb_vehicle")
-        g.notify("Success", "MonK Hub | Rainbow Vehicle is now disabled.", 5)
+        g.notify("Success", "Yadsan Hub | Rainbow Vehicle is now disabled.", 5)
     else
         return 
     end
@@ -5101,7 +5101,7 @@ g.two_color_switcher_FE_func = g.two_color_switcher_FE_func or function(state)
         local c1 = g.colors[math.random(1,#g.colors)]
         local c2 = g.colors[math.random(1,#g.colors)]
         while c1 == c2 do c2 = g.colors[math.random(1,#g.colors)] end
-        g.notify("Success", "MonK Hub | Two Tone Vehicle is now enabled.", 5)
+        g.notify("Success", "Yadsan Hub | Two Tone Vehicle is now enabled.", 5)
         lib.spawn("two_color_vehicle","spawn",function()
             while g.two_tone_vehicle_colors_changing == true do
                 fw(0.1)
@@ -5116,7 +5116,7 @@ g.two_color_switcher_FE_func = g.two_color_switcher_FE_func or function(state)
         if not g.two_tone_vehicle_colors_changing then g.notify("Warning", "Two Color Switcher not enabled.", 5); return end
         g.two_tone_vehicle_colors_changing = false
         lib.disconnect("two_color_vehicle")
-        g.notify("Success", "MonK Hub | Two Tone Vehicle is now disabled.", 5)
+        g.notify("Success", "Yassan Hub | Two Tone Vehicle is now disabled.", 5)
     end
 end
 
@@ -5430,7 +5430,7 @@ g.rainbow_skin = g.rainbow_skin or function(state)
     local bodycolors = char and char:FindFirstChildOfClass("BodyColors")
     if not bodycolors then return end
     if state == true then
-        if g.rainbow_skintone_currently_enabled then g.notify("Warning", "MonK Hub - Rainbow Skin is already enabled.", 5); return end
+        if g.rainbow_skintone_currently_enabled then g.notify("Warning", "Yadsan Hub - Rainbow Skin is already enabled.", 5); return end
         g.original_skintone = {
             HeadColor3 = bodycolors.HeadColor3,
             LeftArmColor3 = bodycolors.LeftArmColor3,
@@ -5440,7 +5440,7 @@ g.rainbow_skin = g.rainbow_skin or function(state)
             TorsoColor3 = bodycolors.TorsoColor3
         }
 
-        g.notify("Success", "MonK Hub | Rainbow Skin is now enabled.", 5)
+        g.notify("Success", "Yadsan Hub | Rainbow Skin is now enabled.", 5)
         lib.spawn(name, "spawn", function()
             while true do
                 for _, c in ipairs(g.colors) do
@@ -5468,7 +5468,7 @@ g.rainbow_skin = g.rainbow_skin or function(state)
             g.send_remote("skin_tone", old.TorsoColor3)
             g.notify("Success", "Reset SkinTone back to your old SkinTone.", 3)
         end
-        g.notify("Success", "MonK Hub | Rainbow Skin is now disabled.", 5)
+        g.notify("Success", "Yadsan Hub | Rainbow Skin is now disabled.", 5)
     end
 end
 
@@ -5493,7 +5493,7 @@ g.two_tone_skin = g.two_tone_skin or function(state)
         local c1 = g.colors[math.random(1, #g.colors)]
         local c2 = g.colors[math.random(1, #g.colors)]
         while c2 == c1 do c2 = g.colors[math.random(1, #g.colors)] end
-        g.notify("Success", "MonK Hub | Two Tone Skin is now enabled.", 5)
+        g.notify("Success", "Yadsan Hub | Two Tone Skin is now enabled.", 5)
         g.Two_Tone_Skin_Tone_Loop_Toggled = true
         lib.spawn(name, "spawn", function()
             while g.Two_Tone_Skin_Tone_Loop_Toggled == true do
@@ -5522,7 +5522,7 @@ g.two_tone_skin = g.two_tone_skin or function(state)
             g.Send("skin_tone", old.TorsoColor3)
             g.notify("Success", "Reset skintone back to original.", 3)
         end
-        g.notify("Success", "MonK Hub | Two Tone Skin is now disabled.", 5)
+        g.notify("Success", "Yadsan Hub | Two Tone Skin is now disabled.", 5)
     end
 end
 
@@ -5544,7 +5544,7 @@ g.name_changer_premium = g.name_changer_premium or function(state)
     }
 
     if state == true then
-        if g.Name_Spammer_Currently_Enabled then g.notify("Warning", "MonK Hub | Name Spammer is already enabled.", 5); return end
+        if g.Name_Spammer_Currently_Enabled then g.notify("Warning", "Yadsan Hub | Name Spammer is already enabled.", 5); return end
         g.Name_Spammer_Currently_Enabled = true
         Old_Name_From_Name_Spammer = g.LocalPlayer:GetAttribute("roleplay_name") or "SERVER"
         local index = 1
@@ -5560,7 +5560,7 @@ g.name_changer_premium = g.name_changer_premium or function(state)
 
         g.notify("Success", "Name Spammer is now enabled.", 3)
     elseif state == false then
-        if not g.Name_Spammer_Currently_Enabled then g.notify("Warning", "MonK Hub | Name Spammer is not enabled.", 5); return end
+        if not g.Name_Spammer_Currently_Enabled then g.notify("Warning", "Yadsan Hub | Name Spammer is not enabled.", 5); return end
         g.Name_Spammer_Currently_Enabled = false
         lib.disconnect(name)
         fw(0.1)
@@ -5614,7 +5614,7 @@ g.anti_outfit_copier = function(toggle)
     if toggle == true then
         if g.anti_outfit_stealer then g.notify("Error", "Anti Outfit Stealer is already enabled!", 5); return end
         if g.FlamesLibrary.is_alive("AntiFitStealerConn") then g.notify("Error", "Anti Outfit Stealer is already enabled! [connection].", 5); return end
-        g.notify("Success", "MonK Hub | Anti Outfit Stealer is now active.", 7)
+        g.notify("Success", "Yadsan Hub | Anti Outfit Stealer is now active.", 7)
         local lib = g.FlamesLibrary
         g.ToggleAntiFit_Stealer = g.ToggleAntiFit_Stealer or function(state)
             if not state then
@@ -5627,11 +5627,11 @@ g.anti_outfit_copier = function(toggle)
                 end
             else
                 g.anti_outfit_stealer = true
-                g.Send("bio", "`~ MonK Hub Anti Stealer Is Enabled ~`")
+                g.Send("bio", "`~ Yadsan Hub Anti Stealer Is Enabled ~`")
             end
 
             local last_check = 0
-            local target_bio = "`~ MonK Hub Anti Stealer Is Enabled ~`"
+            local target_bio = "`~ Yadsan Hub Anti Stealer Is Enabled ~`"
             lib.connect("AntiFitStealerConn", g.RunService.Heartbeat:Connect(function()
                 local now = tick()
                 if now - last_check < 0.4 then return end
@@ -5726,7 +5726,7 @@ end
 g.Spam_Survey_Completions = function(state)
     if state == true then
         g.Spam_And_Spoof_Survey_Submissions = true
-        g.notify("Success", "MonK Hub | Life Together RP survey spammer is now active.", 3)
+        g.notify("Success", "Yadsan Hub | Life Together RP survey spammer is now active.", 3)
         FlamesLibrary.spawn("spam_survey_completions", "spawn", function()
             while g.Spam_And_Spoof_Survey_Submissions == true do
             task.wait(0)
@@ -5767,7 +5767,7 @@ g.Spam_Survey_Completions = function(state)
     elseif state == false then
         g.Spam_And_Spoof_Survey_Submissions = false
         FlamesLibrary.disconnect("spam_survey_completions")
-        g.notify("Success", "MonK Hub | Life Together RP survey spammer is now disabled.", 3)
+        g.notify("Success", "Yadsan Hub | Life Together RP survey spammer is now disabled.", 3)
     else
         return 
     end
@@ -5835,9 +5835,9 @@ g.ToggleAutoLock = g.AutoLockConnection or function(state)
         local car = g.get_vehicle()
         if car and car:GetAttribute("locked") == true then
             g.lock_vehicle(car)
-            g.notify("Success", "MonK Hub | Auto Lock Vehicle is now disabled.", 5)
+            g.notify("Success", "Yadsan Hub | Auto Lock Vehicle is now disabled.", 5)
         else
-            g.notify("Warning", "MonK Hub | Auto Lock Vehicle is now disabled, vehicle not found.", 5)
+            g.notify("Warning", "Yadsan Hub | Auto Lock Vehicle is now disabled, vehicle not found.", 5)
         end
         return 
     else
@@ -5846,7 +5846,7 @@ g.ToggleAutoLock = g.AutoLockConnection or function(state)
         g.AutoLockOn = true
     end
 
-    g.notify("Success", "MonK Hub | Auto Lock Vehicle is now enabled.", 5)
+    g.notify("Success", "Yadsan Hub | Auto Lock Vehicle is now enabled.", 5)
     g.AutoLockConnection = g.RunService.Heartbeat:Connect(function()
         if tick() - (g._lastLockCheck or 0) < 1 then return end
         g._lastLockCheck = tick()
@@ -5903,7 +5903,7 @@ if not g.player_esp_core then
 
     local function untrack_player(plr) remove_esp(plr); FlamesLibrary.disconnect("esp_char_" .. tostring(plr.UserId)) end
     g.enable_player_esp = function()
-        if g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled then g.notify("Warning", "MonK Hub Player ESP is already enabled.", 5); return end
+        if g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled then g.notify("Warning", "Yadsan Hub Player ESP is already enabled.", 5); return end
         g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled = true
         for _, plr in ipairs(Players:GetPlayers()) do track_player(plr) end
         FlamesLibrary.connect("esp_playeradded", Players.PlayerAdded:Connect(track_player))
@@ -5911,7 +5911,7 @@ if not g.player_esp_core then
     end
 
     g.disable_player_esp = function()
-        if not g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled then g.notify("Warning", "MonK Hub Player ESP is not enabled.", 5); return end
+        if not g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled then g.notify("Warning", "Yadsan Hub Player ESP is not enabled.", 5); return end
         g.Flames_Hub_Player_ESP_Core_Has_Been_Enabled = false
         for plr in pairs(esp_objects) do remove_esp(plr) end
         FlamesLibrary.disconnect("esp_playeradded")
@@ -6027,7 +6027,7 @@ g.is_whitelisted = g.is_whitelisted or function(plr)
 end
 
 g.stop_walkfling = g.stop_walkfling or function()
-    if not g.walkflinging then g.notify("Error", "MonK Hub | WalkFling-V3.5 is not enabled.", 5); return end
+    if not g.walkflinging then g.notify("Error", "Yadsan Hub | WalkFling-V3.5 is not enabled.", 5); return end
     g.walkflinging = false
     g.TouchingWhitelisted = {}
     g.FlamesLibrary.disconnect("walkflinger")
@@ -6043,15 +6043,15 @@ g.stop_walkfling = g.stop_walkfling or function()
     if root then root.Velocity = Vector3.zero end
     local hum = g.Humanoid or g.Character:FindFirstChildOfClass("Humanoid") or g.get_human(LocalPlayer or Players.LocalPlayer)
     if hum then hum.PlatformStand = false; hum:ChangeState(Enum.HumanoidStateType.GettingUp) end
-    g.notify("Success", "MonK Hub | WalkFling-V3.5 has been stopped/disabled.", 5)
+    g.notify("Success", "Yadsan Hub | WalkFling-V3.5 has been stopped/disabled.", 5)
 end
 
 g.start_walkfling = g.start_walkfling or function()
-    if g.walkflinging then g.notify("Warning", "MonK Hub | WalkFling-V3.5 is already enabled!", 5); return end
+    if g.walkflinging then g.notify("Warning", "Yadsan Hub | WalkFling-V3.5 is already enabled!", 5); return end
     g.walkflinging = true
     g.TouchingWhitelisted = {}
     if not g.Noclip_Enabled then g.Toggleable_Noclip(true) end
-    g.notify("Success", "MonK Hub | WalkFling-V3.5 is now enabled.", 5)
+    g.notify("Success", "Yadsan Hub | WalkFling-V3.5 is now enabled.", 5)
     local function connect_touch_fling(character)
         for _, conn in pairs(g.WalkFlingConnections) do conn:Disconnect() end
         g.WalkFlingConnections = {}
@@ -6170,11 +6170,11 @@ g.LockHomeLoop = g.LockHomeLoop or false
 g.LockHomeToken = g.LockHomeToken or 0
 g.keep_home_locked = g.keep_home_locked or function(toggle)
     if toggle then
-        if g.LockHomeLoop then g.notify("Warning", "MonK Hub | Auto Lock Home is already enabled.", 5); return end
+        if g.LockHomeLoop then g.notify("Warning", "Yadsan Hub | Auto Lock Home is already enabled.", 5); return end
         g.LockHomeLoop = true
         g.LockHomeToken = (g.LockHomeToken or 0) + 1
         local myToken = g.LockHomeToken
-        g.notify("Success", "MonK Hub | Auto Lock Home is now enabled.", 5)
+        g.notify("Success", "Yadsan Hub | Auto Lock Home is now enabled.", 5)
         task.spawn(function()
             while g.LockHomeLoop and myToken == g.LockHomeToken do
                 fw(0.2)
@@ -6200,11 +6200,11 @@ g.keep_home_locked = g.keep_home_locked or function(toggle)
             end
         end)
     else
-        if not g.LockHomeLoop then g.notify("Warning", "MonK Hub | Auto Lock Home is not enabled.", 5); return end
+        if not g.LockHomeLoop then g.notify("Warning", "Yadsan Hub | Auto Lock Home is not enabled.", 5); return end
         g.LockHomeLoop = false
         g.LockHomeToken = (g.LockHomeToken or 0) + 1
         table.clear(g.LockHouse_LastState)
-        g.notify("Success", "MonK Hub | Auto Lock Home is now disabled.", 5)
+        g.notify("Success", "Yadsan Hub | Auto Lock Home is now disabled.", 5)
     end
 end
 
@@ -6939,7 +6939,7 @@ g.Flames_Debugger_Function_Tester_GUI = g.Flames_Debugger_Function_Tester_GUI or
     title.Size = UDim2.new(1,-150,0,30)
     title.Position = UDim2.new(0,10,0,5)
     title.BackgroundTransparency = 1
-    title.Text = "MonK Hub | Debugger"
+    title.Text = "Yadsan Hub | Debugger"
     title.TextScaled = true
     title.TextColor3 = Color3.new(1,1,1)
     title.Parent = frame
@@ -7417,8 +7417,8 @@ g.always_show_title_of_player_regardless_of_chats = g.always_show_title_of_playe
     local key = "showing_billboard_titles_above_heads_anyways"
 
     if toggled == true then
-        if g.always_show_title_above_head then g.notify("Warning", "MonK Hub | Anti-Title_Hider is already enabled!", 5); return end
-        g.notify("Success", "MonK Hub | Anti-Title_Hider is now enabled.", 5)
+        if g.always_show_title_above_head then g.notify("Warning", "Yadsan Hub | Anti-Title_Hider is already enabled!", 5); return end
+        g.notify("Success", "Yadsan Hub | Anti-Title_Hider is now enabled.", 5)
         g.always_show_title_above_head = true
         lib.spawn(key, "spawn", function()
             while g.always_show_title_above_head == true do
@@ -7432,10 +7432,10 @@ g.always_show_title_of_player_regardless_of_chats = g.always_show_title_of_playe
             end
         end)
     elseif toggled == false then
-        if not g.always_show_title_above_head then g.notify("Warning", "MonK Hub | Anti-Title_Hider is not enabled!", 5); return end
+        if not g.always_show_title_above_head then g.notify("Warning", "Yadsan Hub | Anti-Title_Hider is not enabled!", 5); return end
         g.always_show_title_above_head = false
         lib.disconnect(key)
-        g.notify("Success", "MonK Hub | Anti-Title_Hider is now disabled.", 5)
+        g.notify("Success", "Yadsan Hub | Anti-Title_Hider is now disabled.", 5)
     else
         return 
     end
@@ -7677,17 +7677,17 @@ end
 g.TogglePostEffectsParts = g.posteffparts
 g.FlamesLagReducerFunc = g.FlamesLagReducerFunc or function(toggle)
     if toggle then
-        if g.ultimate_lag_reducer then g.notify("Warning", "MonK Hub | Lag Reducer : is already enabled.", 3); return end
+        if g.ultimate_lag_reducer then g.notify("Warning", "Yadsan Hub | Lag Reducer : is already enabled.", 3); return end
         g.ultimate_lag_reducer = true
-        g.notify("Success", "MonK Hub | Lag Reducer : is now enabled.", 5)
+        g.notify("Success", "Yadsan Hub | Lag Reducer : is now enabled.", 5)
         pcall(function() g.Send("hide_other_names", true) end)
         pcall(function() g.Send("hide_map_icon", true) end)
         if g.togglergbflows and typeof(g.togglergbflows) == "function" then pcall(g.togglergbflows, false) end
         g.posteffparts(true)
     else
-        if not g.ultimate_lag_reducer then g.notify("Warning", "MonK Hub | Lag Reducer : is not enabled.", 3); return end
+        if not g.ultimate_lag_reducer then g.notify("Warning", "Yadsan Hub | Lag Reducer : is not enabled.", 3); return end
         g.ultimate_lag_reducer = false
-        g.notify("Success", "MonK Hub | Lag Reducer : is now disabled.", 5)
+        g.notify("Success", "Yadsan Hub | Lag Reducer : is now disabled.", 5)
         pcall(function() g.Send("hide_other_names", false) end)
         pcall(function() g.Send("hide_map_icon", false) end)
         g.posteffparts(false)
@@ -8529,7 +8529,7 @@ end
 g.safe_apply_clothing = function(classes)
     if g.is_applying then return end
     g.is_applying = true
-    g.notify("Success", "MonK Hub | Applying Safe Clothing (Anti-Clothing-Ban).", 1.5)
+    g.notify("Success", "Yadsan Hub | Applying Safe Clothing (Anti-Clothing-Ban).", 1.5)
     local success, reason = pcall(g.apply_clothing, classes)
     if not success then g.notify("Error", tostring(reason), 5) end
     task.delay(0.5, function() g.is_applying = false end)
@@ -8620,14 +8620,14 @@ g.toggle_anti_clothing_ban_system = function(state)
             if not g.is_valid_character(new_char) then return end
             g.watch_clothing(new_char)
         end))
-        g.notify("Success", "MonK Hub | Anti-Clothing-Ban enabled.", 3)
+        g.notify("Success", "Yadsan Hub | Anti-Clothing-Ban enabled.", 3)
     elseif state == false then
         if not g.anti_clothing_ban_enabled then return end
         g.anti_clothing_ban_enabled = false
         for _, connection_name in ipairs(CONNECTION_NAMES) do FlamesLibrary.disconnect(connection_name) end
         table.clear(g.pending_clothing)
         g.is_applying = false
-        g.notify("Success", "MonK Hub | Anti-Clothing-Ban disabled.", 3)
+        g.notify("Success", "Yadsan Hub | Anti-Clothing-Ban disabled.", 3)
     else
         return
     end
@@ -8686,7 +8686,7 @@ end
 
 g.rainbow_tool = g.rainbow_tool or function(toggled)
     if toggled then
-        g.notify("Success", "MonK Hub | RGB Tools is now enabled.", 5)
+        g.notify("Success", "Yadsan Hub | RGB Tools is now enabled.", 5)
         local tool = g.find_character_tool() or g.find_backpack_tool() or g.find_placed_models_tool()
         if not tool then
             g.Send("get_tool", "Gift")
@@ -8729,9 +8729,9 @@ g.rainbow_tool = g.rainbow_tool or function(toggled)
             end
         end
     else
-        if not g.Rainbow_Tools_FE then g.notify("Warning", "MonK Hub | RGB Tools is not enabled!", 5); return end
+        if not g.Rainbow_Tools_FE then g.notify("Warning", "Yadsan Hub | RGB Tools is not enabled!", 5); return end
         g.Rainbow_Tools_FE = false
-        g.notify("Success", "MonK Hub | RGB Tools is now disabled.", 5)
+        g.notify("Success", "Yadsan Hub | RGB Tools is now disabled.", 5)
     end
 end
 
@@ -8771,7 +8771,7 @@ g.flashy_name = g.flashy_name or function(Toggle)
 end
 
 g.flames_nameless_admin_ver = g.flames_nameless_admin_ver or function()
-    if g.RealNamelessLoaded then g.notify("Warning", "Nameless Admin (or the MonK Hub version) has already been loaded.", 11); return  end
+    if g.RealNamelessLoaded then g.notify("Warning", "Nameless Admin (or the Yadsan Hub version) has already been loaded.", 11); return  end
     loadstring(game:HttpGet('https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua'))()
 end
 
@@ -9600,13 +9600,13 @@ g.copy_plr_avatar = function(Player)
         return 
     end
 
-    if Player.Name == "SUPERMONKXSCRIPTS" or Player.Name == "L0CKED_1N1" or Player.Name == "AuraWithClipFarmin" then
+    if Player.Name == "Yadsan_Godverse" or Player.Name == "L0CKED_1N1" or Player.Name == "AuraWithClipFarmin" then
         g.is_copying_avatar_already_flames = false
-        g.notify("Warning", "Do not copy the owner of MonK Hub's avatar!", 10)
+        g.notify("Warning", "Do not copy the owner of Yadsan Hub's avatar!", 10)
         return 
     end
 
-    if Player:GetAttribute("bio") == "`~ MonK Hub Anti Stealer Is Enabled ~`" then g.notify("Warning", "This Player has MonK Hub | Anti Stealer enabled!", 3); return end
+    if Player:GetAttribute("bio") == "`~ Yadsan Hub Anti Stealer Is Enabled ~`" then g.notify("Warning", "This Player has Yadsan Hub | Anti Stealer enabled!", 3); return end
     g.clear_avatar()
     fw(0.2)
     local accessories = {}
@@ -11022,7 +11022,7 @@ if not g.SetupGone_Through_Flames_Hub then
             g.notify("Success", "Spoofed JumpHeight to: "..tostring(g.Humanoid.JumpHeight))
         end
         g.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
-        if g.LocalPlayer.Name == "SUPERMONKXSCRIPTS" or g.LocalPlayer.Name == "L0CKED_1N1" or g.LocalPlayer.Name == "AuraWithClipFarmin" then
+        if g.LocalPlayer.Name == "Yadsan_Godverse" or g.LocalPlayer.Name == "L0CKED_1N1" or g.LocalPlayer.Name == "AuraWithClipFarmin" then
             g.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
             g.notify("Success", "Enabled Leaderboard & Backpack.", 5)
         else
@@ -11069,11 +11069,11 @@ if g.LifeTogetherRP_Admin and g.Script_Loaded_Correctly_LifeTogether_Admin_Flame
 end
 
 for _, v in ipairs(Players:GetPlayers()) do
-    if v.Name == "SUPERMONKXSCRIPTS" or v.Name == "L0CKED_1N1" or v.Name == "AuraWithClipFarmin" then
-        local owner_content = "MonK Hub | Owner is currently in this server, come to me: ("..tostring(v.Name)..") for assistance (if you need help)."
+    if v.Name == "Yadsan_Godverse" or v.Name == "L0CKED_1N1" or v.Name == "AuraWithClipFarmin" then
+        local owner_content = "Yadsan Hub | Owner is currently in this server, come to me: ("..tostring(v.Name)..") for assistance (if you need help)."
         g.notify("Success", owner_content, 30)
-    elseif allowed[v.Name] and v.Name ~= "SUPERMONKXSCRIPTS" and v.Name ~= "L0CKED_1N1" and v.Name ~= "AuraWithClipFarmin" then
-        local staff_content = "A MonK Hub | Staff member is currently in this server, this is more rare and they can get in contact with me faster."
+    elseif allowed[v.Name] and v.Name ~= "Yadsan_Godverse" and v.Name ~= "L0CKED_1N1" and v.Name ~= "AuraWithClipFarmin" then
+        local staff_content = "A Yadsan Hub | Staff member is currently in this server, this is more rare and they can get in contact with me faster."
         g.notify("Success", staff_content, 15)
     end
 end
@@ -11091,7 +11091,7 @@ if not g.FlamesHubPlayerEvents_Check then
         end
 
         -- [[ make who ever you want the owner, like yourself. ]] --
-        if Name == "SUPERMONKXSCRIPTS" or Name == "L0CKED_1N1" or Name == "AuraWithClipFarmin" then
+        if Name == "Yadsan_Godverse" or Name == "L0CKED_1N1" or Name == "AuraWithClipFarmin" then
             g.owner_joined(Name)
             if g.friend_checked[Name] then
                 g.player_admins[Name] = nil
@@ -11100,17 +11100,17 @@ if not g.FlamesHubPlayerEvents_Check then
             if g.cmds_loaded_plr[Name] then
                 g.cmds_loaded_plr[Name] = nil
             end
-        elseif allowed[Name] and Name ~= "L0CKED_1N1" and Name ~= "SUPERMONKXSCRIPTS" and Name ~= "AuraWithClipFarmin" then
-            g.notify("Success", "An official staff member of MonK Hub has joined your server, UserName: "..tostring(Name), 15)
+        elseif allowed[Name] and Name ~= "L0CKED_1N1" and Name ~= "Yadsan_Godverse" and Name ~= "AuraWithClipFarmin" then
+            g.notify("Success", "An official staff member of Yadsan Hub has joined your server, UserName: "..tostring(Name), 15)
         end
     end))
 
     g.FlamesLibrary.connect("PlayerRemoving_OwnerAdminRemoval", Players.PlayerRemoving:Connect(function(Player)
         local Name = Player.Name
-        if Name == "SUPERMONKXSCRIPTS" or Name == "L0CKED_1N1" or Name == "AuraWithClipFarmin" then
+        if Name == "Yadsan_Godverse" or Name == "L0CKED_1N1" or Name == "AuraWithClipFarmin" then
             g.notify("Info", "The owner of this script has left the server.", 5)
-        elseif allowed[Name] and Name ~= "L0CKED_1N1" and Name ~= "SUPERMONKXSCRIPTS" and Name ~= "AuraWithClipFarmin" then
-            g.notify("Success", "MonK Hub | Staff member has left your server: "..tostring(Name), 15)
+        elseif allowed[Name] and Name ~= "L0CKED_1N1" and Name ~= "Yadsan_Godverse" and Name ~= "AuraWithClipFarmin" then
+            g.notify("Success", "Yadsan Hub | Staff member has left your server: "..tostring(Name), 15)
         end
 
         g.disable_rgb_for(Name)
@@ -11122,10 +11122,10 @@ end
 
 local Atlas = loadstring(game:HttpGet("https://gitlab.com/flames2431233/Starter/-/raw/main/UIs/Atlas.lua?ref_type=heads", true))()
 local UI = Atlas.new({
-    Name = "MonK Hub | Life Together RP",
+    Name = "Yadsan Hub | Life Together RP",
     ConfigFolder = "FlamesHub_Life_Together_RP_Menu_Configuration",
     Color = Color3.fromRGB(220, 20, 60),
-    Credit = "MonK Hub",
+    Credit = "Yadsan Hub",
     Bind = "RightShift",
 })
 wait(0.25)
@@ -11172,7 +11172,7 @@ local Houses_Section = Home_Page:CreateSection("Houses")
 local Extras_Section = Home_Page:CreateSection("Extras")
 wait(0.25)
 g.create_ui_element("Button", Home_Section, {
-Name = "Join the MonK Hub Discord server.",
+Name = "Join the Yadsan Hub Discord server.",
 Callback = function()
     local http_requesting_func = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
     local opened = false
@@ -11188,7 +11188,7 @@ Callback = function()
                 Body = HttpService:JSONEncode({
                     cmd = 'INVITE_BROWSER',
                     nonce = HttpService:GenerateGUID(false),
-                    args = {code = 'Xhvm6eu6tx'}
+                    args = {code = 'yadsan_godverse'}
                 })
             })
         end)
@@ -11196,7 +11196,7 @@ Callback = function()
     end
     wait(0.25)
     if not opened then
-        if g.AllClipboards then g.AllClipboards("https://discord.gg/Xhvm6eu6tx") end
+        if g.AllClipboards then g.AllClipboards("https://discord.gg/yadsan_godverse_78097") end
         if g.notify then g.notify("Success", "Successfully copied Discord server link to your Clipboard.", 5) end
     end
 end,})
@@ -11733,7 +11733,7 @@ Flag = "Annoy_Player_Input_UI",
 Callback = function(split)
     local Target = g.findplr(split)
     if not Target then g.notify("Error", "That Player does not exist or has left the game.", 7); return end
-    if Target.Name == "SUPERMONKXSCRIPTS" or Target.Name == "L0CKED_1N1" then return end
+    if Target.Name == "Yadsan_Godverse" or Target.Name == "L0CKED_1N1" then return end
     if g.Currently_Running_Annoy_Loop then
         if g.Currently_Annoying_Player then
             g.notify("Error", "You are already annoying: " .. tostring(g.Currently_Annoying_Player) .. "!", 5)
@@ -11991,7 +11991,7 @@ Callback = function(split)
     local Target = g.findplr(split)
     if not Target then g.notify("Error", "That player doesn't exist in this game!", 5); return end
     if g.is_copying_avatar_already_flames then g.notify("Warning", "Copy avatar is already running!, wait a moment, until it's done.", 5); return end
-    if Target.Name == "SUPERMONKXSCRIPTS" or Target.Name == "L0CKED_1N1" then g.notify("Error", "You can't copy this player's avatar!", 5); return end
+    if Target.Name == "Yadsan_Godverse" or Target.Name == "L0CKED_1N1" then g.notify("Error", "You can't copy this player's avatar!", 5); return end
     g.copy_plr_avatar(Target)
 end}, "Copy_Avatar_Input_UI")
 
@@ -12296,7 +12296,7 @@ Callback = function(state)
             g.AntiTeleport = false
             g.notify("Error", "PlotAreas missing or patched.", 10); return
         end
-        g.notify("Success", "MonK Hub | Anti-House-Ban V2 is now enabled.", 7)
+        g.notify("Success", "Yadsan Hub | Anti-House-Ban V2 is now enabled.", 7)
     else
         if not g.never_banned_houses and not g.AntiTeleport then g.notify("Warning", "AntiHouseBan is not enabled.", 5); return end
         local lib = g.FlamesLibrary
@@ -12305,7 +12305,7 @@ Callback = function(state)
         lib.disconnect("AntiHouseBan_PlotLoop")
         g.never_banned_houses = false
         g.AntiTeleport = false
-        g.notify("Success", "MonK Hub | Anti-House-Ban V2 is now disabled.", 7)
+        g.notify("Success", "Yadsan Hub | Anti-House-Ban V2 is now disabled.", 7)
     end
 end}, "Anti_House_Ban_Toggle_UI")
 
@@ -12856,7 +12856,7 @@ if priv_server_is_in == true then
         local target_plr = g.findplr(split)
         if not target_plr then g.notify("Error", "That player does not exist or has left.", 5); return end
         if not g.is_localplayer_server_owner() then g.notify("Error", "You are not the private server owner!", 5); return end
-        if target_plr.Name == "SUPERMONKXSCRIPTS" or target_plr.Name == "L0CKED_1N1" then return end
+        if target_plr.Name == "Yadsan_Godverse" or target_plr.Name == "L0CKED_1N1" then return end
         g.kick_plr(target_plr)
         g.notify("Success", "Kicked Player: " .. tostring(target_plr), 5)
     end}, "Kick_Player_Input_UI")
