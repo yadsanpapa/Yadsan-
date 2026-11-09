@@ -13128,7 +13128,7 @@ Callback = function()
 end,})
 
 g.Toggle_Fire_Spam = g.create_ui_element("Toggle", Extras_Section, {
-Name = "Yadsan (YS)",
+Name = "Flames (YS)",
 Default = g.spamming_all_that_fire or false,
 Flag = "Flames_Toggle_UI",
 Callback = function(state)
