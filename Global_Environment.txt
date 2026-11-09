@@ -671,11 +671,11 @@ local function resolve_property(map, search)
     return matches
 end
 
-getgenv().YadsanLibrary = getgenv().FlamesLibrary or {}
-getgenv().YadsanLibrary._connections = getgenv().FlamesLibrary._connections or {}
-getgenv().YadsanLibrary.modules = getgenv().FlamesLibrary.modules or {}
-getgenv().YadsanLibrary.module_utils = getgenv().FlamesLibrary.module_utils or {}
-getgenv().YadsanLibrary.table_lib = getgenv().FlamesLibrary.table_lib or {} -- new 'table' methods and usage, making us only more efficient.
+getgenv().YadsanLibrary = getgenv().YadsanLibrary or {}
+getgenv().YadsanLibrary._connections = getgenv().YadsanLibrary._connections or {}
+getgenv().YadsanLibrary.modules = getgenv().YadsanLibrary.modules or {}
+getgenv().YadsanLibrary.module_utils = getgenv().YadsanLibrary.module_utils or {}
+getgenv().YadsanLibrary.table_lib = getgenv().YadsanLibrary.table_lib or {} -- new 'table' methods and usage, making us only more efficient.
 getgenv().YadsanLibrary.connect = function(name, connection)
     local FL = getgenv().YadsanLibrary
     if type(name) ~= "string" then return end
