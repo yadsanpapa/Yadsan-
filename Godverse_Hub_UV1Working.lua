@@ -1115,6 +1115,13 @@ DefenceTab:Toggle({
 local SpamTab = Window:Tab({
     Title = "SPAM 🥵",
     Icon = "message-square",
+
+SpamTab:Button({
+    Title = "YS SPAMMER MASTER 😱",
+    Desc = "Click to execute the Ultimate YS Spammer Master!",
+    Callback = function()
+        loadstring(game:HttpGet(("https://scriptblox.com/raw/NewSmith-RP-Lakshy-Hub-V3-232517"),true))()
+    end,
 })
 
 SpamTab:Button({
@@ -1132,7 +1139,7 @@ local LifeTogetherTab = Window:Tab({
 })
 
 LifeTogetherTab:Button({
-    Title = "YADSAN OUTFIT COPIER 🤓 (ONLY FOR LIFE TOGETHER 🏠)GUI✌🏻",
+    Title = "YADSAN OUTFIT COPIER 🤓",
     Desc = "Click to open the outfit copier GUI",
     Callback = function()
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Outfit_Copier_OV1"),true))()
@@ -1155,6 +1162,14 @@ LifeTogetherTab:Button({
     end,
 })
 
+LifeTogetherTab:Button({
+    Title = " YADSAN SIZE RESIZE 🧌",
+    Desc = "Click to open the Ultimate Size Resize",
+    Callback = function()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/MANASMCPE/AUTH0R/refs/heads/main/size-resizer.lua"),true))()
+    end,
+})
+        
 --// OTHER
 local OtherTab = Window:Tab({
     Title = "OTHER 📁",
@@ -1273,7 +1288,7 @@ WindUI:Notify({
 })
 --// AUTO CHAT MESSAGE
 task.spawn(function()
-    local chatMsg = "------------////GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse (CELESTIAL X ASUKA ON 🔝🎩////-----------------"
+    local chatMsg = "------------////GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse CELESTIAL SYNDICATE X ASUKA X ZERO MERCY ON 🔝🎩////-----------------"
     pcall(function()
         if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
             game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
