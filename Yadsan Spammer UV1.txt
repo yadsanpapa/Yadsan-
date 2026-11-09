@@ -1,0 +1,595 @@
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+-- Services
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local StarterGui = game:GetService("StarterGui")
+
+-- Cleanup old GUI if exists
+if CoreGui:FindFirstChild("YadsanSpammer") then
+    CoreGui.YadsanSpammer:Destroy()
+end
+if CoreGui:FindFirstChild("YadsanSpammer") then
+    CoreGui.YadsanSpammer:Destroy()
+end
+
+-- ScreenGui Setup
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "YadsanSpammer"
+ScreenGui.Parent = CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+----------------------------------------------------------------
+-- 0. ONE-TIME EXECUTION CHAT NOTIFICATION
+----------------------------------------------------------------
+task.spawn(function()
+    task.wait(1)
+    local execMsg = "✌🏻 🌐 GODVERSE EDITION USER DETECTED ⚠️ (MADE BY Yadsan_Godverse)🔥 CELESTIAL X ASUKA ON TOP"
+    local border = "(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)"
+    local fullExecMessage = border .. "\n" .. execMsg .. "\n" .. border
+
+    local chatEvent = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
+    if chatEvent and chatEvent:FindFirstChild("SayMessageRequest") then
+        chatEvent.SayMessageRequest:FireServer(fullExecMessage, "All")
+    else
+        local textChannel = game:GetService("TextChatService").TextChannels:FindFirstChild("RBXGeneral")
+        if textChannel then
+            textChannel:SendAsync(fullExecMessage)
+        end
+    end
+end)
+
+----------------------------------------------------------------
+-- 1. INTRO SCREEN (WITH NEW MESSAGE ✨)
+----------------------------------------------------------------
+local IntroFrame = Instance.new("Frame")
+IntroFrame.Size = UDim2.new(1, 0, 1, 0)
+IntroFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+IntroFrame.BorderSizePixel = 0
+IntroFrame.ZIndex = 10
+IntroFrame.Parent = ScreenGui
+
+local RedGradient = Instance.new("UIGradient")
+RedGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(50, 0, 0)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(150, 0, 20)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 0, 0))
+})
+RedGradient.Rotation = 45
+RedGradient.Parent = IntroFrame
+
+local IntroText = Instance.new("TextLabel")
+IntroText.Size = UDim2.new(1, 0, 1, 0)
+IntroText.BackgroundTransparency = 1
+IntroText.Font = Enum.Font.GothamBold
+IntroText.Text = "🌐GODVERSE EDITION SPAMMER 😝\n( MADE BY YADSAN 🔱 )\n\n🥶I WILL BE FIGHTING FOR U DON'T WORRY MY FRIEND ✨"
+IntroText.TextColor3 = Color3.fromRGB(255, 255, 255)
+IntroText.TextSize = 28
+IntroText.ZIndex = 11
+IntroText.Parent = IntroFrame
+
+-- Pop-up Roblox Notification
+task.spawn(function()
+    StarterGui:SetCore("SendNotification", {
+        Title = "YADSAN 🔱",
+        Text = "😡 I WILL BE FIGHTING FOR U DON'T WORRY MY FRIEND 💔",
+        Duration = 5
+    })
+end)
+
+----------------------------------------------------------------
+-- 2. FLOATING BUTTON (🌐) - DRAGGABLE
+----------------------------------------------------------------
+local FlowerBtn = Instance.new("TextButton")
+FlowerBtn.Size = UDim2.new(0, 60, 0, 60)
+FlowerBtn.Position = UDim2.new(0, 20, 0.5, -30)
+FlowerBtn.BackgroundColor3 = Color3.fromRGB(25, 10, 15)
+FlowerBtn.BorderColor3 = Color3.fromRGB(220, 20, 60)
+FlowerBtn.BorderSizePixel = 2
+FlowerBtn.Text = "🌐"
+FlowerBtn.TextSize = 28
+FlowerBtn.Visible = false
+FlowerBtn.ZIndex = 5
+FlowerBtn.Active = true     
+FlowerBtn.Draggable = true  
+FlowerBtn.Parent = ScreenGui
+
+local FlowerCorner = Instance.new("UICorner")
+FlowerCorner.CornerRadius = UDim.new(1, 0)
+FlowerCorner.Parent = FlowerBtn
+
+----------------------------------------------------------------
+-- 3. MAIN UI WINDOW (Animated & Crimson Theme)
+----------------------------------------------------------------
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 0, 0, 0) 
+MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(15, 10, 12) 
+MainFrame.BorderSizePixel = 0
+MainFrame.Visible = false
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.ClipsDescendants = true 
+MainFrame.ZIndex = 2
+MainFrame.Parent = ScreenGui
+
+local MainCorner = Instance.new("UICorner")
+MainCorner.CornerRadius = UDim.new(0, 12)
+MainCorner.Parent = MainFrame
+
+local MainStroke = Instance.new("UIStroke")
+MainStroke.Color = Color3.fromRGB(220, 20, 60) 
+MainStroke.Thickness = 2
+MainStroke.Parent = MainFrame
+
+----------------------------------------------------------------
+-- 3.1 TOP BAR & OWNER BRANDING (TOP SHIFTED)
+----------------------------------------------------------------
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Size = UDim2.new(1, 0, 0, 35)
+TitleLabel.BackgroundColor3 = Color3.fromRGB(25, 10, 15)
+TitleLabel.Font = Enum.Font.GothamBold
+TitleLabel.Text = " 🌐 YADSAN EDITION SPAMMER 👍 "
+TitleLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
+TitleLabel.TextSize = 14
+TitleLabel.TextXAlignment = Enum.TextXAlignment.Center
+TitleLabel.ZIndex = 3
+TitleLabel.Parent = MainFrame
+
+local TitleCorner = Instance.new("UICorner")
+TitleCorner.CornerRadius = UDim.new(0, 12)
+TitleCorner.Parent = TitleLabel
+
+local MinimizeBtn = Instance.new("TextButton")
+MinimizeBtn.Size = UDim2.new(0, 35, 0, 35)
+MinimizeBtn.Position = UDim2.new(1, -40, 0, 0)
+MinimizeBtn.BackgroundColor3 = Color3.fromRGB(40, 15, 20)
+MinimizeBtn.Font = Enum.Font.GothamBold
+MinimizeBtn.Text = "—"
+MinimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeBtn.TextSize = 16
+MinimizeBtn.ZIndex = 4
+MinimizeBtn.Parent = MainFrame
+
+local MinimizeCorner = Instance.new("UICorner")
+MinimizeCorner.CornerRadius = UDim.new(0, 6)
+MinimizeCorner.Parent = MinimizeBtn
+
+local OwnerPanel = Instance.new("Frame")
+OwnerPanel.Size = UDim2.new(1, 0, 0, 25)
+OwnerPanel.Position = UDim2.new(0, 0, 0, 35) 
+OwnerPanel.BackgroundColor3 = Color3.fromRGB(40, 10, 20)
+OwnerPanel.BorderSizePixel = 0
+OwnerPanel.ZIndex = 3
+OwnerPanel.Parent = MainFrame
+
+local OwnerText = Instance.new("TextLabel")
+OwnerText.Size = UDim2.new(1, 0, 1, 0)
+OwnerText.BackgroundTransparency = 1
+OwnerText.Font = Enum.Font.GothamBold
+OwnerText.Text = "🌐 OWNER : YADSAN 🔱 🔥✌🏻 | 😍 ALWAYS READY TO FIGHT"
+OwnerText.TextColor3 = Color3.fromRGB(255, 100, 100)
+OwnerText.TextSize = 12
+OwnerText.TextXAlignment = Enum.TextXAlignment.Center
+OwnerText.Parent = OwnerPanel
+
+----------------------------------------------------------------
+-- UI ANIMATION FUNCTIONS 
+----------------------------------------------------------------
+local function animateUIOpen()
+    MainFrame.Visible = true
+    MainFrame.Size = UDim2.new(0, 0, 0, 0)
+    TweenService:Create(MainFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(0, 480, 0, 460)}):Play()
+end
+
+local function animateUIClose()
+    local hideTween = TweenService:Create(MainFrame, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Size = UDim2.new(0, 0, 0, 0)})
+    hideTween:Play()
+    hideTween.Completed:Wait()
+    MainFrame.Visible = false
+    FlowerBtn.Visible = true
+end
+
+local function addPopAnimation(btn)
+    local scale = Instance.new("UIScale")
+    scale.Parent = btn
+    
+    btn.MouseEnter:Connect(function()
+        TweenService:Create(scale, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1.05}):Play()
+    end)
+    btn.MouseLeave:Connect(function()
+        TweenService:Create(scale, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1.0}):Play()
+    end)
+    btn.MouseButton1Down:Connect(function()
+        TweenService:Create(scale, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 0.95}):Play()
+    end)
+    btn.MouseButton1Up:Connect(function()
+        TweenService:Create(scale, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Scale = 1.05}):Play()
+    end)
+end
+
+addPopAnimation(MinimizeBtn)
+
+MinimizeBtn.MouseButton1Click:Connect(function()
+    animateUIClose()
+end)
+
+----------------------------------------------------------------
+-- 4. CONTROLS & 10 TARGET FIELDS (Full Width)
+----------------------------------------------------------------
+local TargetLabel = Instance.new("TextLabel")
+TargetLabel.Size = UDim2.new(0, 440, 0, 20)
+TargetLabel.Position = UDim2.new(0, 20, 0, 70)
+TargetLabel.BackgroundTransparency = 1
+TargetLabel.Font = Enum.Font.GothamSemibold
+TargetLabel.Text = "Targets List (10 Slots - 2 Columns):"
+TargetLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
+TargetLabel.TextSize = 13
+TargetLabel.TextXAlignment = Enum.TextXAlignment.Left
+TargetLabel.Parent = MainFrame
+
+local TargetScroll = Instance.new("ScrollingFrame")
+TargetScroll.Size = UDim2.new(0, 440, 0, 120)
+TargetScroll.Position = UDim2.new(0, 20, 0, 95)
+TargetScroll.BackgroundColor3 = Color3.fromRGB(20, 10, 15)
+TargetScroll.BorderSizePixel = 0
+TargetScroll.CanvasSize = UDim2.new(0, 0, 0, 180) 
+TargetScroll.ScrollBarThickness = 5
+TargetScroll.ScrollBarImageColor3 = Color3.fromRGB(220, 20, 60)
+TargetScroll.Parent = MainFrame
+
+local ScrollCorner = Instance.new("UICorner")
+ScrollCorner.CornerRadius = UDim.new(0, 6)
+ScrollCorner.Parent = TargetScroll
+
+local UIGrid = Instance.new("UIGridLayout")
+UIGrid.SortOrder = Enum.SortOrder.LayoutOrder
+UIGrid.CellPadding = UDim2.new(0, 5, 0, 5)
+UIGrid.CellSize = UDim2.new(0, 210, 0, 30) 
+UIGrid.FillDirectionMaxCells = 2 
+UIGrid.Parent = TargetScroll
+
+local UIPadding = Instance.new("UIPadding")
+UIPadding.PaddingTop = UDim.new(0, 5)
+UIPadding.PaddingLeft = UDim.new(0, 5)
+UIPadding.PaddingRight = UDim.new(0, 5)
+UIPadding.Parent = TargetScroll
+
+local TargetBoxes = {}
+
+for i = 1, 10 do
+    local tBox = Instance.new("TextBox")
+    tBox.Name = "TargetBox_" .. i
+    tBox.BackgroundColor3 = Color3.fromRGB(35, 15, 20)
+    tBox.BorderSizePixel = 0
+    tBox.Font = Enum.Font.Gotham
+    tBox.PlaceholderText = "Target " .. i .. "..."
+    tBox.Text = ""
+    tBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    tBox.TextSize = 12
+    tBox.LayoutOrder = i
+    tBox.Parent = TargetScroll
+    
+    local bCorner = Instance.new("UICorner")
+    bCorner.CornerRadius = UDim.new(0, 5)
+    bCorner.Parent = tBox
+    
+    table.insert(TargetBoxes, tBox)
+end
+
+-- Custom Message Input Box
+local CustomMsgBox = Instance.new("TextBox")
+local CustomMsgLabel = Instance.new("TextLabel")
+CustomMsgLabel.Size = UDim2.new(0, 440, 0, 20)
+CustomMsgLabel.Position = UDim2.new(0, 20, 0, 225)
+CustomMsgLabel.BackgroundTransparency = 1
+CustomMsgLabel.Font = Enum.Font.GothamSemibold
+CustomMsgLabel.Text = "Custom Message:"
+CustomMsgLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
+CustomMsgLabel.TextSize = 13
+CustomMsgLabel.TextXAlignment = Enum.TextXAlignment.Left
+CustomMsgLabel.Parent = MainFrame
+
+CustomMsgBox.Size = UDim2.new(0, 440, 0, 35)
+CustomMsgBox.Position = UDim2.new(0, 20, 0, 245)
+CustomMsgBox.BackgroundColor3 = Color3.fromRGB(35, 15, 20)
+CustomMsgBox.BorderSizePixel = 0
+CustomMsgBox.Font = Enum.Font.Gotham
+CustomMsgBox.PlaceholderText = "Type message here to add..."
+CustomMsgBox.Text = ""
+CustomMsgBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+CustomMsgBox.TextSize = 13
+CustomMsgBox.Parent = MainFrame
+
+local CustomMsgCorner = Instance.new("UICorner")
+CustomMsgCorner.CornerRadius = UDim.new(0, 6)
+CustomMsgCorner.Parent = CustomMsgBox
+
+-- Delay Time Input Box
+local DelayBox = Instance.new("TextBox")
+local DelayLabel = Instance.new("TextLabel")
+DelayLabel.Size = UDim2.new(0, 440, 0, 20)
+DelayLabel.Position = UDim2.new(0, 20, 0, 290)
+DelayLabel.BackgroundTransparency = 1
+DelayLabel.Font = Enum.Font.GothamSemibold
+DelayLabel.Text = "Delay (Seconds):"
+DelayLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
+DelayLabel.TextSize = 13
+DelayLabel.TextXAlignment = Enum.TextXAlignment.Left
+DelayLabel.Parent = MainFrame
+
+DelayBox.Size = UDim2.new(0, 440, 0, 35)
+DelayBox.Position = UDim2.new(0, 20, 0, 310)
+DelayBox.BackgroundColor3 = Color3.fromRGB(35, 15, 20)
+DelayBox.BorderSizePixel = 0
+DelayBox.Font = Enum.Font.Gotham
+DelayBox.Text = "2.4" 
+DelayBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+DelayBox.TextSize = 13
+DelayBox.Parent = MainFrame
+
+local DelayCorner = Instance.new("UICorner")
+DelayCorner.CornerRadius = UDim.new(0, 6)
+DelayCorner.Parent = DelayBox
+
+----------------------------------------------------------------
+-- 4.5 TWO SIDE-BY-SIDE BUTTONS (START & MODE)
+----------------------------------------------------------------
+local ToggleBtn = Instance.new("TextButton")
+ToggleBtn.Size = UDim2.new(0, 215, 0, 45)
+ToggleBtn.Position = UDim2.new(0, 20, 0, 360)
+ToggleBtn.BackgroundColor3 = Color3.fromRGB(220, 20, 60)
+ToggleBtn.Font = Enum.Font.GothamBold
+ToggleBtn.Text = "START"
+ToggleBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleBtn.TextSize = 15
+ToggleBtn.Parent = MainFrame
+
+local ToggleCorner = Instance.new("UICorner")
+ToggleCorner.CornerRadius = UDim.new(0, 8)
+ToggleCorner.Parent = ToggleBtn
+addPopAnimation(ToggleBtn)
+
+local isBurstMode = false 
+local ModeBtn = Instance.new("TextButton")
+ModeBtn.Size = UDim2.new(0, 215, 0, 45)
+ModeBtn.Position = UDim2.new(0, 245, 0, 360)
+ModeBtn.BackgroundColor3 = Color3.fromRGB(59, 130, 246) 
+ModeBtn.Font = Enum.Font.GothamBold
+ModeBtn.Text = "MODE: NORMAL ▶️"
+ModeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+ModeBtn.TextSize = 14
+ModeBtn.Parent = MainFrame
+
+local ModeCorner = Instance.new("UICorner")
+ModeCorner.CornerRadius = UDim.new(0, 8)
+ModeCorner.Parent = ModeBtn
+addPopAnimation(ModeBtn)
+
+ModeBtn.MouseButton1Click:Connect(function()
+    isBurstMode = not isBurstMode
+    if isBurstMode then
+        ModeBtn.Text = "MODE: BURST ⏩"
+        ModeBtn.BackgroundColor3 = Color3.fromRGB(150, 20, 180) 
+        DelayBox.Text = "0.2" 
+    else
+        ModeBtn.Text = "MODE: NORMAL ▶️"
+        ModeBtn.BackgroundColor3 = Color3.fromRGB(59, 130, 246)
+        DelayBox.Text = "2.4" 
+    end
+end)
+
+-- Status Display Label (Centered)
+local StatusLabel = Instance.new("TextLabel")
+StatusLabel.Size = UDim2.new(0, 440, 0, 30)
+StatusLabel.Position = UDim2.new(0, 20, 0, 415)
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Font = Enum.Font.GothamSemibold
+StatusLabel.Text = "Status: Stopped ⛔"
+StatusLabel.TextColor3 = Color3.fromRGB(239, 68, 68)
+StatusLabel.TextSize = 14
+StatusLabel.TextXAlignment = Enum.TextXAlignment.Center
+StatusLabel.Parent = MainFrame
+
+----------------------------------------------------------------
+-- 5. INTRO ANIMATION & FLOW
+----------------------------------------------------------------
+task.spawn(function()
+    task.wait(3.0) 
+    local tweenInfo = TweenInfo.new(0.8, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local fadeTween = TweenService:Create(IntroFrame, tweenInfo, {BackgroundTransparency = 1})
+    local textFade = TweenService:Create(IntroText, tweenInfo, {TextTransparency = 1})
+    fadeTween:Play()
+    textFade:Play()
+    task.wait(0.8)
+    IntroFrame:Destroy()
+    
+    FlowerBtn.Visible = true
+    addPopAnimation(FlowerBtn)
+end)
+
+FlowerBtn.MouseButton1Click:Connect(function()
+    FlowerBtn.Visible = false
+    animateUIOpen() 
+end)
+
+----------------------------------------------------------------
+-- 6. SPAMMER LOGIC & MESSAGES 
+----------------------------------------------------------------
+local isSpamming = false
+local sentCount = 0
+local burstCount = 0
+
+ToggleBtn.MouseButton1Click:Connect(function()
+    isSpamming = not isSpamming
+    if isSpamming then
+        sentCount = 0
+        burstCount = 0
+        ToggleBtn.Text = "STOP"
+        ToggleBtn.BackgroundColor3 = Color3.fromRGB(100, 15, 25)
+        StatusLabel.Text = "Status: Running 🟢"
+        StatusLabel.TextColor3 = Color3.fromRGB(74, 222, 128)
+    else
+        ToggleBtn.Text = "START"
+        ToggleBtn.BackgroundColor3 = Color3.fromRGB(220, 20, 60)
+        StatusLabel.Text = "Status: Stopped 🔴"
+        StatusLabel.TextColor3 = Color3.fromRGB(239, 68, 68)
+    end
+end)
+
+local patterns = {
+    "(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)",
+    "o_O|o_O|o_O|o_O|o_O|o_O|o_O|o_O|",
+    "- _ - _ - _ - _ - _ - _ - _ - _ - _ - _",
+    "______________________________________",
+    "--------------------------------------",
+    "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+}
+
+local toxicMsg = "🔮☄️ tmx MAI AG KA BAAP 😍TAP KARKE BOL YADSAN PAPA OP✌🏻 🔮☄️"
+
+local messages = {
+    toxicMsg, 
+    "🔥✨ tmx GODZILA POWER SONIC BEEM UNLEASHED 100% MAXIMUM DESTRUCTION OVERLOAD 🔥✨",
+    "😝☄️ tmx SUPER ULTRA BRAZIL TIGER GORILLA PUNCH COMING THROUGH WITH UNSTOPPABLE JUNGLE FURY RAGE 😝☄️",
+    "✨☀️ tmx SUPER MEGA POWER WAVE TSUNAMI BLAST ACTIVATED ACROSS THE ENTIRE SERVER DIMENSION ✨☀️",
+    "🔥👾 tmx ULTIMATE BEAST MODE ACTIVATED: GODZILA ROAR COMBINED WITH TIGER SPEED AND GORILLA SMASH 🔥👾",
+    "☀️☄️ tmx ULTIMATE SONIC BEEM DESTRUCTION RAY BURNING DOWN EVERYTHING IN SIGHT ☀️☄️",
+    "🔮😝 tmx BRAZIL TIGER HYPER DRIFT KICK MEETS GORILLA EARTHQUAKE SMASH COMBO OF DOOM 🔮😝",
+    "✨🔥 tmx MEGA POWER WAVE IS OVERWHELMING THE ENTIRE SERVER WITH TIDAL WAVE TSUNAMI ENERGY ✨🔥",
+    "👾🎍 tmx WARNING: GODZILA POWER IS COMPLETELY UNSTOPPABLE IN THE CHAT ROOM RIGHT NOW 👾🎍",
+    toxicMsg, 
+    "🔥😝 tmx GORILLA PUNCH EARTHQUAKE SHAKE CAUSING MASSIVE DAMAGE EVERYWHERE 🔥😝",
+    "✨🎐 tmx SONIC BEEM CHARGING UP TO MAXIMUM OVERDRIVE POWER LEVEL INFINITE LIGHTNING SPEED ✨🎐",
+    "☀️👾 tmx BRAZIL TIGER JUNGLE FURY SAVAGE ATTACK SWEEPING AWAY ALL OPPONENTS IN THE ARENA ☀️👾",
+    "🔮☄️ tmx MEGA POWER WAVE WASHING AWAY EVERY SINGLE PLAYER WITH AN OCEANIC TSUNAMI STORM 🔮☄️",
+    "🔥✨ tmx GODZILA ATOMIC BREATH READY TO FIRE ACROSS THE SKIES BRINGING TOTAL ANNIHILATION 🔥✨",
+    "😝☀️ tmx ULTRA SUPER SAIYAN GORILLA RAGE UNLEASHED WITH PRIMAL INSTINCT 😝☀️",
+    "🎐🔮 tmx SONIC BEEM SPEED OF LIGHT BEATDOWN LEAVING ONLY ELECTRIC SPARKS IN THE AIR 🎐🔮",
+    "☄️👾 tmx BRAZIL TIGER CLAW SLASH OF DOOM CUTTING THROUGH DIMENSIONS WITH HYPER PRECISION ☄️👾",
+    "✨🔥 tmx SUPER MEGA POWER WAVE TSUNAMI STORM CRASHING INTO THE MAIN GATES WITH FORCE ✨🔥",
+    toxicMsg, 
+    "😝🎐 tmx GODZILA VS GORILLA ULTIMATE CLASH OF THE TITANS BATTLE OF THE CENTURY 😝🎐",
+    "🔥🔮 tmx SONIC BEEM THUNDERSTORM STRIKE SHATTERING THE SOUND BARRIER 🔥🔮",
+    "🎍✨ tmx BRAZIL TIGER HYPER DRIFT KICK DRIFTING ACROSS THE MAP AT LIGHTNING SPEED 🎍✨",
+    "☀️☄️ tmx MEGA POWER WAVE MAXIMUM OVERDRIVE TIDAL WAVE ENERGY SURGE ACTIVATED ☀️☄️",
+    "🔥👾 tmx ULTIMATE GODZILA TAIL WHIP DESTRUCTION LEVEL 9999 ACTIVATED IN THE SECTOR 🔥👾",
+    "✨🎐 tmx GORILLA CHEST BEAT SOUNDWAVE BLAST SHAKING THE FOUNDATIONS OF THE EARTH ✨🎐",
+    "☀️☄️ tmx SONIC BEEM HYPER LASER BEAM MELTING EVERYTHING IN ITS PATH ☀️☄️",
+    "👾🔥 tmx BRAZIL TIGER SAVAGE BITE ATTACK OF THE JUNGLE KINGDOM LORDS 👾🔥",
+    "🎐🎍 tmx SUPER MEGA POWER WAVE OCEAN CRASH TIDAL WAVE DELUGE SWEEPING THE MAP CLEAN 🎐🎍",
+    toxicMsg, 
+    "😝🔮 tmx GODZILA KING OF THE MONSTERS ROAR ECHOING ACROSS THE ENTIRE UNIVERSE 😝🔮",
+    "🔥👾 tmx GORILLA SMASH GROUND ZERO IMPACT CRATER CREATION PROTOCOL ONLINE 🔥👾",
+    "☀️🎐 tmx SONIC BEEM LIGHTNING SPEED DASH ACROSS ALL SERVERS ☀️🎐",
+    "🔮😝 tmx BRAZIL TIGER JUNGLE KING DOMINATION REIGNING SUPREME OVER EVERYONE 🔮😝",
+    "✨☄️ tmx MEGA POWER WAVE TIDAL WAVE ONSLAUGHT SWEEPING AWAY ALL DEFENSES ✨☄️",
+    "🔥👾 tmx ULTIMATE GODZILA HEAT RAY MELTDOWN CAUSING VOLCANIC ERUPTIONS EVERYWHERE 🔥👾",
+    "🔥✨ tmx GODZILA POWER SONIC BEEM UNLEASHED 100% MAXIMUM DESTRUCTION OVERLOAD 🔥✨",
+    "😝☄️ tmx SUPER ULTRA BRAZIL TIGER GORILLA PUNCH COMING THROUGH WITH UNSTOPPABLE JUNGLE FURY RAGE 😝☄️",
+    "✨☀️ tmx SUPER MEGA POWER WAVE TSUNAMI BLAST ACTIVATED ACROSS THE ENTIRE SERVER DIMENSION ✨☀️",
+    toxicMsg  
+}
+
+task.spawn(function()
+    local targetGroupIndex = 1
+
+    while true do
+        if isSpamming then
+            local customMsgText = CustomMsgBox.Text
+            local customDelay = tonumber(DelayBox.Text) or (isBurstMode and 0.2 or 2.4)
+            
+            local tList = {}
+            for _, box in ipairs(TargetBoxes) do
+                local text = string.match(box.Text, "^%s*(.-)%s*$")
+                if text and text ~= "" then
+                    table.insert(tList, text)
+                end
+            end
+            
+            local targetGroups = {}
+            if #tList > 0 then
+                for i = 1, #tList, 2 do
+                    if tList[i+1] then
+                        table.insert(targetGroups, "[" .. tList[i] .. "], [" .. tList[i+1] .. "]")
+                    else
+                        table.insert(targetGroups, "[" .. tList[i] .. "]")
+                    end
+                end
+            end
+            
+            for _, msg in ipairs(messages) do
+                if not isSpamming then break end
+                
+                local targetFormatted = ""
+                if #targetGroups > 0 then
+                    if targetGroupIndex > #targetGroups then
+                        targetGroupIndex = 1
+                    end
+                    targetFormatted = targetGroups[targetGroupIndex]
+                    targetGroupIndex = targetGroupIndex + 1
+                end
+                
+                local selectedPattern = patterns[math.random(1, #patterns)]
+                
+                local coreMsg = msg
+                if customMsgText ~= "" then
+                    coreMsg = customMsgText .. " " .. msg
+                end
+                
+                if targetFormatted ~= "" then
+                    coreMsg = targetFormatted .. " " .. coreMsg
+                end
+                
+                local finalMessage = selectedPattern .. "\n" .. coreMsg .. "\n" .. selectedPattern
+                
+                if #finalMessage > 195 then
+                    local allowedLen = math.floor((190 - #coreMsg) / 2)
+                    if allowedLen > 2 then
+                        local shortPat = string.sub(selectedPattern, 1, allowedLen)
+                        finalMessage = shortPat .. "\n" .. coreMsg .. "\n" .. shortPat
+                    else
+                        finalMessage = string.sub(coreMsg, 1, 190)
+                    end
+                end
+                
+                local chatEvent = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
+                local textChannel = game:GetService("TextChatService").TextChannels:FindFirstChild("RBXGeneral")
+                
+                if chatEvent and chatEvent:FindFirstChild("SayMessageRequest") then
+                    chatEvent.SayMessageRequest:FireServer(finalMessage, "All")
+                elseif textChannel then
+                    textChannel:SendAsync(finalMessage)
+                end
+                
+                sentCount = sentCount + 1
+                
+                if isBurstMode then
+                    burstCount = burstCount + 1
+                    if burstCount >= 7 then
+                        StatusLabel.Text = "Status: Cooldown ⏳ (Resting 5s)"
+                        StatusLabel.TextColor3 = Color3.fromRGB(250, 204, 21) 
+                        task.wait(5)
+                        burstCount = 0 
+                        if isSpamming then
+                            StatusLabel.Text = "Status: Running 🟢 (Burst)"
+                            StatusLabel.TextColor3 = Color3.fromRGB(74, 222, 128)
+                        end
+                    else
+                        task.wait(customDelay)
+                    end
+                else
+                    task.wait(customDelay)
+                end
+            end
+        else
+            task.wait(0.5)
+        end
+    end
+end)
