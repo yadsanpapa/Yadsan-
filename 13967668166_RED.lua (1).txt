@@ -2146,7 +2146,6 @@ local TeleportCheck = false
 g.Teleport_Checker_For_Script = g.LocalPlayer.OnTeleport:Connect(function(State)
 	if not TeleportCheck and queueteleport and typeof(queueteleport) == "function" then
 		TeleportCheck = true
-		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/13967668166_RED.lua%20(1).txt'))()")
 	end
 end)
 
@@ -11380,7 +11379,7 @@ Callback = function(state)
 end}, "Free_Premium_Toggle_UI")
 
 g.create_ui_element("Input", Vehicle_Section, {
-Name = "Spawn Vehicle (FE, Any)",
+Name = "Spawn Vehicle (YS, Any)",
 PlaceholderText = "Enter vehicle name...",
 Flag = "Spawn_Vehicle_Input_UI",
 Callback = function(split)
@@ -12975,7 +12974,7 @@ Callback = function(split)
 end}, "Blacklist_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Unblacklist Player (FE)",
+Name = "Unblacklist Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Unblacklist_Player_Input_UI",
 Callback = function(split)
@@ -12993,7 +12992,7 @@ Callback = function(split)
 end}, "Unblacklist_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Rainbow Time (Friend, FE)",
+Name = "Rainbow Time (Friend, YS)",
 PlaceholderText = "Username number (e.g. PlayerName 1)...",
 Flag = "Rainbow_Time_Input_UI",
 Callback = function(split)
