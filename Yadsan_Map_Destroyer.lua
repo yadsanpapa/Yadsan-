@@ -111,7 +111,7 @@ KeyLinkCorner.Parent = KeyLinkBtn
 
 KeyLinkBtn.MouseButton1Click:Connect(function()
     if setclipboard then
-        setclipboard("https://pastebin.com/raw/TwuqGyac")
+        setclipboard("YadsanPapa")
         KeyLinkBtn.Text = "✅ Key Link Copied!"
         task.delay(1.5, function()
             KeyLinkBtn.Text = "📋 KEY LINK"
@@ -567,9 +567,9 @@ local function LoadMainHub()
     -- ============================================ --
     --               TAB 2 CONTENT                  --
     -- ============================================ --
-    AddInfoBox(Tab2_Page, "YE SCRIPT LOAD KARNE KE BAAD EMOTE MA SREACH KARNA SPIN BAS OR INIFINITE YIELD LOAD KARNA ANTIFLING OR WALKFLING LAGA LENA")
+    AddInfoBox(Tab2_Page, "YE SCRIPT INIFINITE YIELD LOAD KARNA ANTIFLING OR WALKFLING LAGA LENA")
 
-    AddRemoteScriptItem(Tab2_Page, "Yadsan Emote Hub", "https://raw.githubusercontent.com/ayanjaveed503-a11y/AYAN-EMOTE-/refs/heads/main/AYAN%20EMOTE.lua")
+    AddRemoteScriptItem(Tab2_Page, "Yadsan Infinite Yield", "loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()")
 
 
     -- ============================================ --
@@ -584,7 +584,7 @@ local function LoadMainHub()
 
     AddVideoLinkCopy(Tab3_Page, "Copy Video Link", "https://youtube.com/your-video-link-here")
 
-    print("AYAN HUB Loaded Successfully with Emote Script & Info!")
+    print("YADSAN HUB Loaded Successfully with Infinite Yield Script & Info!")
 end
 
 -- Key check logic
