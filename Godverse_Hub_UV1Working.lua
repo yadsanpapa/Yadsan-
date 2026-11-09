@@ -94,9 +94,9 @@ TrollTab:Button({
     Desc = "Click to activate the Ultimate Multi Fling Panel!",
     Callback = function()
         local coreGui = (typeof(gethui) == "function" and gethui()) or game:GetService("CoreGui")
-        if coreGui:FindFirstChild("MONKMultiFlingGUI") then
+        if coreGui:FindFirstChild("YadsanMultiFlingGUI") then
             game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "MONK HUB",
+                Title = "GODVERSE HUB",
                 Text = "Multi Fling GUI is already open!",
                 Duration = 3
             })
@@ -237,7 +237,7 @@ TrollTab:Button({
             AuthorLabel.Position = UDim2.new(0, 10, 0, 40)
             AuthorLabel.Size = UDim2.new(1, -20, 0, 15)
             AuthorLabel.BackgroundTransparency = 1
-            AuthorLabel.Text = "Made by @STR_MONK8"
+            AuthorLabel.Text = "Made by @Yadsan_Godverse"
             AuthorLabel.TextColor3 = Color3.fromRGB(150, 150, 150)
             AuthorLabel.Font = Enum.Font.Gotham
             AuthorLabel.TextSize = 12
@@ -458,7 +458,7 @@ TrollTab:Button({
                 game:GetService("StarterGui"):SetCore("SendNotification", { Title = Title, Text = Text, Duration = Time or 5 })
             end
 
-            local function MONKFling(TargetPlayer)
+            local function YadsanFling(TargetPlayer)
                 local Character = Player.Character
                 local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid")
                 local RootPart = Humanoid and Humanoid.RootPart
@@ -479,7 +479,7 @@ TrollTab:Button({
                 
                 if Character and Humanoid and RootPart then
                     if RootPart.Velocity.Magnitude < 50 then getgenv().OldPos = RootPart.CFrame end
-                    if THumanoid and THumanoid.Sit then return Message("MONK HUB", TargetPlayer.Name .. " is sitting!", 2) end
+                    if THumanoid and THumanoid.Sit then return Message("GODVERSE HUB", TargetPlayer.Name .. " is sitting!", 2) end
                     
                     if THead then workspace.CurrentCamera.CameraSubject = THead
                     elseif Handle then workspace.CurrentCamera.CameraSubject = Handle
@@ -544,7 +544,7 @@ TrollTab:Button({
                     if TRootPart then SFBasePart(TRootPart)
                     elseif THead then SFBasePart(THead)
                     elseif Handle then SFBasePart(Handle)
-                    else return Message("MONK HUB", TargetPlayer.Name .. " has no valid parts", 2) end
+                    else return Message("GODVERSE HUB", TargetPlayer.Name .. " has no valid parts", 2) end
                     
                     BV:Destroy()
                     Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, true)
@@ -562,7 +562,7 @@ TrollTab:Button({
                         until (RootPart.Position - getgenv().OldPos.p).Magnitude < 25
                         workspace.FallenPartsDestroyHeight = getgenv().FPDH
                     end
-                else return Message("MONK HUB", "Your character is not ready", 2) end
+                else return Message("GODVERSE HUB", "Your character is not ready", 2) end
             end
 
             local function StartFling()
@@ -602,7 +602,7 @@ TrollTab:Button({
                 if not FlingActive then return end
                 FlingActive = false
                 UpdateStatus()
-                Message("MONK HUB", "Multi-Fling Stopped.", 2)
+                Message("GODVERSE HUB", "Multi-Fling Stopped.", 2)
             end
 
             StartButton.MouseButton1Click:Connect(StartFling)
@@ -1121,7 +1121,7 @@ SpamTab:Button({
     Title = "YADSAN EDITION SPAM 👑",
     Desc = "Click to execute the ultimate VIP Spammer!",
     Callback = function()
-        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Spammer_OV1"))()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Spammer_OV1"),true))()
     end,
 })
 
@@ -1135,7 +1135,7 @@ LifeTogetherTab:Button({
     Title = "YADSAN OUTFIT COPIER 🤩 (ONLY FOR LIFE TOGETHER ☄️)GUI✌🏻",
     Desc = "Click to open the outfit copier GUI",
     Callback = function()
-        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Outfit_Copier_OV1"))()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Outfit_Copier_OV1"),true))()
     end,
 })
 
@@ -1143,7 +1143,7 @@ LifeTogetherTab:Button({
     Title = " YADSAN ULTIMATE TRAPPING 🌪️",
     Desc = "Click to open the Ultimate Pyramid Trap GUI",
     Callback = function()
-        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Target_Trap_OV1"))()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Target_Trap_OV1"),true))()
     end,
 })
 
