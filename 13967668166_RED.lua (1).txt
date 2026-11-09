@@ -5300,8 +5300,8 @@ g.save_copied_plrs_emote = g.save_copied_plrs_emote or function()
         wait()
         g.notify("Success", "Saved currently playing emote.", 3)
     else
-        if g.FreeEmotes_Enabled then g.notify("Warning", "You already have Flames Emoting GUI loaded!", 5); return end
-        if CoreGui:FindFirstChild("FlamesEmoteGUI") then g.notify("Warning", "You already have Flames Emoting GUI loaded!", 5); return end
+        if g.FreeEmotes_Enabled then g.notify("Warning", "You already have Yadsan Emoting GUI loaded!", 5); return end
+        if CoreGui:FindFirstChild("FlamesEmoteGUI") then g.notify("Warning", "You already have Yadsan Emoting GUI loaded!", 5); return end
         g.FreeEmotes_Enabled = true
         loadstring(g.http_get("https://pastebin.com/raw/RCj6RJtc"))()
         wait(1)
@@ -6908,10 +6908,10 @@ g.Flames_Debugger_Function_Tester_GUI = g.Flames_Debugger_Function_Tester_GUI or
 
     if genv.__flames_debugger_running then
         if g.notify then
-            g.notify("Warning", "Flames Debugger is already running!", 5)
+            g.notify("Warning", "Yadsan Debugger is already running!", 5)
             return 
         else
-            warn("Flames Debugger is already running.")
+            warn("Yadsan Debugger is already running.")
             return
         end
     end
@@ -12803,13 +12803,13 @@ Default = g.firehidden or false,
 Flag = "Anti_Fire_Toggle_UI",
 Callback = function(state)
     if state then
-        if g.firehidden then g.notify("Warning", "Flames Anti-Fire Spammer V3 is already enabled.", 6); return end
-        if g.spamming_all_that_fire then g.notify("Warning", "Flames Spammer is enabled, disable it first!", 10); return end
-        g.notify("Success", "Flames Anti-Fire Spammer V3 is now enabled.", 6)
+        if g.firehidden then g.notify("Warning", "Yadsan Anti-Fire Spammer V3 is already enabled.", 6); return end
+        if g.spamming_all_that_fire then g.notify("Warning", "Yadsan Spammer is enabled, disable it first!", 10); return end
+        g.notify("Success", "Yadsan Anti-Fire Spammer V3 is now enabled.", 6)
         g.set_fire_state(true)
     else
-        if not g.firehidden then g.notify("Warning", "Flames Anti-Fire Spammer V3 is not enabled.", 6); return end
-        g.notify("Success", "Flames Anti-Fire Spammer V3 is now disabled.", 6)
+        if not g.firehidden then g.notify("Warning", "Yadsan Anti-Fire Spammer V3 is not enabled.", 6); return end
+        g.notify("Success", "Yadsan Anti-Fire Spammer V3 is now disabled.", 6)
         g.set_fire_state(false)
     end
 end}, "Anti_Fire_Toggle_UI")
@@ -13088,7 +13088,7 @@ Callback = function()
     if g.Flames_Debugger_Function_Tester_GUI then
         pcall(function() g.Flames_Debugger_Function_Tester_GUI() end)
     else
-        g.notify("Error", "Flames Debugger function not found or was not created at runtime.", 10)
+        g.notify("Error", "Yadsan Debugger function not found or was not created at runtime.", 10)
     end
 end,})
 
@@ -13129,7 +13129,7 @@ Callback = function()
 end,})
 
 g.Toggle_Fire_Spam = g.create_ui_element("Toggle", Extras_Section, {
-Name = "Flames (FE)",
+Name = "Yadsan (YS)",
 Default = g.spamming_all_that_fire or false,
 Flag = "Flames_Toggle_UI",
 Callback = function(state)
