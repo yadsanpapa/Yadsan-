@@ -490,7 +490,7 @@ if not isVerified() then
     end
 else
     if g.notify then g.notify("Success", "We have verified you in our system | has already completed verification.", 20) end
-    if g.notify then g.notify("Success", "Your special Yadsan Hub GUID: "..tostring(masked_flames_hub_server_ID), 10) end
+    if g.notify then g.notify("Success", "Your special Yadsan Hub GUID: "..tostring(masked_yadsan_hub_server_ID), 10) end
 end
 wait(0.1)
 g.safe_wrapper = g.safe_wrapper or function(service)
@@ -1572,7 +1572,7 @@ g.Device_Detector = g.Device_Detector or function()
     return platform_map[platform] or "Unknown Device"
 end
 
-g.count_all_flames_hub_commands = g.count_all_flames_hub_commands or function()
+g.count_all_yadsan_hub_commands = g.count_all_yadsan_hub_commands or function()
     local cmds = g.cmdsString
     if type(cmds) ~= "string" then return 0 end
     local total = 0
@@ -8487,12 +8487,12 @@ g.flash_server_admin_title_client_sided = g.flash_server_admin_title_client_side
     local localplayer_admin_of_priv_server = g.get_server_admin_title_player()
     if not localplayer_admin_of_priv_server then return end
     local fw = g.YadsanLibrary.wait
-    local preset_texts = {"Yadsan Admin", "Server Admin", "Destroyer Admin", "Owner Admin", "Demon Admin", "Straight Crime", "Powerful Admin", "Creator Admin", "fLaMeS rUlEs", "YADSAN ADMIN"}
+    local preset_texts = {"Yadsan Admin", "Server Admin", "Destroyer Admin", "Owner Admin", "Demon Admin", "Straight Crime", "Powerful Admin", "Creator Admin", "yAdSaN rUlEs", "YADSAN ADMIN"}
 
     if toggle == true then
         if g.Server_Admin_Text_Title_Changer then g.notify("Warning", "Server Admin Title Text changer is already enabled!", 5); return end
         g.Server_Admin_Text_Title_Changer = true
-        g.FlamesLibrary.spawn("server_admin_title_text_changer_main_loop", "spawn", function()
+        g.YadsanLibrary.spawn("server_admin_title_text_changer_main_loop", "spawn", function()
             while g.Server_Admin_Text_Title_Changer == true do
             fw(0)
                 for _, text in ipairs(preset_texts) do
@@ -9126,10 +9126,10 @@ end
 
 -- [[ I promise I'll use it later, I know, it's better. ]] --
 g.find_configuration_manager_GUI = function()
-    local find_GUI_main = CoreGui:FindFirstChild("FlamesAdminGUI", true)
+    local find_GUI_main = CoreGui:FindFirstChild("YadsanAdminGUI", true)
     if find_GUI_main and find_GUI_main:IsA("ScreenGui") then return find_GUI_main end
     for _, v in ipairs(CoreGui:GetDescendants()) do
-        if v:IsA("ScreenGui") and v.Name:lower():find("flames") and v.Name:lower():find("admin") then
+        if v:IsA("ScreenGui") and v.Name:lower():find("Yadsan") and v.Name:lower():find("admin") then
             return v
         end
     end
@@ -9332,7 +9332,7 @@ g.removePlayerFromScriptWhitelistTable = g.removePlayerFromScriptWhitelistTable 
 end
 
 g.start_glitch_script = function()
-    if g.SideGlitch_Enabled and YadsanLibrary._connections["SideGlitch_Loop"] and #YadsanLibrary._connections["SideGlitch_Loop"] > 0 then g.notify("Warning", "MonK Hub | Glitch Script is already enabled!", 3); return end
+    if g.SideGlitch_Enabled and YadsanLibrary._connections["SideGlitch_Loop"] and #YadsanLibrary._connections["SideGlitch_Loop"] > 0 then g.notify("Warning", "Yadsan Hub | Glitch Script is already enabled!", 3); return end
     local char = g.Character or speaker.Character or g.get_char(speaker)
     if not char or not char:IsDescendantOf(game) then return end
     local root  = g.HumanoidRootPart or char and char:FindFirstChild("HumanoidRootPart") or g.get_root(speaker)
