@@ -5,9 +5,9 @@ local chatDelay = 1.25
 local messages = {
     "『💀』 Hello Bhai 😈 " .. player.Name .. ", Humari Gang Mein Kab Aayega? 🥷🔥 『🩸』",
     "『😐』//OWNER//:YADSAN:// 『😳』",
-    "『💀』CELESTIAL SYNDICATE X ASUKAREIGN ON TOP『💀』",
-    "GUI MAY TAKE『🙃』 SOMETIMES TO LOAD", -- Added right below -pd
-    "SCriPt By Yadsan_Godverse UV1 WrokiNg!"
+    "『💀』CELESTIAL SYNDICATE X ASUKAREIGN X ZERO MERCY ON TOP『💀』",
+    " BHAICHARA 😌 ", -- Added right below -pd
+    "SCriPt By Yadsan_Godverse UV1 WorkiNg!"
 }
 
 -- Function to safely send chat messages across different Roblox chat systems
@@ -43,7 +43,7 @@ task.spawn(function()
     
     -- Execute the external Patchma Hub script after the final delay
     local success, err = pcall(function()
-       loadstring(game:HttpGet("https://pastebin.com/raw/P5KTnUBW"))()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/yadsanpapa/Yadsan_Godverse/refs/heads/main/Godverse_Hub_Uv1.lua?token=GHSAT0AAAAAAEPMPDRQBPMDCKEWAUZJTE7G2XRY6QA"))()
     end)
     
     if not success then
