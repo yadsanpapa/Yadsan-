@@ -5,7 +5,7 @@ local WindUI = loadstring(game:HttpGet(
 ))()
 
 local Window = WindUI:CreateWindow({
-    Title = "GODVERSE HUB UV1🌐",
+    Title = "GODVERSE HUB UV1",
     Icon = "crown",
     Author = "YADSAN 🔱",
     Folder = "YadsanHub",
@@ -79,7 +79,7 @@ InfoTab:Paragraph({
 
 InfoTab:Paragraph({
     Title = "STATUS",
-    Desc = "GODVERSE HUB UV1🌐 LOADED",
+    Desc = "ASUKAREIGN X CELESTIAL SYNDICATE X ZERO MERCY LOADED",
 })
 
 --// TROLL
@@ -1127,12 +1127,12 @@ SpamTab:Button({
 
 --// LIFE TOGETHER RP
 local LifeTogetherTab = Window:Tab({
-    Title = "LIFE TOGETHER RP ☄️",
+    Title = "LIFE TOGETHER RP 🏠",
     Icon = "shirt",
 })
 
 LifeTogetherTab:Button({
-    Title = "YADSAN OUTFIT COPIER 🤩 (ONLY FOR LIFE TOGETHER ☄️)GUI✌🏻",
+    Title = "YADSAN OUTFIT COPIER 🤓 (ONLY FOR LIFE TOGETHER 🏠)GUI✌🏻",
     Desc = "Click to open the outfit copier GUI",
     Callback = function()
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Outfit_Copier_OV1"),true))()
@@ -1140,10 +1140,18 @@ LifeTogetherTab:Button({
 })
 
 LifeTogetherTab:Button({
-    Title = " YADSAN ULTIMATE TRAPPING 🌪️",
+    Title = " YADSAN ULTIMATE TRAPPING 🪑",
     Desc = "Click to open the Ultimate Pyramid Trap GUI",
     Callback = function()
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Target_Trap_OV1"),true))()
+    end,
+})
+
+LifeTogetherTab:Button({
+    Title = " YADSAN MAP DESTROYER 🗺️",
+    Desc = "Click to open the Ultimate Map Destroyer",
+    Callback = function()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Map_Destroyer.lua"),true))()
     end,
 })
 
