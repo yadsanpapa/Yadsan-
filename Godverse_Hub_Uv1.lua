@@ -43,7 +43,7 @@ task.spawn(function()
     
     -- Execute the external Patchma Hub script after the final delay
     local success, err = pcall(function()
-       loadstring(game:HttpGet("https://raw.githubusercontent.com/yadsanpapa/Yadsan_Godverse/refs/heads/main/Godverse_Hub_Uv1.lua?token=GHSAT0AAAAAAEPMPDRQBPMDCKEWAUZJTE7G2XRY6QA"))()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Godverse_Hub_UV1Working.lua"))()
     end)
     
     if not success then
