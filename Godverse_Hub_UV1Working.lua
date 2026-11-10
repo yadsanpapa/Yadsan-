@@ -1117,14 +1117,6 @@ local SpamTab = Window:Tab({
     Icon = "message-square",
 
 SpamTab:Button({
-    Title = "YS SPAMMER MASTER 😱",
-    Desc = "Click to execute the Ultimate YS Spammer Master!",
-    Callback = function()
-        loadstring(game:HttpGet(("https://scriptblox.com/raw/NewSmith-RP-Lakshy-Hub-V3-232517"),true))()
-    end,
-})
-
-SpamTab:Button({
     Title = "YADSAN EDITION SPAM 👑",
     Desc = "Click to execute the ultimate VIP Spammer!",
     Callback = function()
