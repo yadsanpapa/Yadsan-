@@ -11625,7 +11625,7 @@ end,})
 
 g.create_ui_element("Input", Vehicle_Section, {
 Name = "Teleport Car To Player (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "TP_Car_To_Player_Input_UI",
 Callback = function(split)
     local Vehicle = g.get_vehicle()
@@ -11672,7 +11672,7 @@ end}, "TP_Car_To_Player_Input_UI")
 
 g.create_ui_element("Input", Vehicle_Section, {
 Name = "Steal Car (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Steal_Car_Input_UI",
 Callback = function(split)
     local take_vehicle_target_plr = g.findplr(split)
@@ -11696,7 +11696,7 @@ end}, "Vehicle_ESP_Toggle_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Orbit Player (YS)",
-PlaceholderText = "User or Display...",
+PlaceholderText = "user or display...",
 Flag = "Orbit_Player_Input_UI",
 Callback = function(split)
     local Target = g.findplr(split)
@@ -11732,7 +11732,7 @@ end}, "Orbit_Distance_Slider_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Annoy Player (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Annoy_Player_Input_UI",
 Callback = function(split)
     local Target = g.findplr(split)
@@ -11816,7 +11816,7 @@ end,})
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Loop Fling Player",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Loop_Fling_Input_UI",
 Callback = function(split)
     local loop_fling_victim = g.findplr(split)
@@ -11840,7 +11840,7 @@ end,})
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Bring Player (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Bring_Player_Input_UI",
 Callback = function(split)
     local target = g.findplr(split)
@@ -11877,7 +11877,7 @@ end}, "Bring_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Kill Player (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Kill_Player_Input_UI",
 Callback = function(split)
     local target = g.findplr(split)
@@ -11914,7 +11914,7 @@ end}, "Kill_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Void Player (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Void_Player_Input_UI",
 Callback = function(split)
     local target = g.findplr(split)
@@ -11924,7 +11924,7 @@ Callback = function(split)
         local t = 0
         while t < timeout do
             for _, v in ipairs(g.Workspace.Vehicles:GetChildren()) do
-                if v:IsA("Model") and v.Name == "SchoolBus" and v:FindFirstChild("owner") and v.owner.Value == g.LocalPlayer then
+                if v:IsA("Model") and v.Name == "VespaPolice" and v:FindFirstChild("owner") and v.owner.Value == g.LocalPlayer then
                     return v
                 end
             end
@@ -11935,23 +11935,23 @@ Callback = function(split)
     end
 
     local Vehicle = g.get_vehicle()
-    if not Vehicle or Vehicle.Name ~= "SchoolBus" then
-        g.spawn_any_vehicle("SchoolBus")
+    if not Vehicle or Vehicle.Name ~= "VespaPolice" then
+        g.spawn_any_vehicle("VespaPolice")
         fw(0.5)
         Vehicle = wait_for_bus(5)
     end
 
-    if Vehicle and Vehicle.Name == "SchoolBus" then
+    if Vehicle and Vehicle.Name == "VespaPolice" then
         g.vehicle_void_player(target)
         g.notify("Success", "Sending player to the Void | player: " .. target.Name, 3)
     else
-        g.notify("Error", "Failed to spawn/find SchoolBus.", 3)
+        g.notify("Error", "Failed to spawn/find VespaPolice.", 3)
     end
 end}, "Void_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Skydive Player (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Skydive_Player_Input_UI",
 Callback = function(split)
     local target = g.findplr(split)
@@ -11989,7 +11989,7 @@ end}, "Skydive_Player_Input_UI")
 g.create_ui_element("Input", Players_Section, {
 Name = "Copy Avatar (YS)",
 Description = "Copies the target players entire avatar (YS).",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Copy_Avatar_Input_UI",
 Callback = function(split)
     local Target = g.findplr(split)
@@ -12001,7 +12001,7 @@ end}, "Copy_Avatar_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Copy Player Emote (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Copy_Emote_Input_UI",
 Callback = function(split)
     local target_plr = g.findplr(split)
@@ -12011,7 +12011,7 @@ end}, "Copy_Emote_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Check Premium",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Check_Premium_Input_UI",
 Callback = function(split)
     local Player = g.findplr(split)
@@ -12714,7 +12714,7 @@ end}, "Unlock_Player_Home_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Friend Player",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Friend_Player_Input_UI",
 Callback = function(split)
     local target_friend_plr = g.findplr(split)
@@ -12724,7 +12724,7 @@ end}, "Friend_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Unfriend Player",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Unfriend_Player_Input_UI",
 Callback = function(split)
     local target_unfriend_plr = g.findplr(split)
@@ -12854,7 +12854,7 @@ if priv_server_is_in == true then
 
     g.create_ui_element("Input", PrivServer_Section, {
     Name = "Kick Player (YS)",
-    PlaceholderText = "Username or displayname...",
+    PlaceholderText = "user or display...",
     Flag = "Kick_Player_Input_UI",
     Callback = function(split)
         local target_plr = g.findplr(split)
@@ -12867,7 +12867,7 @@ if priv_server_is_in == true then
 
     g.create_ui_element("Input", PrivServer_Section, {
     Name = "Ban Player (YS)",
-    PlaceholderText = "Username or displayname...",
+    PlaceholderText = "user or display...",
     Flag = "Ban_Player_Input_UI",
     Callback = function(split)
         if not g.is_localplayer_server_owner() then
@@ -12887,7 +12887,7 @@ if priv_server_is_in == true then
 
     g.create_ui_element("Input", PrivServer_Section, {
     Name = "Unban Player (YS)",
-    PlaceholderText = "Username or displayname...",
+    PlaceholderText = "user or display...",
     Flag = "Unban_Player_Input_UI",
     Callback = function(split)
         if not g.is_localplayer_server_owner() then
@@ -12930,7 +12930,7 @@ end}, "Admin_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "UnAdmin Player (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Unadmin_Player_Input_UI",
 Callback = function(split)
     local Player = g.findplr(split)
@@ -12953,7 +12953,7 @@ end}, "Unadmin_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Blacklist Player (YS)",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Blacklist_Player_Input_UI",
 Callback = function(split)
     local Player = g.findplr(split)
@@ -13009,7 +13009,7 @@ end}, "Rainbow_Time_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
 Name = "Walk Fling Whitelist",
-PlaceholderText = "Username or displayname...",
+PlaceholderText = "user or display...",
 Flag = "Walk_Fling_Whitelist_Input_UI",
 Callback = function(split)
     local plr = g.findplr(split)
