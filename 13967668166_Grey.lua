@@ -11379,7 +11379,7 @@ Callback = function(state)
 end}, "Free_Premium_Toggle_UI")
 
 g.create_ui_element("Input", Vehicle_Section, {
-Name = "Spawn Vehicle (YS, Any)",
+Name = "Spawn Vehicle (YS)",
 PlaceholderText = "Enter vehicle name...",
 Flag = "Spawn_Vehicle_Input_UI",
 Callback = function(split)
@@ -11880,301 +11880,55 @@ Name = "Trap Player (YS)",
 Flag = "Trap_Player_Input_UI",
 Callback = function(split)
     local Target = g.findplr(split)
-	
--- Minimize Button (-)
-local MinimizeBtn = Instance.new("TextButton")
-MinimizeBtn.Parent = MainFrame
-MinimizeBtn.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-MinimizeBtn.Position = UDim2.new(1, -30, 0, 0)
-MinimizeBtn.Size = UDim2.new(0, 30, 0, 30)
-MinimizeBtn.Font = Enum.Font.Code
-MinimizeBtn.Text = "-"
-MinimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-MinimizeBtn.TextSize = 24
-MinimizeBtn.BorderSizePixel = 0
 
--- Dropdown Toggle Button
-local DropdownBtn = Instance.new("TextButton")
-DropdownBtn.Parent = MainFrame
-DropdownBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-DropdownBtn.Position = UDim2.new(0.05, 0, 0.18, 0)
-DropdownBtn.Size = UDim2.new(0.9, 0, 0, 30)
-DropdownBtn.Font = Enum.Font.Code
-DropdownBtn.Text = "Select Player ▼"
-DropdownBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-DropdownBtn.TextSize = 14
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
--- Scrolling Frame for Players
-local ScrollFrame = Instance.new("ScrollingFrame")
-ScrollFrame.Parent = MainFrame
-ScrollFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-ScrollFrame.Position = UDim2.new(0.05, 0, 0.35, 0)
-ScrollFrame.Size = UDim2.new(0.9, 0, 0, 100)
-ScrollFrame.Visible = false
-ScrollFrame.ScrollBarThickness = 4
+local player = Players.LocalPlayer
+local event = ReplicatedStorage:WaitForChild("CampingChairEvent")
 
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.Parent = ScrollFrame
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
 
--- Action Buttons
-local TrapBtn = Instance.new("TextButton")
-TrapBtn.Parent = MainFrame
-TrapBtn.BackgroundColor3 = Color3.fromRGB(150, 50, 0)
-TrapBtn.Position = UDim2.new(0.05, 0, 0.37, 0)
-TrapBtn.Size = UDim2.new(0.9, 0, 0, 35)
-TrapBtn.Font = Enum.Font.Code
-TrapBtn.Text = "Trap Once"
-TrapBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-TrapBtn.TextSize = 16
+local frame = Instance.new("Frame")
+frame.Size = UDim2.fromOffset(260, 160)
+frame.Position = UDim2.new(0.5, -130, 0.5, -80)
+frame.BackgroundColor3 = Color3.fromRGB(30, 20, 45)
+frame.Parent = gui
 
-local FollowBtn = Instance.new("TextButton")
-FollowBtn.Parent = MainFrame
-FollowBtn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
-FollowBtn.Position = UDim2.new(0.05, 0, 0.58, 0)
-FollowBtn.Size = UDim2.new(0.9, 0, 0, 35)
-FollowBtn.Font = Enum.Font.Code
-FollowBtn.Text = "Follow Trap : OFF"
-FollowBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-FollowBtn.TextSize = 16
+local input = Instance.new("TextBox")
+input.Size = UDim2.new(1, -20, 0, 35)
+input.Position = UDim2.fromOffset(10, 10)
+input.PlaceholderText = "Username or displayname...",
+input.Text = ""
+input.Parent = frame
 
-local ClearBtn = Instance.new("TextButton")
-ClearBtn.Parent = MainFrame
-ClearBtn.BackgroundColor3 = Color3.fromRGB(0, 100, 150)
-ClearBtn.Position = UDim2.new(0.05, 0, 0.79, 0)
-ClearBtn.Size = UDim2.new(0.9, 0, 0, 35)
-ClearBtn.Font = Enum.Font.Code
-ClearBtn.Text = "Clear Traps"
-ClearBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-ClearBtn.TextSize = 16
+local trap = Instance.new("TextButton")
+trap.Size = UDim2.new(0.5, -15, 0, 40)
+trap.Position = UDim2.fromOffset(10, 60)
+trap.Text = "TRAP"
+trap.Parent = frame
 
-local selectedPlayer = nil
-local isFollowing = false
-local chairItem = ReplicatedStorage:WaitForChild("LargePlaceables"):WaitForChild("CampingChair")
+local release = Instance.new("TextButton")
+release.Size = UDim2.new(0.5, -15, 0, 40)
+release.Position = UDim2.fromOffset(140, 60)
+release.Text = "RELEASE"
+release.Parent = frame
 
--- Globals for strict tracking
-local trapTicket = 0
-
--- Minimize Logic
-local isMinimized = false
-MinimizeBtn.MouseButton1Click:Connect(function()
-    isMinimized = not isMinimized
-    if isMinimized then
-        MainFrame.Size = UDim2.new(0, 200, 0, 30)
-        MinimizeBtn.Text = "+"
-        DropdownBtn.Visible = false
-        ScrollFrame.Visible = false
-        TrapBtn.Visible = false
-        FollowBtn.Visible = false
-        ClearBtn.Visible = false
-    else
-        MainFrame.Size = UDim2.new(0, 200, 0, 220)
-        MinimizeBtn.Text = "-"
-        DropdownBtn.Visible = true
-        TrapBtn.Visible = true
-        FollowBtn.Visible = true
-        ClearBtn.Visible = true
-        
-        TrapBtn.Position = UDim2.new(0.05, 0, 0.37, 0)
-        FollowBtn.Position = UDim2.new(0.05, 0, 0.58, 0)
-        ClearBtn.Position = UDim2.new(0.05, 0, 0.79, 0)
-        ScrollFrame.Visible = false
-    end
+trap.MouseButton1Click:Connect(function()
+    event:FireServer("Trap", input.Text)
 end)
 
--- Player List Refresh
-local function refreshPlayerList()
-    for _, child in pairs(ScrollFrame:GetChildren()) do
-        if child:IsA("TextButton") then child:Destroy() end
-    end
-    
-    local yOffset = 0
-    for _, p in pairs(Players:GetPlayers()) do
-        if p ~= LocalPlayer and p.Name ~= "SUPERMONKXSCRIPTS" then
-            local btn = Instance.new("TextButton")
-            btn.Parent = ScrollFrame
-            btn.Size = UDim2.new(1, 0, 0, 25)
-            btn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-            btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-            btn.Font = Enum.Font.Code
-            btn.TextSize = 14
-            btn.Text = p.DisplayName .. " (@" .. p.Name .. ")"
-            
-            btn.MouseButton1Click:Connect(function()
-                selectedPlayer = p
-                DropdownBtn.Text = "Target: " .. p.Name
-                ScrollFrame.Visible = false
-                TrapBtn.Position = UDim2.new(0.05, 0, 0.37, 0)
-                FollowBtn.Position = UDim2.new(0.05, 0, 0.58, 0)
-                ClearBtn.Position = UDim2.new(0.05, 0, 0.79, 0)
-                MainFrame.Size = UDim2.new(0, 200, 0, 220)
-            end)
-            yOffset = yOffset + 25
-        end
-    end
-    ScrollFrame.CanvasSize = UDim2.new(0, 0, 0, yOffset)
-end
-
-DropdownBtn.MouseButton1Click:Connect(function()
-    ScrollFrame.Visible = not ScrollFrame.Visible
-    if ScrollFrame.Visible then
-        refreshPlayerList()
-        TrapBtn.Position = UDim2.new(0.05, 0, 0.85, 0)
-        FollowBtn.Position = UDim2.new(0.05, 0, 1.05, 0)
-        ClearBtn.Position = UDim2.new(0.05, 0, 1.25, 0)
-        MainFrame.Size = UDim2.new(0, 200, 0, 320)
-    else
-        TrapBtn.Position = UDim2.new(0.05, 0, 0.37, 0)
-        FollowBtn.Position = UDim2.new(0.05, 0, 0.58, 0)
-        ClearBtn.Position = UDim2.new(0.05, 0, 0.79, 0)
-        MainFrame.Size = UDim2.new(0, 200, 0, 220)
-    end
+release.MouseButton1Click:Connect(function()
+    event:FireServer("Release", input.Text)
 end)
 
--- INVISIBLE GHOST TELEPORT CLEAR SYSTEM
-local function clearAllChairs()
-    trapTicket = trapTicket + 1 
-    task.spawn(function()
-        local chairsToRemove = {}
-        local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-        
-        -- Map ki saari chairs collect karo
-        for _, v in pairs(workspace:GetDescendants()) do
-            if v:IsA("Model") and (string.find(v.Name, "CampingChair") or string.find(v.Name, chairItem.Name)) then
-                local cd = v:FindFirstChildWhichIsA("ClickDetector", true)
-                local part = v.PrimaryPart or v:FindFirstChildWhichIsA("BasePart")
-                if cd and part then
-                    table.insert(chairsToRemove, {cd = cd, part = part})
-                end
-            end
-        end
-        
-        if #chairsToRemove > 0 and hrp then
-            local cam = workspace.CurrentCamera
-            local originalCamType = cam.CameraType
-            local originalCamCFrame = cam.CFrame
-            
-            -- Save your original position to come back
-            local originalCFrame = hrp.CFrame
-            
-            -- Freeze the camera at its original position to avoid glitches.
-            cam.CameraType = Enum.CameraType.Scriptable
-            cam.CFrame = originalCamCFrame
-            
-            for i, data in ipairs(chairsToRemove) do
-                -- If the chair is further away than 8 studs, then invisible teleport
-                if (hrp.Position - data.part.Position).Magnitude > 8 then
-                    hrp.CFrame = data.part.CFrame
-                    task.wait(0.03) -- small delay for server check
-                end
-                
-                if Net and Net.send then
-                    Net.send("interaction", data.cd, "Pick Up")
-                end
-            end
-            
-            -- After collecting everything, instantly return to the original location
-            if hrp and hrp.Parent then
-                hrp.CFrame = originalCFrame
-            end
-            
-            -- Wait a bit and bring the camera back to normal.
-            task.wait(0.05)
-            cam.CameraType = originalCamType
-        end
-    end)
-end
-
--- Fast Pyramid Spawning (with cancel ticket system)
-local function spawnPyramidFast(targetChar)
-    local hrp = targetChar:FindFirstChild("HumanoidRootPart")
-    if not hrp then return end
-
-    local currentTicket = trapTicket
-    local centerPos = hrp.Position
-    local radius = 2.5 
-    local chairsPerLayer = 10 
-    local yOffsets = {-1, 2.5} 
-    
-    task.spawn(function()
-        for _, yOffset in ipairs(yOffsets) do
-            for i = 1, chairsPerLayer do
-                if trapTicket ~= currentTicket then return end
-                
-                local angle = (i / chairsPerLayer) * (math.pi * 2)
-                local x = centerPos.X + math.cos(angle) * radius
-                local z = centerPos.Z + math.sin(angle) * radius
-                
-                local chairPos = Vector3.new(x, centerPos.Y + yOffset, z)
-                local lookAtPos = Vector3.new(centerPos.X, centerPos.Y + yOffset, centerPos.Z)
-                local spawnCFrame = CFrame.lookAt(chairPos, lookAtPos)
-                
-                if Net and Net.get then
-                    Net.get("large_place", chairItem, spawnCFrame)
-                end
-            end
-        end
-    end)
-end
-
--- Action Buttons
-TrapBtn.MouseButton1Click:Connect(function()
-    if selectedPlayer and selectedPlayer.Character then
-        task.spawn(function()
-            spawnPyramidFast(selectedPlayer.Character)
-        end)
+event.OnClientEvent:Connect(function(action)
+    if action == "SitRequest" then
+        print("Camping chair sit request received.")
+    elseif action == "Released" then
+        print("Released.")
     end
-end)
-
-FollowBtn.MouseButton1Click:Connect(function()
-    isFollowing = not isFollowing
-    
-    if isFollowing then
-        FollowBtn.Text = "Follow Trap : ON"
-        FollowBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-        
-        task.spawn(function()
-            local currentlyTrapped = false
-            
-            while isFollowing do
-                if selectedPlayer and selectedPlayer.Character then
-                    local hrp = selectedPlayer.Character:FindFirstChild("HumanoidRootPart")
-                    if hrp then
-                        local speed = hrp.Velocity.Magnitude 
-                        
-                        if speed > 0.1 then
-                            if currentlyTrapped then
-                                clearAllChairs()
-                                currentlyTrapped = false
-                            end
-                        else
-                            if not currentlyTrapped then
-                                task.wait(0.3)
-                                
-                                if isFollowing and selectedPlayer.Character and selectedPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                                    local checkSpeed = selectedPlayer.Character.HumanoidRootPart.Velocity.Magnitude
-                                    if checkSpeed <= 0.1 then
-                                        currentlyTrapped = true
-                                        spawnPyramidFast(selectedPlayer.Character)
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-                task.wait(0.05) 
-            end
-            
-            clearAllChairs()
-        end)
-    else
-        FollowBtn.Text = "Follow Trap : OFF"
-        FollowBtn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
-    end
-end)
-
-ClearBtn.MouseButton1Click:Connect(function()
-    clearAllChairs()
 end}, "Trap_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
@@ -12880,9 +12634,9 @@ Callback = function(split)
 end}, "Car_Turn_Angle_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Rainbow Car (Friend, FE)",
+Name = "Rainbow Car (YS)",
 PlaceholderText = "Username or displayname...",
-Flag = "Rainbow_Car_Friend_Input_UI",
+Flag = "Rainbow_Car_Input_UI",
 Callback = function(split)
     local Player_To_RGB_Car = g.findplr(split)
     if not Player_To_RGB_Car then g.notify("Error", "Player does not exist!", 3); return end
@@ -12917,12 +12671,12 @@ Callback = function(split)
         end
     end)
     g.notify("Success", "Rainbow car enabled for: " .. Player_To_RGB_Car.Name, 5)
-end}, "Rainbow_Car_Friend_Input_UI")
+end}, "Rainbow_Car_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Stop Rainbow Car (Friend, FE)",
+Name = "Stop Rainbow Car (YS)",
 PlaceholderText = "Username or displayname...",
-Flag = "Stop_Rainbow_Car_Friend_Input_UI",
+Flag = "Stop_Rainbow_Car_Input_UI",
 Callback = function(split)
     local Player_To_RGB_Car_Stop = g.findplr(split)
     if not Player_To_RGB_Car_Stop then g.notify("Error", "Player does not exist!", 5); return end
@@ -12934,7 +12688,7 @@ Callback = function(split)
     g.FlamesLibrary.disconnect(thread_name)
     g.disable_rgb_for(Player_To_RGB_Car_Stop)
     g.notify("Success", "Disabled Rainbow Vehicle for: " .. Player_To_RGB_Car_Stop.Name, 5)
-end}, "Stop_Rainbow_Car_Friend_Input_UI")
+end}, "Stop_Rainbow_Car_Input_UI")
 
 g.create_ui_element("Button", Houses_Section, {
 Name = "Lock Home (YS)",
