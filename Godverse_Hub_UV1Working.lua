@@ -1153,14 +1153,6 @@ LifeTogetherTab:Button({
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Map_Destroyer.lua"),true))()
     end,
 })
-
-LifeTogetherTab:Button({
-    Title = " YADSAN SIZE RESIZE 🧌",
-    Desc = "Click to open the Ultimate Size Resize",
-    Callback = function()
-        loadstring(game:HttpGet(("https://raw.githubusercontent.com/MANASMCPE/AUTH0R/refs/heads/main/size-resizer.lua"),true))()
-    end,
-})
         
 --// OTHER
 local OtherTab = Window:Tab({
