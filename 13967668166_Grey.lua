@@ -11876,62 +11876,6 @@ Callback = function(split)
 end}, "Bring_Player_Input_UI")
 
 g.create_ui_element("Input", Players_Section, {
-Name = "Trap Player (YS)",
-Flag = "Trap_Player_Input_UI",
-Callback = function(split)
-    local Target = g.findplr(split)
-
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local player = Players.LocalPlayer
-local event = ReplicatedStorage:WaitForChild("CampingChairEvent")
-
-gui.ResetOnSpawn = false
-gui.Parent = player:WaitForChild("PlayerGui")
-
-local frame = Instance.new("Frame")
-frame.Size = UDim2.fromOffset(260, 160)
-frame.Position = UDim2.new(0.5, -130, 0.5, -80)
-frame.BackgroundColor3 = Color3.fromRGB(30, 20, 45)
-frame.Parent = gui
-
-local input = Instance.new("TextBox")
-input.Size = UDim2.new(1, -20, 0, 35)
-input.Position = UDim2.fromOffset(10, 10)
-input.PlaceholderText = "Username or displayname...",
-input.Text = ""
-input.Parent = frame
-
-local trap = Instance.new("TextButton")
-trap.Size = UDim2.new(0.5, -15, 0, 40)
-trap.Position = UDim2.fromOffset(10, 60)
-trap.Text = "TRAP"
-trap.Parent = frame
-
-local release = Instance.new("TextButton")
-release.Size = UDim2.new(0.5, -15, 0, 40)
-release.Position = UDim2.fromOffset(140, 60)
-release.Text = "RELEASE"
-release.Parent = frame
-
-trap.MouseButton1Click:Connect(function()
-    event:FireServer("Trap", input.Text)
-end)
-
-release.MouseButton1Click:Connect(function()
-    event:FireServer("Release", input.Text)
-end)
-
-event.OnClientEvent:Connect(function(action)
-    if action == "SitRequest" then
-        print("Camping chair sit request received.")
-    elseif action == "Released" then
-        print("Released.")
-    end
-end}, "Trap_Player_Input_UI")
-
-g.create_ui_element("Input", Players_Section, {
 Name = "Kill Player (YS)",
 PlaceholderText = "Username or displayname...",
 Flag = "Kill_Player_Input_UI",
@@ -12436,7 +12380,7 @@ Callback = function(state)
 end}, "Walk_Fling_Toggle_UI")
 
 g.create_ui_element("Toggle", LocalPlayer_Section, {
-Name = "Name Spam (YS, Slow!)",
+Name = "Name Spam (YS)",
 Default = g.Name_Spammer_Currently_Enabled or false,
 Flag = "Name_Spam_Toggle_UI",
 Callback = function(state)
