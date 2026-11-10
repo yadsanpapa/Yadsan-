@@ -11924,7 +11924,7 @@ Callback = function(split)
         local t = 0
         while t < timeout do
             for _, v in ipairs(g.Workspace.Vehicles:GetChildren()) do
-                if v:IsA("Model") and v.Name == "VespaPolice" and v:FindFirstChild("owner") and v.owner.Value == g.LocalPlayer then
+                if v:IsA("Model") and v.Name == "SchoolBus" and v:FindFirstChild("owner") and v.owner.Value == g.LocalPlayer then
                     return v
                 end
             end
@@ -11935,17 +11935,17 @@ Callback = function(split)
     end
 
     local Vehicle = g.get_vehicle()
-    if not Vehicle or Vehicle.Name ~= "VespaPolice" then
-        g.spawn_any_vehicle("VespaPolice")
+    if not Vehicle or Vehicle.Name ~= "SchoolBus" then
+        g.spawn_any_vehicle("SchoolBus")
         fw(0.5)
         Vehicle = wait_for_bus(5)
     end
 
-    if Vehicle and Vehicle.Name == "VespaPolice" then
+    if Vehicle and Vehicle.Name == "SchoolBus" then
         g.vehicle_void_player(target)
         g.notify("Success", "Sending player to the Void | player: " .. target.Name, 3)
     else
-        g.notify("Error", "Failed to spawn/find VespaPolice.", 3)
+        g.notify("Error", "Failed to spawn/find SchoolBus.", 3)
     end
 end}, "Void_Player_Input_UI")
 
@@ -13159,7 +13159,7 @@ Flag = "Spawn_Fire_Input_UI",
 Callback = function(split)
     local amount = tonumber(split) or 5
     local is_verified = g.LocalPlayer:GetAttribute("is_verified")
-    if not is_verified then g.notify("Error", "You have premium, you cannot run this!", 8); return end
+    if not is_verified then g.notify("Error", "You do not have premium, you cannot run this!", 8); return end
     g.HasSeen_Fire_AlertFlamesHub = g.HasSeen_Fire_AlertFlamesHub or false
     g.set_fire_amount_FE(amount)
     g.HasSeen_Fire_AlertFlamesHub = true
