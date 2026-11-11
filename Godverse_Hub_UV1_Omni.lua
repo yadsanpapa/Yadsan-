@@ -1140,18 +1140,18 @@ LifeTogetherTab:Button({
 })
 
 LifeTogetherTab:Button({
-    Title = " YADSAN ULTIMATE TRAPPING 🪑",
-    Desc = "Click to open the Ultimate Pyramid Trap GUI",
+    Title = "INFINITE YIELD ⚠️",
+    Desc = "Click to open the Ultimate Commands Inf",
     Callback = function()
-        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Target_Trap_OV1"),true))()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"),true))()
     end,
 })
 
 LifeTogetherTab:Button({
-    Title = " YADSAN MAP DESTROYER 🗺️",
-    Desc = "Click to open the Ultimate Map Destroyer",
+    Title = "YADSAN CRYPTIC HUB",
+    Desc = "Click to open the Ultimate Best Hub",
     Callback = function()
-        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Map_Destroyer.lua"),true))()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/OnlyCryptic/Cryptic/main/main.lua"),true))()
     end,
 })
 
@@ -1268,12 +1268,12 @@ OtherTab:Button({
 --// NOTIFICATION
 WindUI:Notify({
     Title = "GODVERSE HUB UV1",
-    Content = "YADSAN HUB LOADED! 🔱",
+    Content = "YADSAN HUB LOADED! ",
     Duration = 5,
 })
 --// AUTO CHAT MESSAGE
 task.spawn(function()
-    local chatMsg = "------------////GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse (CELESTIAL X ASUKA ON 🔝🎩////-----------------"
+    local chatMsg = "------------////GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse (CELESTIAL X ZM X ASUKA ON TOP 🎩) ////-----------------"
     pcall(function()
         if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
             game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
