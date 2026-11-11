@@ -1161,7 +1161,35 @@ local OtherTab = Window:Tab({
     Icon = "folder",
 })
 
-OtherTab:Toggle({
+OtherTab:Button({
+    Title = "INFINITE YIELD",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"),true))()
+    end,
+})
+
+OtherTab:Button({
+    Title = "SKY GLITCHER (FE)",
+    Callback = function()
+        loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-sky-destroyer-V2-AXEZZ-110640"),true))()
+    end,
+})
+
+OtherTab:Button({
+    Title = "EMOTES",
+    Callback = function()
+        loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Gaze-emote-74592"),true))()
+    end,
+})
+
+
+--// COMMANDS
+local CommandsTab = Window:Tab({
+    Title = "COMMANDS ⚠️",
+    Icon = "folder",
+})
+
+CommandsTab:Toggle({
     Title = "FLY WALK",
     Value = false,
     Callback = function(value)
@@ -1195,7 +1223,7 @@ OtherTab:Toggle({
     end,
 })
 
-OtherTab:Toggle({
+CommandsTab:Toggle({
     Title = "SPEED 🚄",
     Value = false,
     Callback = function(value)
@@ -1203,7 +1231,7 @@ OtherTab:Toggle({
     end,
 })
 
-OtherTab:Toggle({
+CommandsTab:Toggle({
     Title = "INFINITE JUMP 🦘",
     Value = false,
     Callback = function(value)
@@ -1219,7 +1247,7 @@ OtherTab:Toggle({
     end,
 })
 
-OtherTab:Toggle({
+CommandsTab:Toggle({
     Title = "NOCLIP",
     Value = false,
     Callback = function(value)
@@ -1237,28 +1265,14 @@ OtherTab:Toggle({
     end,
 })
 
-OtherTab:Button({
-    Title = "SKY GLITCHER (FE)",
-    Callback = function()
-        loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-sky-destroyer-V2-AXEZZ-110640"))()
-    end,
-})
-
-OtherTab:Button({
-    Title = "EMOTE",
-    Callback = function()
-        loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Gaze-emote-74592"))()
-    end,
-})
-
-OtherTab:Button({
+CommandsTab:Button({
     Title = "REJOIN",
     Callback = function()
         game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
     end,
 })
 
-OtherTab:Button({
+CommandsTab:Button({
     Title = "SERVER HOP",
     Callback = function()
         loadstring(game:HttpGet("https://pastebin.com/raw/m888X7p3"))()
@@ -1268,12 +1282,12 @@ OtherTab:Button({
 --// NOTIFICATION
 WindUI:Notify({
     Title = "GODVERSE HUB UV1",
-    Content = "YADSAN HUB LOADED! 🔱",
-    Duration = 5,
+    Content = "YADSAN HUB LOADED! ",
+    Duration = 6,
 })
 --// AUTO CHAT MESSAGE
 task.spawn(function()
-    local chatMsg = "------------////GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse (CELESTIAL X ASUKA ON 🔝🎩////-----------------"
+    local chatMsg = "------------////GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse (CELESTIAL X ZM X ASUKA ON TOP 🎩////-----------------)"
     pcall(function()
         if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
             game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
