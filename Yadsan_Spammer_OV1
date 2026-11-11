@@ -29,7 +29,7 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ----------------------------------------------------------------
 task.spawn(function()
     task.wait(1)
-    local execMsg = "✌🏻 🌐 GODVERSE EDITION USER DETECTED ⚠️ (MADE BY Yadsan_Godverse)🔥 CELESTIAL X ASUKA ON TOP"
+    local execMsg = "🌐 GODVERSE EDITION USER DETECTED ⚠️ AG KA BAAP (MADE BY Yadsan_Godverse)🔥 CELESTIAL X ASUKA X ZM ON TOP"
     local border = "(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)(!)"
     local fullExecMessage = border .. "\n" .. execMsg .. "\n" .. border
 
@@ -67,7 +67,7 @@ local IntroText = Instance.new("TextLabel")
 IntroText.Size = UDim2.new(1, 0, 1, 0)
 IntroText.BackgroundTransparency = 1
 IntroText.Font = Enum.Font.GothamBold
-IntroText.Text = "🌐GODVERSE EDITION SPAMMER 😝\n( MADE BY YADSAN 🔱 )\n\n🥶I WILL BE FIGHTING FOR U DON'T WORRY MY FRIEND ✨"
+IntroText.Text = "🌐GODVERSE EDITION SPAMMER 😝\n( MADE BY YADSAN 🔱 )\n\n🥶I WILL BE FIGHTING FOR U DON'T WORRY MY BROTHER ✨"
 IntroText.TextColor3 = Color3.fromRGB(255, 255, 255)
 IntroText.TextSize = 28
 IntroText.ZIndex = 11
@@ -76,7 +76,7 @@ IntroText.Parent = IntroFrame
 -- Pop-up Roblox Notification
 task.spawn(function()
     StarterGui:SetCore("SendNotification", {
-        Title = "YADSAN 🔱",
+        Title = "YADSAN ",
         Text = "😡 I WILL BE FIGHTING FOR U DON'T WORRY MY FRIEND 💔",
         Duration = 5
     })
@@ -135,7 +135,7 @@ local TitleLabel = Instance.new("TextLabel")
 TitleLabel.Size = UDim2.new(1, 0, 0, 35)
 TitleLabel.BackgroundColor3 = Color3.fromRGB(25, 10, 15)
 TitleLabel.Font = Enum.Font.GothamBold
-TitleLabel.Text = " 🌐 YADSAN EDITION SPAMMER 👍 "
+TitleLabel.Text = "🌐 YADSAN EDITION SPAMMER"
 TitleLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
 TitleLabel.TextSize = 14
 TitleLabel.TextXAlignment = Enum.TextXAlignment.Center
@@ -173,7 +173,7 @@ local OwnerText = Instance.new("TextLabel")
 OwnerText.Size = UDim2.new(1, 0, 1, 0)
 OwnerText.BackgroundTransparency = 1
 OwnerText.Font = Enum.Font.GothamBold
-OwnerText.Text = "🌐 OWNER : YADSAN 🔱 🔥✌🏻 | 😍 ALWAYS READY TO FIGHT"
+OwnerText.Text = "🌐 OWNER : YADSAN 🔱 🔥|ALWAYS READY TO FIGHT FATHER OF AG"
 OwnerText.TextColor3 = Color3.fromRGB(255, 100, 100)
 OwnerText.TextSize = 12
 OwnerText.TextXAlignment = Enum.TextXAlignment.Center
