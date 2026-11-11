@@ -3,11 +3,11 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local chatDelay = 1.25
 local messages = {
-    "『💀』 Hello Bhai 😈 " .. player.Name .. ", Humari Gang Mein Kab Aayega? Ag Ka Baap🔥 『🩸』",
-    "『😡』//OWNER//:YADSAN:// 『😏』",
+    "『💀』 Hello Bhai 😈 " .. player.Name .. ", Humari Gang Mein Jeet Aayega? AG Ka Baap🔥 『🩸』",
+    "『😡』//OWNER//:LEADER:// 『😏』",
     "『⚠️』CELESTIAL X ASUKA X ZM ON TOP『💀』",
-    " CELESTIAL BHAICHARA POWERFUL 😌 ", -- Added right below -pd
-    "SCriPt By Yadsan_Godverse UV1 WorkiNg!"
+    " CELESTIAL BHAICHARA POWERFUL 😌 VS NOOBS ", -- Added right below -pd
+    "SCriPt By GODVERSE HUB UV1 WorkiNg!"
 }
 
 -- Function to safely send chat messages across different Roblox chat systems
