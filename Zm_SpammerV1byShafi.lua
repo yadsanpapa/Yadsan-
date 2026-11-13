@@ -18,7 +18,7 @@ local HEIGHT = 300
 --==================================================  
   
 local gui = Instance.new("ScreenGui")  
-gui.Name = "ZERO MERCY_SPAMMER_V1"  
+gui.Name = "ZERO_MERCY_SPAMMER_V1"  
 gui.ResetOnSpawn = false  
 gui.IgnoreGuiInset = true  
 gui.Parent = playerGui  
@@ -668,7 +668,7 @@ Instance.new("UICorner",ss1).CornerRadius = UDim.new(1,0)
 local ssStroke = Instance.new("UIStroke")  
 ssStroke.Color = Color3.fromRGB(100,105,125)  
 ssStroke.Thickness = 2  
-ssStroke.Parent =『ZM』 
+ssStroke.Parent =ss1
   
 draggable(ss1,ss1)  
   
