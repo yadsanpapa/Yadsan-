@@ -1,4 +1,4 @@
---// SHUBHAM SPAMMER V1  
+--// ZERO MERCY SPAMMER V1  
 --// LocalScript -> StarterPlayerScripts  
   
 local Players = game:GetService("Players")  
@@ -18,7 +18,7 @@ local HEIGHT = 300
 --==================================================  
   
 local gui = Instance.new("ScreenGui")  
-gui.Name = "SHUBHAM_SPAMMER_V1"  
+gui.Name = "ZERO MERCY_SPAMMER_V1"  
 gui.ResetOnSpawn = false  
 gui.IgnoreGuiInset = true  
 gui.Parent = playerGui  
@@ -28,7 +28,7 @@ gui.Parent = playerGui
 --==================================================  
   
 local blur = Instance.new("BlurEffect")  
-blur.Name = "SHUBHAM_LOADING_BLUR"  
+blur.Name = "ZERO_MERCY_LOADING_BLUR"  
 blur.Size = 26  
 blur.Parent = Lighting  
   
@@ -53,7 +53,7 @@ local loadTitle = Instance.new("TextLabel")
 loadTitle.Size = UDim2.new(1,-30,0,35)  
 loadTitle.Position = UDim2.fromOffset(15,12)  
 loadTitle.BackgroundTransparency = 1  
-loadTitle.Text = "⚔ SHUBHAM SPAMMER V1"  
+loadTitle.Text = "⚔ ZERO MERCY SPAMMER V1"  
 loadTitle.TextColor3 = Color3.new(1,1,1)  
 loadTitle.Font = Enum.Font.GothamBold  
 loadTitle.TextSize = 20  
@@ -121,7 +121,7 @@ task.defer(function()
   
 	pcall(function()  
 		general:SendAsync(  
-			"_____///@@@@/😍SHUBHAM SPAMMER V1 EXECUTED:D///@///😝..!"  
+			"_____///@@@@/😍ZERO MERCY SPAMMER V1 EXECUTED:D///@///😝..!"  
 		)  
 	end)  
   
@@ -161,7 +161,7 @@ local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1,-65,1,0)  
 title.Position = UDim2.fromOffset(16,0)  
 title.BackgroundTransparency = 1  
-title.Text = "⚔ SHUBHAM SPAMMER V1"  
+title.Text = "⚔ ZERO MERCY SPAMMER V1"  
 title.TextXAlignment = Enum.TextXAlignment.Left  
 title.TextColor3 = Color3.new(1,1,1)  
 title.Font = Enum.Font.GothamBold  
@@ -573,7 +573,7 @@ local function sendTestMessage()
 		.." | "  
 		..roasts[roastIndex]  
 		.." | "  
-		..(emojiBox.Text ~= "" and emojiBox.Text or "😂")  
+		..(emojiBox.Text ~= "" and emojiBox."😂")  
 		.." | "  
 		..symbolsText  
   
@@ -649,28 +649,28 @@ stop.MouseButton1Click:Connect(function()
 end)  
   
 --==================================================  
--- SS1 REOPEN BUTTON  
+-- 『ZM』 REOPEN BUTTON  
 --==================================================  
   
-local ss1 = Instance.new("TextButton")  
+local 『ZM』 = Instance.new("TextButton")  
 ss1.Size = UDim2.fromOffset(58,58)  
 ss1.Position = UDim2.new(1,-75,1,-80)  
 ss1.BackgroundColor3 = Color3.fromRGB(25,28,40)  
-ss1.Text = "SS1"  
+ss1.Text = "『ZM』"  
 ss1.TextColor3 = Color3.new(1,1,1)  
 ss1.Font = Enum.Font.GothamBold  
 ss1.TextSize = 16  
 ss1.Visible = false  
 ss1.Parent = gui  
   
-Instance.new("UICorner",ss1).CornerRadius = UDim.new(1,0)  
+Instance.new("UICorner",『ZM』).CornerRadius = UDim.new(1,0)  
   
 local ssStroke = Instance.new("UIStroke")  
 ssStroke.Color = Color3.fromRGB(100,105,125)  
 ssStroke.Thickness = 2  
-ssStroke.Parent = ss1  
+ssStroke.Parent =『ZM』 
   
-draggable(ss1,ss1)  
+draggable(『ZM』,『ZM』)  
   
 --==================================================  
 -- CLOSE — DOES NOT STOP MESSAGE LOOP  
@@ -694,7 +694,7 @@ close.MouseButton1Click:Connect(function()
 	main.Rotation = 0  
 	main.Size = UDim2.fromOffset(WIDTH,HEIGHT)  
   
-	ss1.Visible = true  
+	『ZM』.Visible = true  
   
 end)  
   
@@ -702,9 +702,9 @@ end)
 -- REOPEN  
 --==================================================  
   
-ss1.MouseButton1Click:Connect(function()  
+『ZM』.MouseButton1Click:Connect(function()  
   
-	ss1.Visible = false  
+	『ZM』.Visible = false  
   
 	main.Visible = true  
 	main.Size = UDim2.fromOffset(0,0)  
