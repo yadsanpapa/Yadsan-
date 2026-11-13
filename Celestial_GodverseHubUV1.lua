@@ -11,7 +11,7 @@ local Window = WindUI:CreateWindow({
     Folder = "YadsanHub",
     Size = UDim2.fromOffset(580, 460),
     Transparent = true,
-    Theme = "Dark",
+    Theme = "PURPLE-DARK",
     Resizable = true,
     SideBarWidth = 180,
     ScrollBarEnabled = true,
@@ -1254,7 +1254,14 @@ OtherTab:Button({
 })
 
 OtherTab:Button({
-    Title = "SKY GLITCHER (FE)",
+    Title = "FE R15 SONIC THE HEDGEHOG",
+    Callback = function()
+        loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-FE-R15-Sonic-The-Hedgehog-63923"))()
+    end,
+})
+
+OtherTab:Button({
+    Title = "FE SKY GLITCHER ",
     Callback = function()
         loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-sky-destroyer-V2-AXEZZ-110640"))()
     end,
@@ -1283,7 +1290,7 @@ OtherTab:Button({
 
 --// NOTIFICATION
 WindUI:Notify({
-    Title = "GODVERSE HUB UV1",
+    Title = "CELESTIAL GODVERSE HUB UV1",
     Content = "YADSAN HUB LOADED! ",
     Duration = 5,
 })
