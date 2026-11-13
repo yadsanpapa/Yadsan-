@@ -1124,6 +1124,13 @@ SpamTab:Button({
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Spammer_OV1"),true))()
     end,
 })
+SpamTab:Button({
+    Title = "ZERO MERCY SPAMMER V1 😘",
+    Desc = "Click to execute the ultimate Zm Spammer Shafi!",
+    Callback = function()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Zm_Spammerv1byshafi.lua"),true))()
+    end,
+})
 
 --// LIFE TOGETHER RP
 local LifeTogetherTab = Window:Tab({
@@ -1149,15 +1156,15 @@ LifeTogetherTab:Button({
 
 LifeTogetherTab:Button({
     Title = "CELESTIAL FROSTBITE X ⚠️",
-    Desc = "Click to open the Ultimate Re-SizeR",
+    Desc = "Click to open the Tall Re-SizeR",
     Callback = function()
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Godverse-Hub-/refs/heads/main/CelestialFrostbiteX.lua"),true))()
     end,
 })
 
 LifeTogetherTab:Button({
-    Title = "CELESTIAL CRYPTIC HUB",
-    Desc = "Click to open the Ultimate Best Hub",
+    Title = "CELESTIAL CRYPTIC HUB 🗿",
+    Desc = "Click to open the Ultimate Troll Aura",
     Callback = function()
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/OnlyCryptic/Cryptic/main/main.lua"),true))()
     end,
