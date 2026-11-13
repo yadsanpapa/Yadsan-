@@ -7,7 +7,8 @@ local messages = {
     "『😡』//OWNER//:LEADER:// 『😏』",
     "『⚠️』CELESTIAL X ASUKA X ZM ON TOP『💀』",
     " CELESTIAL BHAICHARA POWERFUL 😌 VS NOOBS ", -- Added right below -pd
-    "SCriPt By GODVERSE HUB UV1 WorkiNg!"
+    "CELESTIAL GODVERSE HUB UV1 BEST SCRIPTS XD 🗿"
+    "SCriPt By Yadsan_Godverse WorkiNg!"
 }
 
 -- Function to safely send chat messages across different Roblox chat systems
@@ -43,7 +44,7 @@ task.spawn(function()
     
     -- Execute the external Patchma Hub script after the final delay
     local success, err = pcall(function()
-       loadstring(game:HttpGet("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Godverse_Hub_UV1_Omni.lua"))()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Celestial_GodverseHubUV1.lua"))()
     end)
     
     if not success then
