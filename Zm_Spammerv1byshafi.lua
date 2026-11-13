@@ -1,4 +1,4 @@
---// SHUBHAM SPAMMER V1  
+--// ZERO MERCY SPAMMER V1  
 --// LocalScript -> StarterPlayerScripts  
   
 local Players = game:GetService("Players")  
@@ -18,7 +18,7 @@ local HEIGHT = 300
 --==================================================  
   
 local gui = Instance.new("ScreenGui")  
-gui.Name = "SHUBHAM_SPAMMER_V1"  
+gui.Name = "ZERO_MERCY_SPAMMER_V1"  
 gui.ResetOnSpawn = false  
 gui.IgnoreGuiInset = true  
 gui.Parent = playerGui  
@@ -28,7 +28,7 @@ gui.Parent = playerGui
 --==================================================  
   
 local blur = Instance.new("BlurEffect")  
-blur.Name = "SHUBHAM_LOADING_BLUR"  
+blur.Name = "ZERO_MERCY_LOADING_BLUR"  
 blur.Size = 26  
 blur.Parent = Lighting  
   
@@ -121,7 +121,7 @@ task.defer(function()
   
 	pcall(function()  
 		general:SendAsync(  
-			"_____///@@@@/😍SHUBHAM SPAMMER V1 EXECUTED:D///@///😝..!"  
+			"_____///@@@@/😍ZERO MERCY ON TOP SPAMMER V1 EXECUTED:D///@///😝..!"  
 		)  
 	end)  
   
@@ -304,16 +304,8 @@ Instance.new("UICorner",status).CornerRadius = UDim.new(0,8)
 --==================================================  
   
 local symbols = {  
-	"★","☆","✦","✧","✪",  
-	"⚡","☠","☢","☣","☯",  
-	"♛","♕","♚","♔","♤",  
-	"♠","♥","♦","♣","♪",  
-	"♫","✿","❀","❁","❖",  
-	"◆","◇","●","○","◉",  
-	"◎","☀","☁","☂","☄",  
-	"☾","☽","☼","☘","❄",  
 	"🔥","💀","👑","😈","🤡",  
-	"😂","😭","🥀","⚔","🗡",  
+	"😂","😭","🥀","⚡","🗡",  
 	"🛡","➤","➜","➳","➵",  
 	"➸","➹","➷","➽","➺",  
 	"➻","✓","✔","✕","✖",  
