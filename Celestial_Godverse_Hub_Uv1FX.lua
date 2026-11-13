@@ -6,8 +6,7 @@ local messages = {
     "『💀』 Hello Bhai 😈 " .. player.Name .. ", Humari Gang Mein Jeet Aayega? AG Ka Baap🔥 『🩸』",
     "『😡』//OWNER//:LEADER:// 『😏』",
     "『⚠️』CELESTIAL X ASUKA X ZM ON TOP『💀』",
-    " CELESTIAL BHAICHARA POWERFUL 😌 VS NOOBS ", -- Added right below -pd
-    "CELESTIAL GODVERSE HUB UV1 BEST SCRIPTS XD 🗿"
+    "CELESTIAL GODVERSE HUB UV1 BEST SCRIPTS XD 🗿", -- Added right below -pd
     "SCriPt By Yadsan_Godverse WorkiNg!"
 }
 
