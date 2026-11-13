@@ -3210,11 +3210,11 @@ local Sections = {
         FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
     }), 
     Yadsan Edition Spam = TabHandles.Spammer:Section({
-        Title = "Yadsan Edition Spam", Desc = "Explore server options and manage your connection.", Icon = "message-square", Box = true, BoxBorder = true,
+        Title = "Yadsan Edition Spam", Desc = "Click to execute the ultimate VIP Yadsan Spammer.", Icon = "message-square", Box = true, BoxBorder = true,
         FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
     }), 
     Yadsan Outfit Copier = TabHandles.LifeTogether:Section({
-        Title = "Yadsan Outfit Copier", Desc = "Explore server options and manage your connection.", Icon = "shirt", Box = true, BoxBorder = true,
+        Title = "Yadsan Outfit Copier", Desc = "Outfit Steal open Yadsan outfit copier.", Icon = "shirt", Box = true, BoxBorder = true,
         FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
     }), 
     Celestial Gen X = TabHandles.LifeTogether:Section({
@@ -3588,6 +3588,30 @@ Sections.Spammer:Button({
     Desc = "Upload to spam execute ZM Gang Shafi X Zenex.",
     Callback = function() 
             loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Zm_Spammerv1byshafi.lua"),true))()
+        end,
+})
+
+Sections.Spammer:Button({
+    Title = "Yadsan Edition Spam",
+    Desc = "Click to execute the ultimate VIP Yadsan Spammer.",
+    Callback = function() 
+            loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Spammer_OV1"),true))()
+        end,
+})
+
+Sections.LifeTogether:Button({
+    Title = "Yadsan Outfit Copier",
+    Desc = "Outfit Steal open Yadsan outfit copier.",
+    Callback = function() 
+            loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Outfit_Copier_OV1"),true))()
+        end,
+})
+
+Sections.LifeTogether:Button({
+    Title = "Celestial Gen X",
+    Desc = "Outfit Steal open Yadsan outfit copier.",
+    Callback = function() 
+            loadstring(game:HttpGet(("https://scriptblox.com/raw/LifeTogether-RP-Gen-X-Hub-236184"),true))()
         end,
 })
 
