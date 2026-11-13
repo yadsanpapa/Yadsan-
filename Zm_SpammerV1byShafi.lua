@@ -652,7 +652,7 @@ end)
 -- 『ZM』 REOPEN BUTTON  
 --==================================================  
   
-local 『ZM』 = Instance.new("TextButton")  
+local ss1 = Instance.new("TextButton")  
 ss1.Size = UDim2.fromOffset(58,58)  
 ss1.Position = UDim2.new(1,-75,1,-80)  
 ss1.BackgroundColor3 = Color3.fromRGB(25,28,40)  
@@ -663,14 +663,14 @@ ss1.TextSize = 16
 ss1.Visible = false  
 ss1.Parent = gui  
   
-Instance.new("UICorner",『ZM』).CornerRadius = UDim.new(1,0)  
+Instance.new("UICorner",ss1).CornerRadius = UDim.new(1,0)  
   
 local ssStroke = Instance.new("UIStroke")  
 ssStroke.Color = Color3.fromRGB(100,105,125)  
 ssStroke.Thickness = 2  
 ssStroke.Parent =『ZM』 
   
-draggable(『ZM』,『ZM』)  
+draggable(ss1,ss1)  
   
 --==================================================  
 -- CLOSE — DOES NOT STOP MESSAGE LOOP  
@@ -694,7 +694,7 @@ close.MouseButton1Click:Connect(function()
 	main.Rotation = 0  
 	main.Size = UDim2.fromOffset(WIDTH,HEIGHT)  
   
-	『ZM』.Visible = true  
+	ss1.Visible = true  
   
 end)  
   
@@ -702,9 +702,9 @@ end)
 -- REOPEN  
 --==================================================  
   
-『ZM』.MouseButton1Click:Connect(function()  
+ss1.MouseButton1Click:Connect(function()  
   
-	『ZM』.Visible = false  
+	ss1.Visible = false  
   
 	main.Visible = true  
 	main.Size = UDim2.fromOffset(0,0)  
