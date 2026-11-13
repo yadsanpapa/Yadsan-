@@ -703,3 +703,14 @@ ss1.MouseButton1Click:Connect(function()
 	):Play()  
   
 end)
+--// AUTO CHAT MESSAGE
+task.spawn(function()
+    local chatMsg = "------------//// ZERO MERCY SPAMMER V1 LOADED BY OWNER (CELESTIAL X ZM X ASUKA ON TOP 🎩) ////-----------------"
+    pcall(function()
+        if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
+            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
+        else
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chatMsg, "All")
+        end
+    end)
+end)
