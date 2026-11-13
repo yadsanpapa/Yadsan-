@@ -1,4 +1,4 @@
--- [[ CUR5ED SPAMMER : COMPACT EDITION (FIXED) ]] --
+-- [[ ASUKA SPAMMER : COMPACT EDITION (FIXED) ]] --
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local UserInputService = game:GetService("UserInputService")
@@ -8,13 +8,13 @@ local TextChatService = game:GetService("TextChatService")
 local SoundService = game:GetService("SoundService")
 
 local player = Players.LocalPlayer
-_G.CUR5ED_SpamActive = false
-_G.CUR5ED_SessionID = 0
+_G.ASUKA_SpamActive = false
+_G.ASUKA_SessionID = 0
 
 pcall(function()
-    if CoreGui:FindFirstChild("CUR5ED_SpammerGUI") then CoreGui.CUR5ED_SpammerGUI:Destroy() end
-    if CoreGui:FindFirstChild("CUR5ED_Intro") then CoreGui.CUR5ED_Intro:Destroy() end
-    if CoreGui:FindFirstChild("CUR5ED_CustomNotify") then CoreGui.CUR5ED_CustomNotify:Destroy() end
+    if CoreGui:FindFirstChild("ASUKA_SpammerGUI") then CoreGui.ASUKA_SpammerGUI:Destroy() end
+    if CoreGui:FindFirstChild("ASUKA_Intro") then CoreGui.ASUKA_Intro:Destroy() end
+    if CoreGui:FindFirstChild("ASUKA_CustomNotify") then CoreGui.ASUKA_CustomNotify:Destroy() end
 end)
 
 ---------------------------------------------------
@@ -46,9 +46,9 @@ end
 
 local function ShowNotify(titleTextVal, descTextVal, duration)
     pcall(function()
-        if CoreGui:FindFirstChild("CUR5ED_CustomNotify") then CoreGui.CUR5ED_CustomNotify:Destroy() end
+        if CoreGui:FindFirstChild("ASUKA_CustomNotify") then CoreGui.ASUKA_CustomNotify:Destroy() end
         local notifyGui = Instance.new("ScreenGui", CoreGui)
-        notifyGui.Name = "CUR5ED_CustomNotify"
+        notifyGui.Name = "ASUKA_CustomNotify"
         notifyGui.IgnoreGuiInset = true
         notifyGui.DisplayOrder = 2000000
 
@@ -98,21 +98,21 @@ local function ShowNotify(titleTextVal, descTextVal, duration)
     end)
 end
 
-local Styles = {"XD", "~", "#~", "@", "%_", "(CUR5ED)_"}
+local Styles = {"XD", "~", "#~", "@", "%_", "(ASUKA)_"}
 local SelectedSymbol = "~"
 
 local Roasts = {
     "mdr XD🤡", "tui kh&9ki💀", "Tui xdna🤧", "TMKX M VENOM🤣", "Mora murgi🙄",
     "Ban14🥺", "polapain xdina☺️", "Nijere Aynay dekhsos🤡?", "papa dako😢",
-    "Tui CUR5ED k Voy pAs💀", "cuda kawa chele🥰", "Donles🤧", "Tor &ke xdi😫",
-    "Tr aba CUR5ED🤓", "Scripted by CYRAX🔥", "AMMUr Vuda kha8😛", "Er kata d0n😅",
+    "Tui ASUKA k Voy pAs💀", "cuda kawa chele🥰", "Donles🤧", "Tor &ke xdi😫",
+    "Tr aba ASUKA🤓", "Scripted by CYRAX🔥", "AMMUr Vuda kha8😛", "Er kata d0n😅",
     "JaWra mG🥰", "Jaya GhuMa😗", "Baper TK waste😢", "Tor Bia hbena😛",
     "Prithibir bojha🙁", "Bapmar Kolonko🐸", "Tor jonmanoi vulhoise😭", "Mora Xauda🔥",
     "Tmi amr Don🤡", "Ja pre&care kor😶", "Tmi amr otar shman😛", "Jao ludo kheloga🤡", "Morga☺️"
 }
 
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "CUR5ED_SpammerGUI"
+ScreenGui.Name = "ASUKA_SpammerGUI"
 ScreenGui.Parent = CoreGui
 ScreenGui.ResetOnSpawn = false
 ScreenGui.IgnoreGuiInset = true
@@ -160,7 +160,7 @@ end
 -- MOVIE CINEMATIC INTRO SYSTEM
 ---------------------------------------------------
 local IntroGui = Instance.new("ScreenGui", CoreGui)
-IntroGui.Name = "CUR5ED_Intro"
+IntroGui.Name = "ASUKA_Intro"
 IntroGui.IgnoreGuiInset = true
 IntroGui.DisplayOrder = 1000000
 
@@ -219,7 +219,7 @@ end
 
 task.spawn(function()
     task.wait(0.6)
-    PlayLine("WE'RE CURSED...", 0.6)
+    PlayLine("WE'RE ASUKA...", 0.6)
     PlayLine("...AND THIS ENTIRE LOBBY IS ABOUT TO WITNESS OUR WRATH.", 0.6)
     PlayLine("THERE IS NO ESCAPE FOR THEM.", 1.0)
     
@@ -238,10 +238,10 @@ task.spawn(function()
     task.wait(0.7)
     IntroGui:Destroy()
 
-    ShowNotify("👑 CUR5ED ELITE 👑", "System fully loaded & ready.", 5)
+    ShowNotify("👑 ASUKA ELITE 👑", "System fully loaded & ready.", 5)
     
     task.wait(0.5)
-    local announceCore = " 💀⚡ 🔥 > ! CAREFUL CURSED SPAMMER REAWAKENED ! < 🔥 ⚡💀"
+    local announceCore = " 💀⚡ 🔥 > ! CAREFUL ASUKA SPAMMER REAWAKENED ! < 🔥 ⚡💀"
     local maxLimit2 = 190
     local spaceLeft2 = math.max(5, maxLimit2 - #announceCore)
     local tildeCount2 = math.floor(spaceLeft2 / # "~")
@@ -300,7 +300,7 @@ local titleText = Instance.new("TextLabel", titleBar)
 titleText.Size = UDim2.new(1, 0, 0, 18)
 titleText.Position = UDim2.new(0, 0, 0, 6)
 titleText.BackgroundTransparency = 1
-titleText.Text = "👑 CUЯ5ΞD SPΔMMΞЯ ЯΞVΞИGΞЯ 👑"
+titleText.Text = "🔥 ΔSUKΔ SPΔMMΞЯ ЯΞVΞИGΞЯ 👑"
 titleText.TextColor3 = Color3.fromRGB(255, 40, 40)
 titleText.TextSize = 7.5
 titleText.Font = Enum.Font.Bodoni
@@ -310,7 +310,7 @@ local playerInfoText = Instance.new("TextLabel", titleBar)
 playerInfoText.Size = UDim2.new(1, 0, 0, 14)
 playerInfoText.Position = UDim2.new(0, 0, 0, 24)
 playerInfoText.BackgroundTransparency = 1
-playerInfoText.Text = "CUR5ED_CYRAX (@" .. player.Name .. ")"
+playerInfoText.Text = "Yadsan_Godverse (@" .. player.Name .. ")"
 playerInfoText.TextColor3 = Color3.fromRGB(255, 120, 120)
 playerInfoText.TextSize = 8
 playerInfoText.Font = Enum.Font.GothamMedium
@@ -501,10 +501,10 @@ onBtn.Activated:Connect(function()
     local delay = tonumber(delayBox.Text) or 2
     if delay < 0.2 then delay = 0.2 end
 
-    _G.CUR5ED_SessionID = (_G.CUR5ED_SessionID or 0) + 1
-    local currentSession = _G.CUR5ED_SessionID
+    _G.ASUKA_SessionID = (_G.ASUKA_SessionID or 0) + 1
+    local currentSession = _G.ASUKA_SessionID
 
-    _G.CUR5ED_SpamActive = true
+    _G.ASUKA_SpamActive = true
     onBtn.BackgroundColor3 = Color3.fromRGB(255, 30, 30)
     offBtn.BackgroundColor3 = Color3.fromRGB(70, 15, 15)
     statusText.Text = "Status: SPAMMING"
@@ -512,12 +512,12 @@ onBtn.Activated:Connect(function()
 
     task.spawn(function()
         math.randomseed(tick())
-        while _G.CUR5ED_SpamActive and _G.CUR5ED_SessionID == currentSession do
+        while _G.ASUKA_SpamActive and _G.ASUKA_SessionID == currentSession do
             local randomRoast = Roasts[math.random(1, #Roasts)]
             local roastCore = " [" .. target .. "] " .. randomRoast
             local filledSymbols = ""
             
-            if SelectedSymbol == "(CUR5ED)_" then
+            if SelectedSymbol == "(ASUKA)_" then
                 filledSymbols = string.rep(SelectedSymbol, 9)
             elseif SelectedSymbol == "@" then
                 filledSymbols = string.rep("@", 130)
@@ -542,8 +542,8 @@ onBtn.Activated:Connect(function()
 end)
 
 offBtn.Activated:Connect(function()
-    _G.CUR5ED_SpamActive = false
-    _G.CUR5ED_SessionID = (_G.CUR5ED_SessionID or 0) + 1
+    _G.ASUK_SpamActive = false
+    _G.ASUKA_SessionID = (_G.ASUKA_SessionID or 0) + 1
     onBtn.BackgroundColor3 = Color3.fromRGB(160, 20, 20)
     offBtn.BackgroundColor3 = Color3.fromRGB(50, 10, 10)
     statusText.Text = "Status: STOPPED"
