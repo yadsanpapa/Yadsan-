@@ -1,5 +1,3 @@
--- Dumped By Dex Utility [.gg/2Shh6sVWNa]
-
 local v1 = loadstring(code)() -- Yield -- Ran
 local TweenService = game:GetService("TweenService") -- Service Fetched -- Ran
 local Lighting = game:GetService("Lighting") -- Service Fetched -- Ran
@@ -18,11 +16,11 @@ local v5 = Color3.fromRGB(12, 10, 20) -- Ran
 -- [DEX ENV] A Infinite Loop Occured Here (x6)
 local BlurEffect = Instance.new("BlurEffect", Lighting) -- Ran
 BlurEffect.Size = 0 -- Ran
-CoreGui:FindFirstChild("CTX V3 SPAMMER").Name = "CTX V3 SPAMMER" -- Ran
+CoreGui:FindFirstChild("CELESTIAL V3 SPAMMER").Name = "CELESTIAL V3 SPAMMER" -- Ran
 local v11 = CoreGui:FindFirstChild("CTX V3 SPAMMER") -- Ran
-local v12 = CoreGui["CTX ULTRA V3"]:Destroy() -- Cleanup -- Ran
+local v12 = CoreGui["CELESTIAL ULTRA V3 "]:Destroy() -- Cleanup -- Ran
 local ScreenGui = Instance.new("ScreenGui") -- Ran
-ScreenGui.Name = "CTX ULTRA SPAM V3" -- Ran
+ScreenGui.Name = "CELESTIAL ULTRA SPAM V3" -- Ran
 ScreenGui.Parent = CoreGui -- Ran
 ScreenGui.IgnoreGuiInset = true -- Ran
 ScreenGui.ResetOnSpawn = false -- Ran
@@ -50,7 +48,7 @@ local v21 = UDim2.new(1, 0, 0, 40) -- Ran
 TextLabel.Size = UDim2.new(1, 0, 0, 40) -- Ran
 local v22 = UDim2.new(0, 0, 0, 30) -- Ran
 TextLabel.Position = UDim2.new(0, 0, 0, 30) -- Ran
-TextLabel.Text = "CTX SPAMMER V3" -- Ran
+TextLabel.Text = "CELESTIAL SPAMMER V3" -- Ran
 TextLabel.Font = Enum.Font.GothamBlack -- Ran
 TextLabel.TextColor3 = Color3.fromRGB(250, 240, 255) -- Ran
 TextLabel.TextSize = 22 -- Ran
@@ -146,7 +144,7 @@ local TextButton = Instance.new("TextButton", Frame4) -- Ran
 TextButton.Size = UDim2.new(0.85, 0, 0, 45) -- Ran
 local v41 = UDim2.new(0.075, 0, 0, 165) -- Ran
 TextButton.Position = UDim2.new(0.075, 0, 0, 165) -- Ran
-TextButton.Text = "LORD CTX" -- Ran
+TextButton.Text = "LORD CELESTIAL" -- Ran
 TextButton.BackgroundColor3 = Color3.fromRGB(26, 16, 38) -- Ran
 TextButton.BackgroundTransparency = 1 -- Ran
 TextButton.TextColor3 = Color3.fromRGB(250, 240, 255) -- Ran
@@ -212,7 +210,7 @@ local v50 = UDim2.new(1, -50, 0, 25) -- Ran
 TextLabel6.Size = UDim2.new(1, -50, 0, 25) -- Ran
 local v51 = UDim2.new(0, 25, 0, 110) -- Ran
 TextLabel6.Position = UDim2.new(0, 25, 0, 110) -- Ran
-TextLabel6.Text = "The Ultimate Spammer made by CTX" -- Ran
+TextLabel6.Text = "The Ultimate Spammer made by Yadsan_Godverse" -- Ran
 TextLabel6.Font = Enum.Font.GothamMedium -- Ran
 TextLabel6.TextColor3 = Color3.fromRGB(255, 0, 180) -- Ran
 TextLabel6.TextSize = 14 -- Ran
@@ -224,7 +222,7 @@ local v52 = UDim2.new(1, -50, 0, 20) -- Ran
 TextLabel7.Size = UDim2.new(1, -50, 0, 20) -- Ran
 local v53 = UDim2.new(0, 25, 0, 135) -- Ran
 TextLabel7.Position = UDim2.new(0, 25, 0, 135) -- Ran
-TextLabel7.Text = "Made by CTX" -- Ran
+TextLabel7.Text = "Made by Yadsan_Godverse" -- Ran
 TextLabel7.Font = Enum.Font.Code -- Ran
 TextLabel7.TextColor3 = Color3.fromRGB(160, 150, 180) -- Ran
 TextLabel7.TextSize = 12 -- Ran
@@ -281,7 +279,7 @@ local v61 = UDim2.new(1, -40, 0, 40) -- Ran
 TextLabel9.Size = UDim2.new(1, -40, 0, 40) -- Ran
 local v62 = UDim2.new(0, 20, 0, 12) -- Ran
 TextLabel9.Position = UDim2.new(0, 20, 0, 12) -- Ran
-TextLabel9.Text = "⚡ CTX (namaste ZANE papa🔥) // SYSTEM CORE" -- Ran
+TextLabel9.Text = "Namaste Celestial Syndicate Papa🔥// SYSTEM CORE" -- Ran
 TextLabel9.Font = Enum.Font.GothamBlack -- Ran
 TextLabel9.TextColor3 = Color3.fromRGB(250, 240, 255) -- Ran
 TextLabel9.TextSize = 17 -- Ran
@@ -422,7 +420,7 @@ local v82 = UDim2.new(1, -40, 0, 55) -- Ran
 TextButton3.Size = UDim2.new(1, -40, 0, 55) -- Ran
 local v83 = UDim2.new(0, 20, 0, 230) -- Ran
 TextButton3.Position = UDim2.new(0, 20, 0, 230) -- Ran
-TextButton3.Text = "START CTX SPAMMER" -- Ran
+TextButton3.Text = "START CELESTIAL SPAMMER" -- Ran
 TextButton3.BackgroundColor3 = Color3.fromRGB(26, 16, 38) -- Ran
 TextButton3.TextColor3 = Color3.fromRGB(255, 0, 180) -- Ran
 TextButton3.Font = Enum.Font.GothamBlack -- Ran
@@ -529,5 +527,3 @@ Color3.fromRGB(15, 35, 25)
 TextButton8.BackgroundColor3 = Color3.fromRGB(15, 35, 25)
 TextButton8.TextColor3 = Color3.fromRGB(255, 0, 180)
 end) -- Event Bound -- Ran
-
--- Dex Environment Log End
