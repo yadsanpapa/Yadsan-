@@ -6,7 +6,7 @@ local WindUI = loadstring(game:HttpGet(
 
 local Window = WindUI:CreateWindow({
     Title = "CELESTIAL GODVERSE HUB UV1",
-    Icon = "d1d5db",
+    Icon = "crown",
     Author = "YADSAN 🔱",
     Folder = "YadsanHub",
     Size = UDim2.fromOffset(580, 460),
