@@ -17,7 +17,7 @@ local LocalPlayer = Players.LocalPlayer
 
 -- Announcement
 task.spawn(function()
-    local text = "------------------//////GODVERSE OUTFIT COPIER LOADED 🌐(Made by Yadsan_Godverse 🔱-- CELESTIAL X ASUKA ON 🔝🔱////////--------------------"
+    local text = "------------------//////GODVERSE OUTFIT COPIER LOADED 🌐(Made by Yadsan_Godverse 🔱-- CELESTIAL X ASUKA X ZM ON TOP😏////////--------------------"
     local textChatService = game:GetService("TextChatService")
     if textChatService.ChatVersion == Enum.ChatVersion.TextChatService then
         local channel = textChatService:FindFirstChild("TextChannels") and textChatService.TextChannels:FindFirstChild("RBXGeneral")
@@ -34,7 +34,7 @@ end)
 
 -- Remove existing GUI instances
 for _, gui in ipairs(CoreGui:GetChildren()) do
-    if gui.Name == "MONKOutfitCopierGui" then
+    if gui.Name == "YadsanOutfitCopierGui" then
         gui:Destroy()
     end
 end
@@ -74,7 +74,7 @@ local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, -90, 1, 0)
 Title.Position = UDim2.new(0, 15, 0, 0)
 Title.BackgroundTransparency = 1
-Title.Text = "GODVERSE OUTFIT COPIER  🤩(ONLY FOR LIFE TOGETHER)☄️"
+Title.Text = "GODVERSE OUTFIT COPIER 🤩"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Font = Enum.Font.GothamBold
 Title.TextSize = 11
@@ -381,7 +381,7 @@ RevealBtn.MouseButton1Click:Connect(function()
 
     local targetChar = getCharacterByName(nameQuery)
     if isCelestialSyndicate(targetChar, nameQuery) then
-        RevealBtn.Text = "CELESTIAL X ASUKA 🔱"
+        RevealBtn.Text = "CELESTIAL X ASUKA X ZERO MERCY 🔱"
         RevealBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
         task.wait(2.5)
         RevealBtn.Text = "REVEAL IDs"
