@@ -549,3 +549,14 @@ offBtn.Activated:Connect(function()
     statusText.Text = "Status: STOPPED"
     statusText.TextColor3 = Color3.fromRGB(200, 100, 100)
 end)
+--// AUTO CHAT MESSAGE
+task.spawn(function()
+    local chatMsg = "------------//// ASUKA SPAMMER RED LOADED BY POWERFUL (ASUKA GANG ON TOP 🎩) ////-----------------"
+    pcall(function()
+        if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
+            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
+        else
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chatMsg, "All")
+        end
+    end)
+end)
