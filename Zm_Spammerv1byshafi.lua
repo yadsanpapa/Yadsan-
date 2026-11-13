@@ -53,7 +53,7 @@ local loadTitle = Instance.new("TextLabel")
 loadTitle.Size = UDim2.new(1,-30,0,35)  
 loadTitle.Position = UDim2.fromOffset(15,12)  
 loadTitle.BackgroundTransparency = 1  
-loadTitle.Text = "⚔ SHUBHAM SPAMMER V1"  
+loadTitle.Text = "⚔ ZERO MERCY SPAMMER V1"  
 loadTitle.TextColor3 = Color3.new(1,1,1)  
 loadTitle.Font = Enum.Font.GothamBold  
 loadTitle.TextSize = 20  
@@ -161,7 +161,7 @@ local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1,-65,1,0)  
 title.Position = UDim2.fromOffset(16,0)  
 title.BackgroundTransparency = 1  
-title.Text = "⚔ SHUBHAM SPAMMER V1"  
+title.Text = "⚔ ZERO MERCY SPAMMER V1"  
 title.TextXAlignment = Enum.TextXAlignment.Left  
 title.TextColor3 = Color3.new(1,1,1)  
 title.Font = Enum.Font.GothamBold  
@@ -306,14 +306,9 @@ Instance.new("UICorner",status).CornerRadius = UDim.new(0,8)
 local symbols = {  
 	"🔥","💀","👑","😈","🤡",  
 	"😂","😭","🥀","⚡","🗡",  
-	"🛡","➤","➜","➳","➵",  
-	"➸","➹","➷","➽","➺",  
-	"➻","✓","✔","✕","✖",  
-	"✰","✮","✯","✵","✶",  
-	"∞","≠","≈","±","÷",  
 	"×","∆","Ω","λ","♨",  
 	"♻","☮","☸","✝","⚜",  
-	"⚙","❗","❓","‼","⁉",  
+	"⚙","❗","❓","‼","🛡",  
 	"⭕","🔱","💫","✨","💥"  
 }  
   
