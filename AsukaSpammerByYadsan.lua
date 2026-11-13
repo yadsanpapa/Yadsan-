@@ -219,9 +219,8 @@ end
 
 task.spawn(function()
     task.wait(0.6)
-    PlayLine("WE ARE ASUKA 💢...", 0.6)
+    PlayLine("WE ARE ASUKA TEAM POWERFUL 💢...", 0.6)
     PlayLine("...ASUKA — THE POWER THAT CANNOT BE MATCHED 💪", 0.6)
-    PlayLine("『ASUKA』 — NOT BORN TO FOLLOW, BORN TO LEAD NO COMPARISON, NO COMPETITION — ONLY ASUKA 🤩", 1.0)
     Playline("『ASUKA』 — THE STANDARD THAT OTHERS STRIVE TO REACH ASUKA — LEGENDS ARE REMEMBERED, SUPREMACY IS FOREVER ♾️ ", 1.0)
     
     pcall(function()
