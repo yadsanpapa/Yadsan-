@@ -2974,6 +2974,8 @@ WindUI:Localization({
             Update = "Update",
             Information = "Information",
             Main = "Main",
+            Spam = "Spammer",
+            Life = "LifeTogether"
             Server = "Server",
             Status = "Status",
             Player = "Player",
@@ -3133,6 +3135,16 @@ local TabHandles = {
         Locked = false, ShowTabTitle = true, Border = true, LayoutOrder = 1
     }),
 
+    Spammer = Tabs.Features:Tab({
+        Title = "loc:Spammer", Icon = "message-square", Desc = "loc:SpammerDesc", IconThemed = true,
+        Locked = false, ShowTabTitle = true, Border = true, LayoutOrder = 1
+    }),
+    
+    LifeTogether = Tabs.Features:Tab({
+        Title = "loc:LifeTogether", Icon = "house", Desc = "loc:LifeTogetherDesc", IconThemed = true,
+        Locked = false, ShowTabTitle = true, Border = true, LayoutOrder = 1
+    }),
+    
     Server = Tabs.Features:Tab({
         Title = "loc:Server", Icon = "server", Desc = "loc:ServerDesc", IconThemed = true,
         Locked = false, ShowTabTitle = true, Border = true, LayoutOrder = 1
@@ -3189,6 +3201,34 @@ local Sections = {
         Title = "Wall Hop", Desc = "Configure wall hop settings and movement options.", Icon = "brick-wall", Box = true, BoxBorder = true,
         FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
     }),
+    Asuka Spammer Red= TabHandles.Spammer:Section({
+        Title = "Asuka Spammer Red", Desc = "Upload to spam execute Asuka team powerful.", Icon = "message-square", Box = true, BoxBorder = true,
+        FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
+    }), 
+    Zero Mercy Spammer V1 = TabHandles.Spammer:Section({
+        Title = "Zero Mercy Spammer V1", Desc = "Upload to spam execute ZM Gang Shafi X Zenex.", Icon = "message-square", Box = true, BoxBorder = true,
+        FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
+    }), 
+    Yadsan Edition Spam = TabHandles.Spammer:Section({
+        Title = "Yadsan Edition Spam", Desc = "Explore server options and manage your connection.", Icon = "message-square", Box = true, BoxBorder = true,
+        FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
+    }), 
+    Yadsan Outfit Copier = TabHandles.LifeTogether:Section({
+        Title = "Yadsan Outfit Copier", Desc = "Explore server options and manage your connection.", Icon = "shirt", Box = true, BoxBorder = true,
+        FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
+    }), 
+    Celestial Gen X = TabHandles.LifeTogether:Section({
+        Title = "Celestial Gen X", Desc = "Explore server options and manage your connection.", Icon = "shirt", Box = true, BoxBorder = true,
+        FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
+    }), 
+    Celestial Frostbite X = TabHandles.LifeTogether:Section({
+        Title = "Celestial Frostbite X", Desc = "Explore server options and manage your connection.", Icon = "shirt", Box = true, BoxBorder = true,
+        FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
+    }), 
+    Celestial Cryptic Hub = TabHandles.LifeTogether:Section({
+        Title = "Celestial Cryptic Hub", Desc = "Explore server options and manage your connection.", Icon = "shirt", Box = true, BoxBorder = true,
+        FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
+    }), 
     Server = TabHandles.Server:Section({
         Title = "Server", Desc = "Explore server options and manage your connection.", Icon = "server", Box = true, BoxBorder = true,
         FontWeight = Enum.FontWeight.SemiBold, TextTransparency = 0.05, TextXAlignment = "Left", TextSize = 17, Opened = false
@@ -3533,6 +3573,22 @@ Sections.WallHop:Toggle({
 Main.srvStatus = Sections.Server:Paragraph({
     Title = "Server Status",
     Desc = Main.srvText(),
+})
+
+Sections.Spammer:Button({
+    Title = "Asuka Spammer Red",
+    Desc = "Upload to spam execute Asuka team powerful.",
+    Callback = function() 
+            loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/AsukaSpammerByYadsan.lua"),true))()
+        end,
+})
+
+Sections.Spammer:Button({
+    Title = "Zero Mercy Spammer V1",
+    Desc = "Upload to spam execute ZM Gang Shafi X Zenex.",
+    Callback = function() 
+            loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Zm_Spammerv1byshafi.lua"),true))()
+        end,
 })
 
 Sections.Server:Input({
