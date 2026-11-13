@@ -305,11 +305,9 @@ Instance.new("UICorner",status).CornerRadius = UDim.new(0,8)
   
 local symbols = {  
 	"🔥","💀","👑","😈","🤡",  
-	"😂","😭","🥀","⚡","🗡",  
-	"×","∆","Ω","λ","♨",  
-	"♻","☮","☸","✝","⚜",  
-	"⚙","❗","❓","‼","🛡",  
-	"⭕","🔱","💫","✨","💥"  
+	"😂","😭","🥀","⚡","💔",  
+	"👺","😡","😍","😘","🛡",  
+	"💩","🔱","🤮","😒","🤩"  
 }  
   
 local picker = Instance.new("Frame")  
@@ -643,7 +641,7 @@ local ss1 = Instance.new("TextButton")
 ss1.Size = UDim2.fromOffset(58,58)  
 ss1.Position = UDim2.new(1,-75,1,-80)  
 ss1.BackgroundColor3 = Color3.fromRGB(25,28,40)  
-ss1.Text = "『ZM』"  
+ss1.Text = "『乙爪』"  
 ss1.TextColor3 = Color3.new(1,1,1)  
 ss1.Font = Enum.Font.GothamBold  
 ss1.TextSize = 16  
