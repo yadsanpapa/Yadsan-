@@ -705,7 +705,7 @@ ss1.MouseButton1Click:Connect(function()
 end)
 --// AUTO CHAT MESSAGE
 task.spawn(function()
-    local chatMsg = "------------//// ZERO MERCY SPAMMER V1 LOADED BY OWNER (CELESTIAL X ZM X ASUKA ON TOP 🎩) ////-----------------"
+    local chatMsg = "------------//// ZERO MERCY SPAMMER V1 LOADED BY OWNER SHAFI X ZENEX (ZERO MERCY ON TOP 🎩) ////-----------------"
     pcall(function()
         if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
             game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
