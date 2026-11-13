@@ -25,7 +25,7 @@ local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/72msre
 local Modules = loadstring(game:HttpGet("https://raw.githubusercontent.com/72msreal-pixel/WindUI/refs/heads/main/Modules.luau"))()
 local LangController = Modules:Install(WindUI)
 
-WindUI.Creator.AddIcons("NaN", {
+WindUI.Creator.AddIcons("Yadsan", {
     Discord = "rbxassetid://76958837964147",
     Robux = "rbxassetid://92207254124270",
     Youtube = "rbxassetid://117641022373030",
@@ -466,7 +466,7 @@ ESP.Connections.Render = RunService.RenderStepped:Connect(function(dt)
     end
 end)
 
-local old = getgenv().NaNMain
+local old = getgenv().YadsanMain
 if old then
     pcall(old.adToggle, false)
     pcall(old.bpUnload)
@@ -559,7 +559,7 @@ local Main = {
     cfgName = "",
 }
 
-getgenv().NaNMain = Main
+getgenv().YadsanMain = Main
 Main.toolClass.__index = Main.toolClass
 Main.hopParams.MaxParts = 10
 Main.espClass.__index = Main.espClass
@@ -1428,13 +1428,13 @@ function Main.toolHookDrop()
 
     Main.toolHooked = true
     local env = getgenv()
-    env.NaNTools = Main
-    if env.NaNHooked then return end
-    env.NaNHooked = true
+    env.YadsanTools = Main
+    if env.YadsanHooked then return end
+    env.YadsanHooked = true
 
     local oldNc
     oldNc = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
-        local cur = env.NaNTools
+        local cur = env.YadsanTools
         if cur and cur.toolDrops[self] then
             local m = getnamecallmethod()
             local t = (m == "FireServer" or m == "InvokeServer") and cur.toolCurrent()
@@ -1921,9 +1921,9 @@ function Main.glideStart(name, hum, root)
         hum:ChangeState(cfg.State)
     end
 
-    Main.mvAttach = Main.new("Attachment", { Name = "NaNGlideAttachment" }, root)
+    Main.mvAttach = Main.new("Attachment", { Name = "YadsanGlideAttachment" }, root)
     Main.mvVel = Main.new("LinearVelocity", {
-        Name = "NaNGlideVelocity",
+        Name = "YadsanGlideVelocity",
         Attachment0 = Main.mvAttach,
         RelativeTo = Enum.ActuatorRelativeTo.World,
         VelocityConstraintMode = Enum.VelocityConstraintMode.Vector,
@@ -1933,7 +1933,7 @@ function Main.glideStart(name, hum, root)
 
     if cfg.Freeze then
         Main.mvAligner = Main.new("AlignOrientation", {
-            Name = "NaNGlideAligner",
+            Name = "YadsanGlideAligner",
             Mode = Enum.OrientationAlignmentMode.OneAttachment,
             Attachment0 = Main.mvAttach,
             RigidityEnabled = true,
@@ -2957,12 +2957,12 @@ WindUI:Localization({
     SourceLanguage = "en",
     AutoTranslate = true,
     Notifications = true,
-    NoTranslations = { "NaN Hub", "72ms", "Main UI" },
+    NoTranslations = { "Celestial Godverse Hub UV1", "26ms", "Main UI" },
 
     Translations = {
         en = {
-            HubTitle = "NaN Hub",
-            GameTitle = "Univereal Script - By 72ms",
+            HubTitle = "Celestial Godverse Hub UV1",
+            GameTitle = "Yadsan Script - By 26ms",
             ThemeChanged = "Theme Changed",
             TransparencyTitle = "Transparency",
             TransparencyDisabled = "Transparency disabled",
@@ -3014,7 +3014,7 @@ local Window = WindUI:CreateWindow({
     Icon = "rbxassetid://105519970633948",
     Background = "rbxassetid://0",
     Author = "loc:GameTitle",
-    Folder = "NaN Hub - Univereal Script",
+    Folder = "Celestial Godverse Hub UV1 - Yadsan Script",
     Size = UDim2.fromOffset(620, 480),
     MinSize = Vector2.new(620, 480),
     Transparent = getgenv().TransparencyEnabled,
@@ -3986,15 +3986,15 @@ Sections.Config:Button({
 Main.cfgReload()
 
 WindUI:Notify({
-    Title = "NaN Hub",
+    Title = "CELESTIAL GODVERSE HUB UV1",
     Content = "Script loaded successfully!",
     Duration = 4,
     Icon = "rocket",
 })
 
 WindUI:Notify({
-    Title = "NaN Hub",
+    Title = "CELESTIAL GODVERSE HUB UV1",
     Content = "Join our Discord for updates, new features and support!",
     Duration = 4,
-    Icon = "NaN:Discord",
+    Icon = "Yadsan:Discord",
 })
