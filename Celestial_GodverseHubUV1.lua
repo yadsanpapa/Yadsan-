@@ -1125,10 +1125,18 @@ SpamTab:Button({
     end,
 })
 SpamTab:Button({
-    Title = "ZERO MERCY SPAMMER V1 😘",
-    Desc = "Click to execute the ultimate Zm Spammer Shafi!",
+    Title = "ZERO MERCY SPAMMER V1 🏴",
+    Desc = "Click to execute Zm Spammer ShafiXZenex!",
     Callback = function()
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Zm_Spammerv1byshafi.lua"),true))()
+    end,
+})
+
+SpamTab:Button({
+    Title = "ASUKA SPAMMER RED 🚩",
+    Desc = "Click to execute Asuka Team Powerful!",
+    Callback = function()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/AsukaSpammerByYadsan.lua"),true))()
     end,
 })
 
