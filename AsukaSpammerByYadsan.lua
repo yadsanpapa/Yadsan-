@@ -219,10 +219,10 @@ end
 
 task.spawn(function()
     task.wait(0.6)
-    PlayLine("WE ARE ASUKA TEAM POWERFUL 💢...", 0.6)
-    PlayLine("...ASUKA — THE POWER THAT CANNOT BE MATCHED 💪", 0.6)
-    Playline("『ASUKA』 — THE STANDARD THAT OTHERS STRIVE TO REACH ASUKA — LEGENDS ARE REMEMBERED, SUPREMACY IS FOREVER ♾️ ", 1.0)
-    
+    PlayLine("WE ARE ASUKA TEAM POWERFUL...", 0.6)
+    PlayLine("...AND ASUKA THE POWER THAT CANNOT BE MATCHED.", 0.6)
+    PlayLine("『ASUKA』LEGENDS ARE REMEMBERED, SUPREMACY IS FOREVER.", 1.0)
+   
     pcall(function()
         typeSound:Stop()
         typeSound:Destroy()
