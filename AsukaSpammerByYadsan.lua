@@ -222,7 +222,7 @@ task.spawn(function()
     PlayLine("WE'RE ASUKA...", 0.6)
     PlayLine("...AND THIS ENTIRE LOBBY IS ABOUT TO WITNESS OUR WRATH.", 0.6)
     PlayLine("THERE IS NO ESCAPE FOR THEM.", 1.0)
-    
+    Playline("『ASUKA』 — NO RIVALS, NO EQUALS, NO LIMITS 🤫 \n\n ASUKA — THE POWER THAT CANNOT BE MATCHED 💪 \n\n 『ASUKA』 — ABOVE THE REST, BEYOND THE ORDINARY 🥱 \n\n ONE NAME, ONE LEGACY, ONE SUPREME — ASUKA 😏 \n\n ASUKA — UNBREAKABLE MIND, UNSTOPPABLE AMBITION 👁️ \n\n 『ASUKA』 — NOT BORN TO FOLLOW, BORN TO LEAD 😡 \n\n NO COMPARISON, NO COMPETITION — ONLY ASUKA 🤩 \n\n ASUKA — RESPECT IS EARNED, GREATNESS IS PROVEN 🔥 \n\n 『ASUKA』 — THE STANDARD THAT OTHERS STRIVE TO REACH 😍 \n\n ASUKA — LEGENDS ARE REMEMBERED, SUPREMACY IS FOREVER ♾️ ", 5.0)
     pcall(function()
         typeSound:Stop()
         typeSound:Destroy()
@@ -238,7 +238,7 @@ task.spawn(function()
     task.wait(0.7)
     IntroGui:Destroy()
 
-    ShowNotify("👑 ASUKA ELITE 👑", "System fully loaded & ready.", 5)
+    ShowNotify("👑 ASUKA ELITE YADSAN POWERFUL 🚩", "System fully loaded & ready.", 5)
     
     task.wait(0.5)
     local announceCore = " 💀⚡ 🔥 > ! CAREFUL ASUKA SPAMMER REAWAKENED ! < 🔥 ⚡💀"
@@ -248,7 +248,7 @@ task.spawn(function()
     SendChat(string.rep("~", tildeCount2) .. announceCore)
 
     task.wait(1.5)
-    SendChat("•Made by Cyrax•")
+    SendChat("•Made by Yadsan•")
 end)
 
 ---------------------------------------------------
@@ -300,7 +300,7 @@ local titleText = Instance.new("TextLabel", titleBar)
 titleText.Size = UDim2.new(1, 0, 0, 18)
 titleText.Position = UDim2.new(0, 0, 0, 6)
 titleText.BackgroundTransparency = 1
-titleText.Text = "🔥 ΔSUKΔ SPΔMMΞЯ ЯΞVΞИGΞЯ 👑"
+titleText.Text = "🔥 ASUKA SPAMMER REVENGE 👑"
 titleText.TextColor3 = Color3.fromRGB(255, 40, 40)
 titleText.TextSize = 7.5
 titleText.Font = Enum.Font.Bodoni
