@@ -5,7 +5,7 @@ local WindUI = loadstring(game:HttpGet(
 ))()
 
 local Window = WindUI:CreateWindow({
-    Title = "GODVERSE HUB UV1",
+    Title = "CELESTIAL GODVERSE HUB UV1",
     Icon = "crown",
     Author = "YADSAN 🔱",
     Folder = "YadsanHub",
@@ -64,7 +64,7 @@ local InfoTab = Window:Tab({
 
 InfoTab:Paragraph({
     Title = "GODVERSE 🌐",
-    Desc = "MADE BY Yadsan_Godverse 👑",
+    Desc = "Made by Yadsan_Godverse 👑",
 })
 
 InfoTab:Paragraph({
@@ -631,7 +631,7 @@ TrollTab:Button({
 
             RefreshPlayerList()
             UpdateStatus()
-            Message("GODVERSE HUB 🌐", "YADSAN MULTI-FLING GUI LOADED! 💀", 4)
+            Message("CELESTIAL GODVERSE HUB UV1 🌐", "YADSAN MULTI-FLING GUI LOADED! 💀", 4)
         end)
     end,
 })
@@ -1132,7 +1132,7 @@ local LifeTogetherTab = Window:Tab({
 })
 
 LifeTogetherTab:Button({
-    Title = "YADSAN OUTFIT COPIER 🤓 (ONLY FOR LIFE TOGETHER 🏠)GUI✌🏻",
+    Title = "YADSAN OUTFIT COPIER 🤓",
     Desc = "Click to open the outfit copier GUI",
     Callback = function()
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Yadsan_Outfit_Copier_OV1"),true))()
@@ -1140,15 +1140,23 @@ LifeTogetherTab:Button({
 })
 
 LifeTogetherTab:Button({
-    Title = "INFINITE YIELD ⚠️",
-    Desc = "Click to open the Ultimate Commands Inf",
+    Title = "CELESTIAL GEN X 💢",
+    Desc = "Click to open the Celestial Gen X",
     Callback = function()
-        loadstring(game:HttpGet(("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"),true))()
+        loadstring(game:HttpGet(("https://scriptblox.com/raw/LifeTogether-RP-Gen-X-Hub-236184"),true))()
     end,
 })
 
 LifeTogetherTab:Button({
-    Title = "YADSAN CRYPTIC HUB",
+    Title = "CELESTIAL FROSTBITE X ⚠️",
+    Desc = "Click to open the Ultimate Re-SizeR",
+    Callback = function()
+        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Godverse-Hub-/refs/heads/main/CelestialFrostbiteX.lua"),true))()
+    end,
+})
+
+LifeTogetherTab:Button({
+    Title = "CELESTIAL CRYPTIC HUB",
     Desc = "Click to open the Ultimate Best Hub",
     Callback = function()
         loadstring(game:HttpGet(("https://raw.githubusercontent.com/OnlyCryptic/Cryptic/main/main.lua"),true))()
@@ -1237,6 +1245,14 @@ OtherTab:Toggle({
     end,
 })
 
+
+OtherTab:Button({
+    Title = "INFINITE YIELD",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+    end,
+})
+
 OtherTab:Button({
     Title = "SKY GLITCHER (FE)",
     Callback = function()
@@ -1245,7 +1261,7 @@ OtherTab:Button({
 })
 
 OtherTab:Button({
-    Title = "EMOTE",
+    Title = "EMOTES",
     Callback = function()
         loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Gaze-emote-74592"))()
     end,
@@ -1273,7 +1289,7 @@ WindUI:Notify({
 })
 --// AUTO CHAT MESSAGE
 task.spawn(function()
-    local chatMsg = "------------////GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse (CELESTIAL X ZM X ASUKA ON TOP 🎩) ////-----------------"
+    local chatMsg = "------------//// CELESTIAL GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse (CELESTIAL X ZM X ASUKA ON TOP 🎩) ////-----------------"
     pcall(function()
         if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
             game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
