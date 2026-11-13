@@ -3,7 +3,7 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local chatDelay = 1.25
 local messages = {
-    "『💀』 Hello Bhai 😈 " .. player.Name .. ", Humari Gang Mein Jeet Aayega? AG Ka Baap🔥 『🩸』",
+    "『💀』 Hello Bhai 😈 " .. player.Name .. ", Humari Gang Mein Jeet Aayega? Celestial Syndicate On Top🔥 『🩸』",
     "『😡』//OWNER//:LEADER:// 『😏』",
     "『⚠️』CELESTIAL X ASUKA X ZM ON TOP『💀』",
     "CELESTIAL GODVERSE HUB UV1 BEST SCRIPTS XD 🗿", -- Added right below -pd
