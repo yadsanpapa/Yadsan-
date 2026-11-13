@@ -6,12 +6,12 @@ local WindUI = loadstring(game:HttpGet(
 
 local Window = WindUI:CreateWindow({
     Title = "CELESTIAL GODVERSE HUB UV1",
-    Icon = "crown",
+    Icon = "d1d5db",
     Author = "YADSAN 🔱",
     Folder = "YadsanHub",
     Size = UDim2.fromOffset(580, 460),
     Transparent = true,
-    Theme = "Dark",
+    Theme = "Gray",
     Resizable = true,
     SideBarWidth = 180,
     ScrollBarEnabled = true,
