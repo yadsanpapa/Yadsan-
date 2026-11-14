@@ -2974,6 +2974,7 @@ WindUI:Localization({
             Update = "Update",
             Information = "Information",
             Main = "Main",
+            Server = "Server"
             Server = "Server",
             Status = "Status",
             Player = "Player",
@@ -3133,6 +3134,11 @@ local TabHandles = {
         Locked = false, ShowTabTitle = true, Border = true, LayoutOrder = 1
     }),
 
+   Server = Tabs.Features:Tab({
+        Title = "loc:Server", Icon = "server", Desc = "loc:ServerDesc", IconThemed = true,
+        Locked = false, ShowTabTitle = true, Border = true, LayoutOrder = 1
+    }),
+    
     Server = Tabs.Features:Tab({
         Title = "loc:Server", Icon = "server", Desc = "loc:ServerDesc", IconThemed = true,
         Locked = false, ShowTabTitle = true, Border = true, LayoutOrder = 1
