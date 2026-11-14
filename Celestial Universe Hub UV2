@@ -2957,12 +2957,12 @@ WindUI:Localization({
     SourceLanguage = "en",
     AutoTranslate = true,
     Notifications = true,
-    NoTranslations = { "NaN Hub", "72ms", "Main UI" },
+    NoTranslations = { "Celestial Universe Hub UV2", "26ms", "Yadsan Celestial" },
 
     Translations = {
         en = {
-            HubTitle = "NaN Hub",
-            GameTitle = "Univereal Script - By 72ms",
+            HubTitle = "Celestial Universe Hub UV2",
+            GameTitle = "Yadsan Script - By 26ms",
             ThemeChanged = "Theme Changed",
             TransparencyTitle = "Transparency",
             TransparencyDisabled = "Transparency disabled",
@@ -3075,7 +3075,7 @@ pcall(function()
 end)
 
 local OpenButtonConfig = {
-    Title = "Main UI",
+    Title = "Yadsan Celestial",
     Icon = "rbxassetid://105519970633948",
     CornerRadius = UDim.new(0, 12),
     StrokeThickness = 2,
@@ -3986,15 +3986,15 @@ Sections.Config:Button({
 Main.cfgReload()
 
 WindUI:Notify({
-    Title = "NaN Hub",
+    Title = "Celestial Universe Hub UV2",
     Content = "Script loaded successfully!",
     Duration = 4,
     Icon = "rocket",
 })
 
 WindUI:Notify({
-    Title = "NaN Hub",
+    Title = "Celestial Universe Hub UV2",
     Content = "Join our Discord for updates, new features and support!",
     Duration = 4,
-    Icon = "NaN:Discord",
+    Icon = "Yadsan:Discord",
 })
