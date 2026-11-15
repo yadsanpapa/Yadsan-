@@ -11,7 +11,7 @@ local Window = WindUI:CreateWindow({
     Folder = "YadsanHub",
     Size = UDim2.fromOffset(580, 460),
     Transparent = true,
-    Theme = "Gray",
+    Theme = "Dark",
     Resizable = true,
     SideBarWidth = 180,
     ScrollBarEnabled = true,
@@ -58,13 +58,13 @@ end
 
 --// INFORMATION
 local InfoTab = Window:Tab({
-    Title = "INFORMATION 🥵",
+    Title = "INFORMATION",
     Icon = "info",
 })
 
 InfoTab:Paragraph({
     Title = "GODVERSE 🌐",
-    Desc = "Made by Yadsan_Godverse 👑",
+    Desc = "Made by Yadsan_Godverse",
 })
 
 InfoTab:Paragraph({
@@ -74,7 +74,7 @@ InfoTab:Paragraph({
 
 InfoTab:Paragraph({
     Title = "CREATOR",
-    Desc = "Yadsan Papa🥵",
+    Desc = "Yadsan Papa",
 })
 
 InfoTab:Paragraph({
@@ -84,7 +84,7 @@ InfoTab:Paragraph({
 
 --// TROLL
 local TrollTab = Window:Tab({
-    Title = "TROLL 💀",
+    Title = "TROLL💀",
     Icon = "skull",
 })
 
@@ -1163,14 +1163,6 @@ LifeTogetherTab:Button({
 })
 
 LifeTogetherTab:Button({
-    Title = "CELESTIAL FROSTBITE X ⚠️",
-    Desc = "Click to open the Tall Re-SizeR",
-    Callback = function()
-        loadstring(game:HttpGet(("https://raw.githubusercontent.com/yadsanpapa/Godverse-Hub-/refs/heads/main/CelestialFrostbiteX.lua"),true))()
-    end,
-})
-
-LifeTogetherTab:Button({
     Title = "CELESTIAL CRYPTIC HUB 🗿",
     Desc = "Click to open the Ultimate Troll Aura",
     Callback = function()
@@ -1311,7 +1303,7 @@ WindUI:Notify({
 })
 --// AUTO CHAT MESSAGE
 task.spawn(function()
-    local chatMsg = "------------//// CELESTIAL GODVERSE HUB UV1 LOADED 🌊 Made by Yadsan_Godverse (CELESTIAL X ZM X ASUKA ON TOP 🎩) ////-----------------"
+    local chatMsg = "------------//// CELESTIAL GODVERSE HUB UV1 🤩 LOADED Made by Yadsan_Godverse (ZERO MERCY X CELESTIAL X ASUKA ON TOP 🔥) ////-----------------"
     pcall(function()
         if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
             game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
