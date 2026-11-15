@@ -3,10 +3,18 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local chatDelay = 1.25
 local messages = {
-    "『💀』 Hello Bhai 😈 " .. player.Name .. ", Humari Gang Mein Jeet Aayega? Celestial Syndicate On Top🔥 『🩸』",
-    "『😡』//OWNER//:LEADER:// 『😏』",
-    "『⚠️』CELESTIAL X ASUKA X ZM ON TOP『💀』",
-    "CELESTIAL GODVERSE HUB UV1 BEST SCRIPTS XD 🗿", -- Added right below -pd
+    --// AUTO CHAT MESSAGE
+task.spawn(function()
+    local chatMsg = "------------//// CELESTIAL GODLY PV1 LOADED (CELESTIAL SYNDICATE ON TOP ☃️) ////-----------------"
+       "SCriPt By Yadsan_Godverse WorkiNg!"
+        pcall(function()
+        if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
+            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
+        else
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chatMsg, "All")
+        end
+    end)
+end)
     "SCriPt By Yadsan_Godverse WorkiNg!"
 }
 
@@ -43,7 +51,7 @@ task.spawn(function()
     
     -- Execute the external Patchma Hub script after the final delay
     local success, err = pcall(function()
-       loadstring(game:HttpGet("https://raw.githubusercontent.com/yadsanpapa/Yadsan-/refs/heads/main/Celestial_GodverseHubUV1.lua"))()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/ZxyYadsan/Celestial-Godverse-Hub-UV1-/refs/heads/main/CelestialGodly_PV1.lua"))()
     end)
     
     if not success then
