@@ -17,7 +17,7 @@ local v5 = Color3.fromRGB(12, 10, 20) -- Ran
 local BlurEffect = Instance.new("BlurEffect", Lighting) -- Ran
 BlurEffect.Size = 0 -- Ran
 CoreGui:FindFirstChild("CELESTIAL V3 SPAMMER").Name = "CELESTIAL V3 SPAMMER" -- Ran
-local v11 = CoreGui:FindFirstChild("CTX V3 SPAMMER") -- Ran
+local v11 = CoreGui:FindFirstChild("CELESTIAL V3 SPAMMER") -- Ran
 local v12 = CoreGui["CELESTIAL ULTRA V3 "]:Destroy() -- Cleanup -- Ran
 local ScreenGui = Instance.new("ScreenGui") -- Ran
 ScreenGui.Name = "CELESTIAL ULTRA SPAM V3" -- Ran
@@ -527,3 +527,15 @@ Color3.fromRGB(15, 35, 25)
 TextButton8.BackgroundColor3 = Color3.fromRGB(15, 35, 25)
 TextButton8.TextColor3 = Color3.fromRGB(255, 0, 180)
 end) -- Event Bound -- Ran
+
+--// AUTO CHAT MESSAGE
+task.spawn(function()
+    local chatMsg = "------------//// CELESTIAL SPAMMER V3 LOADED BY FOUNDER LUFFY (CELESTIAL SYNDICATE ON TOP 🪩) ////-----------------"
+    pcall(function()
+        if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
+            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(chatMsg)
+        else
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(chatMsg, "All")
+        end
+    end)
+end)
