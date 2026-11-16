@@ -271,7 +271,7 @@ do
     Title.Position = UDim2.fromScale(0.5, 0.66)
     Title.Size = UDim2.fromScale(0.94, 0.085)
     Title.BackgroundTransparency = 1
-    Title.Text = "𝐂 𝐄 𝐋 𝐄 𝐒 𝐓 𝐈 𝐀 𝐋 • 𝐒 𝐘 𝐍 𝐃 𝐈 𝐂 𝐀 𝐓 𝐄"
+    Title.Text = "C E L E S T I A L - S Y N D I C A T E"
     Title.TextColor3 = WHITE_GOLD
     Title.Font = Enum.Font.GothamBlack
     Title.TextScaled = true
@@ -327,7 +327,7 @@ do
     local messages = {
         "INITIALIZING SYSTEMS...",
         "CONNECTING TO GODVERSE HUB..",
-        "LOADING CELESTIAL SYNDICATE UI...",
+        "LOADING CELESTIAL SYNDICATE UI BY YADSAN...",
         "AB HOGI TABAHI 🗿 ZERO MERCY AUR ASUKAREIGN ON TOP 🎩..",
         "AB PLAYERS PILENGE⚡"
     }
